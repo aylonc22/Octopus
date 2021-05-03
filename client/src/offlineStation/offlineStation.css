@@ -1,0 +1,15 @@
+.containerOffline{
+ 
+ border-style: solid;
+ border-color: green;
+ background-color: lightgray;
+ width: 200px;
+ height: 250px;
+  margin: 2%;
+}
+.stationNameOffline{
+  display: flex; 
+  align-content: flex-start;
+  justify-content: center;
+}
+

@@ -1,0 +1,14 @@
+.containerOnline{
+ 
+    border-style: solid;
+    border-color: green;
+    background-color: green;
+    width: 200px;
+    height: 250px;
+     margin: 2%;
+   }
+   .stationNameOnline{
+     display: flex; 
+     align-content: flex-start;
+     justify-content: center;
+   }
