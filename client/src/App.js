@@ -9,51 +9,47 @@ function App() {
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
   // let showOnline = onlineStations.map(s=><OnlineStation key ={s.id} id = {s.id} message = {s.message}/>)
   // let showOffline = offlineStations.map(s=><OfflineStation key ={s.id} id = {s.id}/>)
-
   function addToArray(type, list) {
     type === "offline" ?
     console.log("offline") :
     console.log("online")
   }
-
   socket.on('connection',()=>console.log("test"));
   socket.on('disconnect',()=>{
     socket.send("[Client] disconnected");
 });
-//sd
-socket.on('connect_error',(err)=>console.log(err));
-  socket.once('station-listener', (msg,station)=>{
-    const newOnline = [{id:"demo1", message: msg}]
-    setOnlineStations(newOnline);
-    console.log(newOnline)
-    // console.log(msg);
-    // const online = [...onlineStations];
-    // const newOnline = [];
-    // const offline = [...offlineStations];
-    // const newOffline =[];
-    // for(let i = 0; i<offline.length; i++)
-    //   {
-    //     if (offline[i].id !== station) {
-    //       newOffline.push(offline[i]);
-    //     }
-    //   }
-    //   let flag = false;
-    //   for(let i = 0; i<online.length;i++)
-    //     {
-    //         if(online[i].id === station)
-    //          { 
-    //            flag = true;
-    //           newOnline.push({id:station,message:msg})
-    //         }
-    //         else
-    //         newOnline.push({id:online[i].id,message:online[i].message})
-    //     }
-    //      if(!flag)
-    //      {newOnline.push({id:station,message:msg})}
-    //      setOnlineStations(newOnline);
-    //      setOfflineStations(newOffline);
+useEffect(()=>{
+  socket.on('connect_error',(err)=>console.log(err));
+  socket.on('station-listener', (msg,station)=>{
+    const online = [...onlineStations];
+    const newOnline = [];
+    const offline = [...offlineStations];
+    const newOffline =[];
+    for(let i = 0; i<offline.length; i++)
+      {
+        if (offline[i].id !== station) {
+          newOffline.push(offline[i]);
+        }
+      }
+      let flag = false;
+      for(let i = 0; i<online.length;i++)
+        {
+            if(online[i].id === station)
+             { 
+               flag = true;
+              newOnline.push({id:station,message:msg})
+            }
+            else
+            newOnline.push({id:online[i].id,message:online[i].message})
+        }
+         if(!flag)
+         {newOnline.push({id:station,message:msg})}
+         setOnlineStations(newOnline);
+         setOfflineStations(newOffline);
 
   });
+},[]);
+
   return (
     <div>
       {/* <h1 className =  "textCenter">תחנות דלוקות</h1>

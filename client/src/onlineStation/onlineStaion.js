@@ -17,7 +17,7 @@ import './onlineStation.css'
 const OnlineStation = (props) => {
     let array = props.items.map(item => {
         return (
-            <div className = "containerOnline">
+            <div key = {item.id} className = "containerOnline">
             <label className = "stationNameOnline">{item.id}</label>
                 {item.message}
             </div>

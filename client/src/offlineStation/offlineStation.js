@@ -14,7 +14,7 @@ import './offlineStation.css'
 const OfflineStation = (props) => {
     let array = props.items.map(item => {
         return (
-            <div className = "containerOffline">
+            <div key ={item.id} className = "containerOffline">
                 <label className = "stationNameOffline" >{item.id}</label>
             </div>
         )
