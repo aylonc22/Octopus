@@ -7,7 +7,8 @@ const readline = require('readline');
 const stream = require('stream');
 //Initialization
 const PORT = 4000;
-let count;
+let _onlineStations = [];
+let _offlineStations = [];
 app.use(cors());
 http.listen(PORT,()=>console.log(`[Server] is running on port: ${PORT}`));
 //Server Client comunication 
@@ -18,6 +19,11 @@ io.on('connection',socket => {
     socket.on('message',(msg)=>console.log(msg))
     socket.on('disconnect',()=>'[Server] client disconnected');
     socket.on('connect_failed',()=>console.log("fail"))
+    socket.on('update',(OnlineStations,OfflineStations)=>{
+        _onlineStations = OnlineStations;
+         _offlineStations = OfflineStations;
+        });//update in server status of online and offline stations
+    socket.on('sendUpdate',()=>socket.emit('sendStations',_onlineStations,_offlineStations)); // send to client updated arrays of station
 });
 
 // station listener
