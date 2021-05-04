@@ -6,4 +6,4 @@ for(let i in files.stations)
         fs.appendFileSync(files.stations[i].path,`${files.stations[i].id}: demo${(Math.random()*10).round}`)
       
     }, 1000);
-    console.log(data);
+    console.log(data);//ds
