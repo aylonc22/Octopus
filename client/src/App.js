@@ -4,78 +4,76 @@ import io from 'socket.io-client';
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
 const socket = io.connect('http://localhost:4000',{});
-
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
+  const [data,setData] = useState({station:'',message:''});
   // let showOnline = onlineStations.map(s=><OnlineStation key ={s.id} id = {s.id} message = {s.message}/>)
   // let showOffline = offlineStations.map(s=><OfflineStation key ={s.id} id = {s.id}/>)
-  // function changeStation()
-  // {
-  //    socket.on('sendStations',(newOnline,newOffline)=>{
-  //  socket.off('sendStations',()=>{
-  //    setOnlineStations(newOnline);
-  //  setOfflineStations(newOffline);
-  //  });
-  //    });
-  //   }
   socket.on('connection',()=>console.log("test"));
   socket.on('disconnect',()=>{
     socket.send("[Client] disconnected");
 });
 useEffect(()=>{
   socket.on('connect_error',(err)=>console.log(err));
-  socket.on('station-listener', (msg,station)=>{
-    const online = [...onlineStations];
-    const newOnline = [];
-    console.log("offline1");
-    console.log(offlineStations);
-    const offline = [...offlineStations];
-    console.log("offline");
-    console.log(offline);
-    console.log("offlineStations");
-    console.log(offlineStations);
-    const newOffline =[];
-   
-    for(let i = 0; i<offline.length; i++)
-      {
-        if (offline[i].id !== station) {
-          newOffline.push(offline[i]);
-        }
-      }
+  socket.on('station-listener', (msg,s)=>{
+    setData({message:msg,station:s})
+    // let newOnline = [];
+    //  let newOffline =  [...offlineStations].filter(item=>{return item.id!==station;})
+    // console.log(station);
+    // console.log(msg);
+    // for(let i = 0; i<offlineStations.length; i++)
+    //   {
+    //     if (offlineStations[i].id !== station) {
+            
+    //       newOffline = [...newOffline,offlineStations[i]]
+    //     }
+    //   }
+      
+      // let flag = false;
+      // for(let i = 0; i<onlineStations.length;i++)
+      //   {
+      //       if(onlineStations[i].id === station)
+      //        { 
+      //          flag = true;
+      //         newOnline =[...newOnline,{id:station,message:msg}];
+      //       }
+      //       else
+      //       newOnline = [...newOnline,{id:onlineStations[i].id,message:onlineStations[i].message}];
+      //   }
+      //    if(!flag)
+      //    {newOnline =[...newOnline,{id:station,message:msg}];}
+      //    setOnlineStations(newOnline);
+      //setOfflineStations(newOffline);
+  });// eslint-disable-next-line
+},[]);
+useEffect(()=>{
+  let newOffline =  [...offlineStations].filter(item=>{return item.id!==data.station;})
+  let newOnline = [...offlineStations]; 
       let flag = false;
-      for(let i = 0; i<online.length;i++)
+      for(let i = 0; i<onlineStations.length;i++)
         {
-            if(online[i].id === station)
+            if(onlineStations[i].id === data.station)
              { 
                flag = true;
-              newOnline.push({id:station,message:msg})
+              newOnline =[...newOnline,{id:data.station,message:data.message}];
             }
             else
-            newOnline.push({id:online[i].id,message:online[i].message})
+            newOnline = [...newOnline,{id:onlineStations[i].id,message:onlineStations[i].message}];
         }
          if(!flag)
-         {newOnline.push({id:station,message:msg})}
+         {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
          setOnlineStations(newOnline);
-         setOfflineStations(newOffline);
-         //socket.emit('update',newOnline,newOffline);// send to server update version of array of stations  
-         //
-  });// eslint-disable-next-line
-},[offlineStations]);
-// useEffect(()=>{
-//   socket.emit('sendUpdate');
-//     console.log("test");
-//     changeStation()
-
-// },[onlineStations,offlineStations],changeStation());
+  setOfflineStations(newOffline);// eslint-disable-next-line
+},[data]);
   return (
     <div>
       {/* <h1 className =  "textCenter">תחנות דלוקות</h1>
       <div className = "boxOnline">{showOnline}</div>
       <h1 className =  "textCenter">תחנות כבויות</h1>
-      <div className = "boxOffline">{showOffline}</div> */}
+  <div className = "boxOffline">{showOffline}</div>*/ }
       <OnlineStation items = {onlineStations}/>
-      <OfflineStation items = {offlineStations}/>
+  <OfflineStation items = {offlineStations}/>
     </div>
   );
  }
