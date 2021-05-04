@@ -18,33 +18,6 @@ useEffect(()=>{
   socket.on('connect_error',(err)=>console.log(err));
   socket.on('station-listener', (msg,s)=>{
     setData({message:msg,station:s})
-    // let newOnline = [];
-    //  let newOffline =  [...offlineStations].filter(item=>{return item.id!==station;})
-    // console.log(station);
-    // console.log(msg);
-    // for(let i = 0; i<offlineStations.length; i++)
-    //   {
-    //     if (offlineStations[i].id !== station) {
-            
-    //       newOffline = [...newOffline,offlineStations[i]]
-    //     }
-    //   }
-      
-      // let flag = false;
-      // for(let i = 0; i<onlineStations.length;i++)
-      //   {
-      //       if(onlineStations[i].id === station)
-      //        { 
-      //          flag = true;
-      //         newOnline =[...newOnline,{id:station,message:msg}];
-      //       }
-      //       else
-      //       newOnline = [...newOnline,{id:onlineStations[i].id,message:onlineStations[i].message}];
-      //   }
-      //    if(!flag)
-      //    {newOnline =[...newOnline,{id:station,message:msg}];}
-      //    setOnlineStations(newOnline);
-      //setOfflineStations(newOffline);
   });// eslint-disable-next-line
 },[]);
 useEffect(()=>{
@@ -55,7 +28,6 @@ useEffect(()=>{
         {
             if(onlineStations[i].id === data.station)
              { 
-               console.log(onlineStations.length);
                flag = true;
               newOnline =[...newOnline,{id:data.station,message:data.message}];
             }
@@ -64,8 +36,9 @@ useEffect(()=>{
         }
         if(!flag && (data.message || data.station))//if is not already in array and actually have value
         {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
-         setOnlineStations(newOnline);
-         setOfflineStations(newOffline);// eslint-disable-next-line
+         
+        setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));
+         setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
   return (
     <div>
