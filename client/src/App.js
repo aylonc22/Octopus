@@ -49,22 +49,23 @@ useEffect(()=>{
 },[]);
 useEffect(()=>{
   let newOffline =  [...offlineStations].filter(item=>{return item.id!==data.station;})
-  let newOnline = [...offlineStations]; 
+  let newOnline = []; 
       let flag = false;
       for(let i = 0; i<onlineStations.length;i++)
         {
             if(onlineStations[i].id === data.station)
              { 
+               console.log(onlineStations.length);
                flag = true;
               newOnline =[...newOnline,{id:data.station,message:data.message}];
             }
             else
             newOnline = [...newOnline,{id:onlineStations[i].id,message:onlineStations[i].message}];
         }
-         if(!flag)
-         {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
+        if(!flag && (data.message || data.station))//if is not already in array and actually have value
+        {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
          setOnlineStations(newOnline);
-  setOfflineStations(newOffline);// eslint-disable-next-line
+         setOfflineStations(newOffline);// eslint-disable-next-line
 },[data]);
   return (
     <div>

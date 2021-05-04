@@ -15,6 +15,8 @@ import './onlineStation.css'
 
 
 const OnlineStation = (props) => {
+    if(props.items.length===0)
+        return(<div>There are no online station at the moment</div>);
     let array = props.items.map(item => {
         return (
             <div key = {item.id} className = "containerOnline">
