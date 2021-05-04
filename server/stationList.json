@@ -2,11 +2,11 @@
     "station":[
         {
             "id":"demo1",
-            "path":"C:\\Users\\שקד\\Desktop\\aylon\\demo1.log"
+            "path":"./demoFiles/demo1.log"
         },
         {
             "id":"demo2",
-            "path":"C:\\Users\\שקד\\Desktop\\aylon\\demo2.log"
+            "path":"./demoFiles/demo2.log"
         }
     ]
 }
