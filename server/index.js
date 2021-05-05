@@ -53,13 +53,13 @@ function stationWatcher(station)
             rl.on('line',(line)=>lastLine=line);
             rl.on('close',()=>{
                 console.log(`[Server] found new last line for station:${station.id},${count}:${Object.keys(io.sockets.sockets).length}`);
-               count++
-               if(count >2)
-               {
-                   count = 0;
+               //count++
+               //if(count >2)
+               //{
+                   //count = 0;
                    io.sockets.emit('station-listener',lastLine,station.id).on('error', err=>console.log(err));
                    
-               }
+               //}
             });
         }
     }));
