@@ -1,14 +1,43 @@
 .containerOnline{
- 
-    border-style: solid;
+  border-style: solid;
     border-color: green;
-    background-color: green;
-    width: 200px;
-    height: 250px;
+    background-color:rgba(114, 31, 248, 0.904);
+    width: 220px;
+    height: 292px;
      margin: 2%;
+     
    }
+
    .stationNameOnline{
      display: flex; 
      align-content: flex-start;
      justify-content: center;
+     padding-bottom:4%;
    }
+
+.dataContainer{
+  border-style: solid;
+  padding: 2%;
+  width: 200px;
+}
+
+   .row{
+    display: flex;
+    border-style: solid;
+     margin: 2%;
+     justify-content: space-between;
+   }
+   .right{
+    display: flex; 
+    flex-direction: row;
+    order: 1;
+     border-left: solid;
+     width: 50%;
+     margin-left: 15%;
+   }
+
+   .left{
+    margin-left: 10%;
+   }
+
+

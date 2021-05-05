@@ -22,7 +22,6 @@ const OfflineStation = (props) => {
 
     return (
         <div>
-            <h1 className =  "textCenter">תחנות כבויות</h1>
             <div className = "boxOffline">{array}</div>
         </div>
     )

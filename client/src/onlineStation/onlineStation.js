@@ -16,12 +16,45 @@ import './onlineStation.css'
 
 const OnlineStation = (props) => {
     if(props.items.length===0)
-        return(<div>There are no online station at the moment</div>);
+        return(<div>There are no online stations at the moment</div>);
     let array = props.items.map(item => {
         return (
             <div key = {item.id} className = "containerOnline">
             <label className = "stationNameOnline">{item.id}</label>
-                {item.message}
+                <div className = "dataContainer">
+                    <div className = "row">
+                        <label className = "right">ג</label>
+                        <label className = "left">{item.message}</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">ע</label>
+                        <label className = "left">1</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">I</label>
+                        <label className = "left">1</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">מ</label>
+                        <label className = "left">1</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">ת</label>
+                        <label className = "left">1</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">מ</label>
+                        <label className = "left">1</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">1</label>
+                        <label className = "left">1</label>
+                    </div>
+                    <div className = "row">
+                        <label className = "right">מ</label>
+                        <label className = "left">1</label>
+                    </div>  
+                </div>
             </div>
         )
     })

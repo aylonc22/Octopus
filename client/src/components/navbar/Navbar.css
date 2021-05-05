@@ -38,3 +38,16 @@ background-color:#6d76f7;
 border-radius: 4px;
 transition: all 0.2 ease-out;
 }
+
+.clicked-page{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color:red;
+    border-radius: 4px;
+    transition: all 0.2 ease-out;
+}
+
+.clicked-page:hover{
+    background-color:rgb(153, 10, 10);
+}

@@ -1,10 +1,12 @@
 import React , {useState,useEffect} from 'react';
-import './App.css';
 import io from 'socket.io-client';
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
+import HomePage from './homePage/HomePage';
+import NotFoundPage from './notFoundPage/NotFoundPage';
 import {useRoutes} from 'hookrouter';
 import Navbar from './components/navbar/Navbar';
+import './App.css';
 const socket = io.connect('http://localhost:4000',{});
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);
@@ -43,7 +45,7 @@ useEffect(()=>{
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
 const routes ={
-  //'/': () => <HomePage />,
+  '/': () => <HomePage />,
   '/online': () => <OnlineStation items = {onlineStations}/>,
   '/offline': () => <OfflineStation items = {offlineStations}/>,
 };  
@@ -52,8 +54,7 @@ return (
     
         <div>
             <Navbar online = {onlineStations} offline = {offlineStations}/>
-            {routeResult}
-            {/*routeResult || <NotFoundPage />*/}
+            {routeResult || <NotFoundPage />}
         </div>   
     
   );
