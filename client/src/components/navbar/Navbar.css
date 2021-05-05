@@ -9,10 +9,32 @@
    
    
 }
-.list{
-}
+
 .Navbar-logo{
-    display: flex;
-    justify-content: flex-end;
+   color: #fff;
+    justify-self: end;
     order: 1;
+}
+
+.nav-menu{
+    display: grid;
+    list-style:none;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 10px;
+    text-align: center;
+    width: 30vh;
+    justify-content: end;
+    margin-right: 45rem;
+}
+
+.nav-links{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links:hover{
+background-color:#6d76f7;
+border-radius: 4px;
+transition: all 0.2 ease-out;
 }

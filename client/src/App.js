@@ -3,6 +3,7 @@ import './App.css';
 import io from 'socket.io-client';
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
+import {useRoutes} from 'hookrouter';
 import Navbar from './components/navbar/Navbar';
 const socket = io.connect('http://localhost:4000',{});
 function App() {
@@ -41,16 +42,20 @@ useEffect(()=>{
         setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
-  return (
-    <div>
-      {/* <h1 className =  "textCenter">תחנות דלוקות</h1>
-      <div className = "boxOnline">{showOnline}</div>
-      <h1 className =  "textCenter">תחנות כבויות</h1>
-  <div className = "boxOffline">{showOffline}</div>*/ }
-     <Navbar/>
-      <OnlineStation items = {onlineStations}/>
-  <OfflineStation items = {offlineStations}/>
-    </div>
+const routes ={
+  //'/': () => <HomePage />,
+  '/online': () => <OnlineStation items = {onlineStations}/>,
+  '/offline': () => <OfflineStation items = {offlineStations}/>,
+};  
+const routeResult = useRoutes(routes);
+return (
+    
+        <div>
+            <Navbar online = {onlineStations} offline = {offlineStations}/>
+            {routeResult}
+            {/*routeResult || <NotFoundPage />*/}
+        </div>   
+    
   );
  }
 

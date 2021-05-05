@@ -1,17 +1,17 @@
 export const MenuItems = [
     {
         title:"Home",
-        url:"#",
+        url:"",
         cName:"nav-links"
     },
     {
         title:"OnlineStations",
-        url:"#",
+        url:"/online",
         cName:"nav-links"
     },
     {
         title:"OfflineStations",
-        url:"#",
+        url:"/offline",
         cName:"nav-links"
     }
 ];
