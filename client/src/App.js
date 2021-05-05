@@ -3,6 +3,7 @@ import './App.css';
 import io from 'socket.io-client';
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
+import Navbar from './components/navbar/Navbar';
 const socket = io.connect('http://localhost:4000',{});
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);
@@ -46,6 +47,7 @@ useEffect(()=>{
       <div className = "boxOnline">{showOnline}</div>
       <h1 className =  "textCenter">תחנות כבויות</h1>
   <div className = "boxOffline">{showOffline}</div>*/ }
+     <Navbar/>
       <OnlineStation items = {onlineStations}/>
   <OfflineStation items = {offlineStations}/>
     </div>
