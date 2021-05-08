@@ -1,9 +1,12 @@
 *{
+  background-color: f3f9fb;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
 .boxOffline{
   display: flex;
   justify-content:flex-start;
@@ -20,5 +23,3 @@
   display: flex;
   justify-content:center;
 }
-
-

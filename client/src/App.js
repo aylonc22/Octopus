@@ -6,6 +6,7 @@ import HomePage from './homePage/HomePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
 import {useRoutes} from 'hookrouter';
 import Navbar from './components/navbar/Navbar';
+import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
 import './App.css';
 const socket = io.connect('http://localhost:4000',{});
 function App() {
@@ -50,11 +51,29 @@ const routes ={
   '/offline': () => <OfflineStation items = {offlineStations}/>,
 };  
 const routeResult = useRoutes(routes);
+console.log(routeResult);
 return (
     
         <div>
+           <Router>
+             <div>
             <Navbar online = {onlineStations} offline = {offlineStations}/>
-            {routeResult || <NotFoundPage />}
+            <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/online">
+            <OnlineStation  items = {onlineStations}/>
+          </Route>
+          <Route path="/offline">
+            <OfflineStation  items = {offlineStations} />
+          </Route>
+          <Route path="*">
+            <NotFoundPage/>
+          </Route>
+        </Switch>
+           </div>
+            </Router>
         </div>   
     
   );
