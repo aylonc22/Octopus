@@ -7,7 +7,7 @@ const NavBar = (props)=>
        const[clicked,setClicked] = useState(props.url.length===0?"/":props.url);
        console.log(props.url);
        function onClick(item) {
-           setClicked(item.title)
+           setClicked(item.url)
        }
        
         return(
