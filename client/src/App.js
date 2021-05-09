@@ -50,14 +50,12 @@ const routes ={
   '/online': () => <OnlineStation items = {onlineStations}/>,
   '/offline': () => <OfflineStation items = {offlineStations}/>,
 };  
-const routeResult = useRoutes(routes);
-console.log(routeResult);
 return (
     
         <div>
            <Router>
              <div>
-            <Navbar online = {onlineStations} offline = {offlineStations}/>
+            <Navbar url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
           <Route exact path="/">
             <HomePage />

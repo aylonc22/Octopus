@@ -77,6 +77,14 @@
     padding: 0.5rem 1rem;
     transition: all 0.2s ease-out;
 }
+.clicked-page:active{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color:#214374;
+    border-radius: 4px;
+    transition: all 0.2 ease-out;
+}
 
 
 /*.Navbar-logo{
