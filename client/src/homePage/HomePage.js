@@ -8,6 +8,7 @@ const HomePage = (props)=>{
         EFROHAH
         DAVIDI
         ADIRRRRRRRR
+        Boogie Was Here
     </div>);
 };
 export default HomePage;
