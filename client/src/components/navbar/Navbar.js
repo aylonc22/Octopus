@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {MenuItems}  from '../MenuItems';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './Navbar.css';
@@ -8,6 +8,7 @@ const NavBar = (props)=>
        function onClick(item) {
            setClicked(item.title)
        }
+       
         return(
               
                 <div className="navDiv">

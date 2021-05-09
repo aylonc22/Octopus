@@ -1,15 +1,71 @@
-.containerOffline{
- 
- border-style: solid;
- border-color: green;
- background-color: lightgray;
- width: 200px;
- height: 250px;
-  margin: 2%;
+.containerOnline{
+  display: flex;
+  background-color: #a2d5f2;
+  width: 25vh;
+  height: 35vh;
+   margin: 2%;
+   border-radius: 10px;
+   flex-direction: column;
+   align-items: center;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  
+ }
+ .containerOnline:hover{
+  background-color: #94c1db;
+ }
+
+ .stationNameOnline{ 
+  margin-top: 2%; 
+  margin-bottom: 3%;
+   background-color: #a2d5f2;
 }
-.stationNameOffline{
-  display: flex; 
-  align-content: flex-start;
+.dataContainer{
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-radius: 4px;
+  width: 85%;
+  height: 85%;
+  background-color: #a2d5f2;
+  justify-content: space-around;
+}
+
+.row{
+  display: flex;
+  background-color: #a2d5f2;
+  border-bottom: solid;
+  height: 13%;
+  width: 100%;
+  align-items: center;
+ }
+ .row:last-child{
+  border-bottom: none;
+  
+ }
+ .right{
+  display: flex;
+  width: 29%;
+  background-color: #a2d5f2;
+  order: 1;
   justify-content: center;
+  
+ }
+
+ .left{
+  display: flex;
+  width: 69%;
+  background-color: green;
+  justify-content: center;
+  border-radius: 4px;
+  margin-left: 3%;
 }
+.left:hover{
+  background-color: rgb(2, 99, 2);
+}
+/*
+ 
+
+ 
+ */
+
 

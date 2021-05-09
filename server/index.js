@@ -52,14 +52,8 @@ function stationWatcher(station)
             io.sockets.setMaxListeners(1);
             rl.on('line',(line)=>lastLine=line);
             rl.on('close',()=>{
-                console.log(`[Server] found new last line for station:${station.id},${count}:${Object.keys(io.sockets.sockets).length}`);
-               //count++
-               //if(count >2)
-               //{
-                   //count = 0;
+                console.log(`[Server] found new last line for station:${station.id},${Object.keys(io.sockets.sockets).length}`);
                    io.sockets.emit('station-listener',lastLine,station.id).on('error', err=>console.log(err));
-                   
-               //}
             });
         }
     }));

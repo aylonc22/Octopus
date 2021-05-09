@@ -10,7 +10,7 @@ import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
 import './App.css';
 const socket = io.connect('http://localhost:4000',{});
 function App() {
-  const [onlineStations,setOnlineStations] =useState([]);
+  const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
   const [data,setData] = useState({station:'',message:''});
   // let showOnline = onlineStations.map(s=><OnlineStation key ={s.id} id = {s.id} message = {s.message}/>)

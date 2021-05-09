@@ -1,43 +1,71 @@
 .containerOnline{
-  border-style: solid;
-    border-color: green;
-    background-color:rgba(114, 31, 248, 0.904);
-    width: 220px;
-    height: 292px;
-     margin: 2%;
-     
-   }
-
-   .stationNameOnline{
-     display: flex; 
-     align-content: flex-start;
-     justify-content: center;
-     padding-bottom:4%;
-   }
-
-.dataContainer{
-  border-style: solid;
-  padding: 2%;
-  width: 200px;
-}
-
-   .row{
     display: flex;
-    border-style: solid;
+    background-color: #a2d5f2;
+    width: 25vh;
+    height: 35vh;
      margin: 2%;
-     justify-content: space-between;
+     border-radius: 10px;
+     flex-direction: column;
+     align-items: center;
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+   }
+   .containerOnline:hover{
+    background-color: #94c1db;
+   }
+
+   .stationNameOnline{ 
+    margin-top: 2%; 
+    margin-bottom: 3%;
+     background-color: #a2d5f2;
+  }
+  .dataContainer{
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 4px;
+    width: 85%;
+    height: 85%;
+    background-color: #a2d5f2;
+    justify-content: space-around;
+  }
+
+  .row{
+    display: flex;
+    background-color: #a2d5f2;
+    border-bottom: solid;
+    height: 13%;
+    width: 100%;
+    align-items: center;
+   }
+   .row:last-child{
+    border-bottom: none;
+    
    }
    .right{
-    display: flex; 
-    flex-direction: row;
+    display: flex;
+    width: 29%;
+    background-color: #a2d5f2;
     order: 1;
-     border-left: solid;
-     width: 50%;
-     margin-left: 15%;
+    justify-content: center;
+    
    }
 
    .left{
-    margin-left: 10%;
-   }
+    display: flex;
+    width: 69%;
+    background-color: green;
+    justify-content: center;
+    border-radius: 4px;
+    margin-left: 3%;
+  }
+  .left:hover{
+    background-color: rgb(2, 99, 2);
+  }
+/*
+   
+
+   
+   */
 
 
