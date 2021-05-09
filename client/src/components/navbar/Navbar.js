@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './Navbar.css';
 const NavBar = (props)=>
     {
-       const[clicked,setClicked] = useState(props.url.length===0?"Manage":props.url);
-       console.log(props.url.length);
+       const[clicked,setClicked] = useState(props.url.length===0?"/":props.url);
+       console.log(props.url);
        function onClick(item) {
            setClicked(item.title)
        }
