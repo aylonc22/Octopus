@@ -1,14 +1,9 @@
+import ManageNav from '../components/managebar/ManageNav';
+
 const HomePage = (props)=>{
     return(
     <div>
-        SHKOODI
-        NAHOOMI
-        ORI
-        AYLONI
-        EFROHAH
-        DAVIDI
-        ADIRRRRRRRR
-        Boogie Was Here
+        <ManageNav url=""/>
     </div>);
 };
 export default HomePage;

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {MenuItems}  from '../MenuItems';
+import {MenuItems}  from '../Items/MenuItems';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './Navbar.css';
 const NavBar = (props)=>

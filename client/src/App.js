@@ -1,13 +1,18 @@
 import React , {useState,useEffect} from 'react';
 import io from 'socket.io-client';
+import {useRoutes} from 'hookrouter';
+import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
+import './App.css';
+
+//Componnets
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
 import HomePage from './homePage/HomePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
-import {useRoutes} from 'hookrouter';
 import Navbar from './components/navbar/Navbar';
-import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
-import './App.css';
+
+
+//Client
 const socket = io.connect('http://localhost:4000',{});
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
