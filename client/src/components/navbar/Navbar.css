@@ -1,17 +1,12 @@
-.Navbar{
-    width: 100%;
-}
-*{
-    padding: 0.5rem 1rem;
-    
-}
+
 .NavbarItems{
     background: #294c7c;
     display: flex;
-    height: 100%;
     justify-content:flex-start;
     flex-direction: row;
     font-size: 1.2rem;
+    height: inherit;
+    height: 15vh;
 }
 
 .Navbar-logo{
@@ -39,10 +34,7 @@
     background: #294c7c;
 
 }
-.navDiv{
-    height:10vh;
-    
-}
+
 
 .nav-links{
     color: white;

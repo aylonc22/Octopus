@@ -12,7 +12,7 @@ const NavBar = (props)=>
         return(
               
                 <div className="navDiv">
-                    <nav className = "NavbarItems"> 
+                    <div className = "NavbarItems"> 
                          <h1  className = "Navbar-logo">תמנון</h1>
                         <div className = "menu-icon"></div>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=><li key = {index}>
@@ -20,7 +20,7 @@ const NavBar = (props)=>
                         {item.title}
                 </Link> </li>)}
                 </ul>
-            </nav>
+            </div>
                 </div>
                
         );
