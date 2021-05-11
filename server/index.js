@@ -1,3 +1,4 @@
+//Server
 const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
@@ -5,6 +6,9 @@ const cors = require('cors');
 const fs = require('fs');
 const readline = require('readline');
 const stream = require('stream');
+//Mongo 
+const db = require('./mongoDB/mongoConnection');
+const tailRouter = require('./mongoDB/routers/tail-route');
 //Initialization
 const PORT = 4000;
 let _onlineStations = [];
@@ -58,5 +62,11 @@ function stationWatcher(station)
         }
     }));
 }
+
+
+//Mongo handels
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+app.use('/api',tailRouter);
+
 
 

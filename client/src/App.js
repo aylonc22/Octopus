@@ -1,14 +1,30 @@
 import React , {useState,useEffect} from 'react';
 import io from 'socket.io-client';
+import {useRoutes} from 'hookrouter';
+import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
+import './App.css';
+
+//Componnets
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
 import HomePage from './homePage/HomePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
-import {useRoutes} from 'hookrouter';
 import Navbar from './components/navbar/Navbar';
-import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
-import './App.css';
-const socket = io.connect('http://localhost:4000',{});
+// ManageNav Componnets
+import Tail from './homePage/Manage-Items/Tails/tail';
+import Flight from './homePage/Manage-Items/Flights/flight';
+import GDT from './homePage/Manage-Items/GDT/gdt';
+import Frequency from './homePage/Manage-Items/Frequencies/frequency';
+import Station from './homePage/Manage-Items/Stations/station';
+
+//Client
+const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
+reconnection:true,
+reconnectionAttempts: 10,
+transports: ['websocket'],
+agent: false, 
+upgrade: false,
+rejectUnauthorized: false});
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
@@ -19,8 +35,9 @@ function App() {
   socket.on('disconnect',()=>{
     socket.send("[Client] disconnected");
 });
+//socket.on('connect_error',(err)=>console.log(err));
+socket.on('error',err=>console.log(`[Client] server is not up: ${err}`))
 useEffect(()=>{
-  socket.on('connect_error',(err)=>console.log(err));
   socket.on('station-listener', (msg,s)=>{
     setData({message:msg,station:s})
   });// eslint-disable-next-line
@@ -58,13 +75,28 @@ return (
             <Navbar url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
           <Route exact path="/">
-            <HomePage />
+            <HomePage NotFoundPage = {NotFoundPage}/>
           </Route>
           <Route path="/online">
             <OnlineStation  items = {onlineStations}/>
           </Route>
           <Route path="/offline">
             <OfflineStation  items = {offlineStations} />
+          </Route>
+          <Route path="/tail">
+            <Tail />
+          </Route>
+          <Route path="/station">
+            <Station />
+          </Route>
+          <Route path="/gdt">
+            <GDT />
+          </Route>
+          <Route path="/frequency">
+            <Frequency />
+          </Route>
+          <Route path="/flight">
+            <Flight />
           </Route>
           <Route path="*">
             <NotFoundPage/>

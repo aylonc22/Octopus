@@ -1,14 +1,14 @@
+import ManageNav from '../components/managebar/ManageNav';
+/* 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>s
+TODO
+make the table list css and add state like in navbar
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+*/
 const HomePage = (props)=>{
     return(
     <div>
-        SHKOODI
-        NAHOOMI
-        ORI
-        AYLONI
-        EFROHAH
-        DAVIDI
-        ADIRRRRRRRR
-        Boogie Was Here
+       <ManageNav url=""/>
     </div>);
 };
 export default HomePage;
