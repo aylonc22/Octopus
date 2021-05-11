@@ -69,7 +69,7 @@ updateTail = async (req, res) => {
     });
 };
 
-deletetail = async (req, res) => {
+deleteTail = async (req, res) => {
     await Tail.findOneAndDelete({ _id: req.params.id }, (err, tail) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
