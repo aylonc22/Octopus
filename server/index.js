@@ -1,4 +1,5 @@
 //Server
+const express = require('express');
 const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
@@ -14,6 +15,7 @@ const PORT = 4000;
 let _onlineStations = [];
 let _offlineStations = [];
 app.use(cors());
+app.use(express.json());
 http.listen(PORT,()=>console.log(`[Server] is running on port: ${PORT}`));
 //Server Client comunication 
 io.on('connection',socket => {
@@ -66,6 +68,7 @@ function stationWatcher(station)
 
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.once('open',()=>console.log("[Mongo] database connection established successfully"))
 app.use('/api',tailRouter);
 
 

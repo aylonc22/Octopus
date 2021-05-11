@@ -107,8 +107,8 @@ getTails = async (req, res) => {
         }
         if (!tails.length) {
             return res
-                .status(404)
-                .json({ success: false, error: `Tail not found` });
+                .status(200)
+                .json({ success: false,error: `Tail not found` });
         }
         return res.status(200).json({ success: true, data: tails });
     }).catch(err => console.log(err));
