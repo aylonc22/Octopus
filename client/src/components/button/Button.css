@@ -1,0 +1,28 @@
+.MyButton{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color:#457B9D;
+    border-radius: 4px;
+    transition: 0.5s;
+}
+
+.MyButton:hover{
+    background-color:#3b6a86;
+    border-radius: 4px;
+    transition: all 0.2 ease-out;
+    transition: 0.5s;
+
+    }
+.MyButton:focus{
+    background-color:#31586e;
+    border-radius: 4px;
+    transition: all 0.2 ease-out;
+    transition: 0.3s;
+}
+.MyButton:active{
+    background-color:#31586e;
+    border-radius: 4px;
+    transition: all 0.2 ease-out;
+    transition: 0.3s;
+}
