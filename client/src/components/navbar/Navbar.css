@@ -6,7 +6,7 @@
     flex-direction: row;
     font-size: 1.2rem;
     height: inherit;
-    height: 15vh;
+    height: 7vh;
 }
 
 .Navbar-logo{
@@ -37,13 +37,12 @@
 
 
 .nav-links{
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    background-color:#457B9D;
-    border-radius: 4px;
+    background: #294c7c;
     transition: 0.5s;
-
 }
 
 .nav-links:hover{

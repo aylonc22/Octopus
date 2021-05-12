@@ -1,0 +1,40 @@
+
+.ManageNavbarItems{
+    background: #294c7c;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 93vh;
+    width: 10vh;
+}
+
+.Manage-logo{
+    background: #294c7c;
+    color: white;
+}
+
+.ManageNav-menu{
+    display: flex;
+    background: #294c7c;
+    flex-direction: column;
+    width: inherit;
+    height: 20%;
+    align-items:flex-start;
+    justify-content:space-between;
+    list-style:none;
+    border: solid;
+}
+
+.manNav-links{
+    color: white;
+    background: #294c7c;
+    text-decoration:none;
+    align-self:flex-end;
+}
+
+.manNav-links-icon{    
+    
+}
+
+
