@@ -6,8 +6,11 @@
 }
 
 .TailsTable{
-    border: solid blue;
     width: inherit;
+}
+.EmptyTable{
+    display: flex;
+    justify-content: center;
 }
 
 .Tail{
