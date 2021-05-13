@@ -5,6 +5,8 @@ import tail from '../../../api/tail-api';
 import Button from '../../../components/button/Button';
 import ManageNav from '../../../components/managebar/ManageNav';
 import './tail.css'
+
+
 const Tail = props =>{
 
     const[newTail,setNewTail] = useState("");
@@ -16,20 +18,27 @@ const Tail = props =>{
             {
                 res.data?setTails(res.data):console.log()
                 res.success?Set_Success(true):Set_Success(false)
-            });//TODO when error need to change to s=mongo doesnt work page
+            });//TODO when error need to change to mongo doesnt work page
     },[]);
     useEffect(()=>{
         let flag = false;//eslint-disable-next-line
         Tails.map(tail=>tail.ID==submitTail?flag=true:console.log());
-        !flag && submitTail.length && Number.isInteger(submitTail*1)?tail.insertTail({ID:submitTail}):console.log();
-        !flag && submitTail.length && Number.isInteger(submitTail*1)?setTails([...Tails,{ID:submitTail}]):console.log();
+        !flag && submitTail.length && 
+        Number.isInteger(submitTail*1) &&
+        submitTail.length===3
+        ?tail.insertTail({ID:submitTail}):console.log();
+        !flag && submitTail.length &&
+         Number.isInteger(submitTail*1) &&
+         submitTail.length===3
+         ?setTails([...Tails,{ID:submitTail}]):console.log();
     },[submitTail,Tails])
     const success = (
             <div className = "TailsPage">
                <div className = "ManageTails">
                    מה תרצה לעשות
                    <div className = "">
-                   <textarea className = "" 
+                   <textarea className = "InsertTail" 
+                   maxLength= "3" //Tail can be only 3 chars
                    value = {newTail}
                    onChange = {(e)=>setNewTail(e.target.value)}>
                    </textarea>
