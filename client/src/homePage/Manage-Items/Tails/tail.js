@@ -3,7 +3,6 @@ import {React,useEffect,useState} from 'react';
 import tail from '../../../api/tail-api';
 //components 
 import Button from '../../../components/button/Button';
-import ManageNav from '../../../components/managebar/ManageNav';
 import './tail.css'
 
 
@@ -53,7 +52,6 @@ const Tail = props =>{
     const error = <label>TODO MAKE ERROR PAGE FOR MONGO</label>;//TODO MAKE ERROR PAGE FOR MONGO 
     return(
         <div>
-            <ManageNav url="/tail"/>
             {_success?success:error}
         </div>
     );

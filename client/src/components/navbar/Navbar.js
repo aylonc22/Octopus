@@ -1,27 +1,39 @@
 import {useEffect, useState} from 'react';
-import {MenuItems}  from '../Items/MenuItems';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {MenuItems,ManageItems}  from '../Items';
+import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
 import './Navbar.css';
 const NavBar = (props)=>
     {
+       // Conditionally render navbar "pressedLink" = clicked based on this condition 
        const[clicked,setClicked] = useState(props.url.length===0?"/":props.url);
-       function onClick(item) {
-           setClicked(item.url)
+       const showManage = (item)=>{
+        return item.title==="Manage"?ManageItems.map((MItem,index)=>(
+            <label key = {index}> {MItem.title} {console.log(MItem.title)} </label>
+        )):null;
        }
-       
+       function onClick(item) {
+           setClicked(item.url);
+       }
+       function handleManage() {
+       }
         return(
               
                 <div className="navDiv">
                     <div className = "NavbarItems"> 
                          <h1  className = "Navbar-logo">תמנון</h1>
                         <div className = "menu-icon"></div>
-                        <ul className = "nav-menu"> {MenuItems.map((item,index)=><li key = {index}>
-                    <Link onClick ={()=>onClick(item)} className = {clicked===item.url?"clicked-page":item.cName} to = {item.url}>
-                        {item.title}
-                </Link> </li>)}
-                </ul>
-            </div>
+                        <ul className = "nav-menu"> {MenuItems.map((item,index)=>
+                        <li key = {index}>
+                          <div className ="dropdown ">
+                          <Link onClick ={()=>onClick(item)}
+                           className = {clicked===item.url?"clicked-page":item.cName} to = {item.url}>
+                           {item.title}
+                          </Link>
+                         <div className="ManNav-links"> {showManage(item)}</div>
+                          </div> </li>)}
+                        </ul>
                 </div>
+                    </div>
                
         );
     }

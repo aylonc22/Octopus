@@ -6,7 +6,7 @@
     flex-direction: row;
     font-size: 1.2rem;
     height: inherit;
-    height: 15vh;
+    height: 7vh;
 }
 
 .Navbar-logo{
@@ -40,7 +40,7 @@
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background-color:#457B9D;
+    background: #294c7c;
     border-radius: 4px;
     transition: 0.5s;
 
@@ -93,6 +93,34 @@
     transition: 0.3s;
 }
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown{
+    position: relative;
+    display: inline-block;
+    background: #294c7c;
+}
+
+.ManNav-links{   /*Dropdown Content (Hidden by Default) */
+    display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 100%;
+  overflow: auto;
+  color: red;
+}
+
+/* Links inside the dropdown */
+.ManNav-links label{
+    
+    padding: 12px 16px;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .ManNav-links {display: block;}
 
 /*.Navbar-logo{
    color: #fff;

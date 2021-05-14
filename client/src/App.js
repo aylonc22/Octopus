@@ -25,12 +25,13 @@ transports: ['websocket'],
 agent: false, 
 upgrade: false,
 rejectUnauthorized: false});
+
+//APP
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
   const [data,setData] = useState({station:'',message:''});
-  // let showOnline = onlineStations.map(s=><OnlineStation key ={s.id} id = {s.id} message = {s.message}/>)
-  // let showOffline = offlineStations.map(s=><OfflineStation key ={s.id} id = {s.id}/>)
+  const [manager,setManager] = useState(null);
   socket.on('connection',()=>console.log("test"));
   socket.on('disconnect',()=>{
     socket.send("[Client] disconnected");
@@ -62,48 +63,29 @@ useEffect(()=>{
         setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
-const routes ={
-  '/': () => <HomePage />,
-  '/online': () => <OnlineStation items = {onlineStations}/>,
-  '/offline': () => <OfflineStation items = {offlineStations}/>,
-};  
+  
 return (
     
         <div>
            <Router>
              <div>
-            <Navbar url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
+            <Navbar 
+             Manager = {function(table){setManager(table)}}
+             url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
-          <Route exact path="/">
-            <HomePage NotFoundPage = {NotFoundPage}/>
-          </Route>
-          <Route path="/online">
-            <OnlineStation  items = {onlineStations}/>
-          </Route>
-          <Route path="/offline">
-            <OfflineStation  items = {offlineStations} />
-          </Route>
-          <Route path="/tail">
-            <Tail />
-          </Route>
-          <Route path="/station">
-            <Station />
-          </Route>
-          <Route path="/gdt">
-            <GDT />
-          </Route>
-          <Route path="/frequency">
-            <Frequency />
-          </Route>
-          <Route path="/flight">
-            <Flight />
-          </Route>
-          <Route path="*">
-            <NotFoundPage/>
-          </Route>
+          <Route exact path="/"><HomePage NotFoundPage = {NotFoundPage}/></Route>
+          <Route path="/online"><OnlineStation  items = {onlineStations}/></Route>
+          <Route path="/offline"><OfflineStation  items = {offlineStations} /></Route>
+          <Route path="/tail"><Tail /></Route>
+          <Route path="/station"><Station /></Route>
+          <Route path="/gdt"><GDT /></Route>
+          <Route path="/frequency"><Frequency /></Route>
+          <Route path="/flight"><Flight /></Route>
+          <Route path="*"><NotFoundPage/></Route>
         </Switch>
            </div>
             </Router>
+            {manager}
         </div>   
     
   );
