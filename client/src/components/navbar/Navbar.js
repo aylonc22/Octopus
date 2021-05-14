@@ -8,13 +8,16 @@ const NavBar = (props)=>
        const[clicked,setClicked] = useState(props.url.length===0?"/":props.url);
        const showManage = (item)=>{
         return item.title==="Manage"?ManageItems.map((MItem,index)=>(
-            <label key = {index}> {MItem.title} {console.log(MItem.title)} </label>
+            <label key = {index} onClick = {()=>handleManage(MItem.title)}> {MItem.title} </label>
         )):null;
        }
        function onClick(item) {
            setClicked(item.url);
        }
-       function handleManage() {
+       
+       //Setting in App.js the State Manager with conditionally render the the chosen table from Manage button
+       function handleManage(table) {
+           props.Manager(table);
        }
         return(
               
