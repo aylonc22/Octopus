@@ -107,7 +107,6 @@
   
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  width: 100%;
   overflow: auto;
   color: red;
 }
@@ -115,9 +114,8 @@
 /* Links inside the dropdown */
 .ManNav-links label{
     
-    padding: 12px 16px;
-    display: block;
-    cursor: pointer;
+   
+  
 }
 
 /* Change color of dropdown links on hover */
@@ -128,6 +126,30 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .clicked-page {background-color: #3e8e41;}
+
+/* Links inside the dropdown */
+.MItem{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border: solid;
+   
+}
+
+.MItem-label{
+    padding: 12px 16px;
+    display: block;
+    cursor: pointer;
+    height: 20%;
+    order: 1;
+    width: 80%;
+}
+
+.MItem-icon{
+    height: 20px;
+    width: 20%;
+  
+}
 
 /*.Navbar-logo{
    color: #fff;
