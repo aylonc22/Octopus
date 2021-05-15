@@ -18,15 +18,7 @@ export const MenuItems = [
 
 export const ManageItems = [
     {
-        title:"Tail",
-        cName:"ManNav-links"
-    },
-    {
-        title:"Stations",
-        cName:"ManNav-links"
-    },
-    {
-        title:"GDT",
+        title:"flight",
         cName:"ManNav-links"
     },
     {
@@ -34,7 +26,22 @@ export const ManageItems = [
         cName:"ManNav-links"
     },
     {
-        title:"flight",
+        title:"Edit",
         cName:"ManNav-links"
     },
+];
+
+export const EditItems = [
+  {  
+    title:"Tail",
+    cName:"ManNav-links"
+  },
+  {
+      title:"Stations",
+      cName:"ManNav-links"
+  },
+  {
+      title:"GDT",
+      cName:"ManNav-links"
+  },
 ];

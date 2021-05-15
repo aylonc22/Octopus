@@ -64,6 +64,18 @@ useEffect(()=>{
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
   
+function handleManager(table) {
+  switch (table) {
+    case "flight":
+    return <Flight/>;
+  
+    //case "edit":
+      //return <Edit/>;
+
+    default:
+      return <Frequency/>
+  }
+}
 return (
     
         <div>
@@ -85,7 +97,7 @@ return (
         </Switch>
            </div>
             </Router>
-            {manager}
+            {handleManager(manager)}
         </div>   
     
   );
