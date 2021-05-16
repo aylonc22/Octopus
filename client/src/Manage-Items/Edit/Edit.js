@@ -9,16 +9,18 @@ import './Edit.css';
 const Edit = props =>{
     const defaultColumns = 20;
 return(
-    <div className = "Page">
-        <div className = "EditPageTop">
-        <Tail defaultColumns = {defaultColumns} />
-        <Tail defaultColumns = {defaultColumns} />
+   <div className = "Page">
+        <div className = "Edit-Page">
+            <div className = "EditPageTop">
+                <Tail defaultColumns = {defaultColumns} />
+                <Tail defaultColumns = {defaultColumns} />
+            </div>
+            <div className = "EditPageBottom">
+                <Tail defaultColumns = {defaultColumns} />
+                <Tail defaultColumns = {defaultColumns} />
+            </div>
         </div>
-        <div className = "EditPageBottom">
-        <Tail defaultColumns = {defaultColumns} />
-        <Tail defaultColumns = {defaultColumns} />
-        </div>
-    </div>
+   </div>
 )
 };
 export default Edit;

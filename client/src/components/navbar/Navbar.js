@@ -6,7 +6,7 @@ import './Navbar.css';
 const NavBar = (props)=>
     {
        // Conditionally render navbar "pressedLink" = clicked based on this condition 
-       const[clicked,setClicked] = useState(props.url.length===0?"/":props.url);
+       const[clicked,setClicked] = useState(props.url.length===0?"/":handleInitClicked(props.url));
        const showManage = (item)=>{
         return item.title==="Manage"?ManageItems.map((MItem,index)=>(
             <Link onClick ={()=>setClicked("/")} to = {MItem.url} >
@@ -16,8 +16,34 @@ const NavBar = (props)=>
             </div></Link>
         )):null;
        }
-       function handleOnClick(item) {
-           setClicked(item.url); // make the clicked button red === marked
+       // Conditionlly make the right button red depends on the url (after page refreshed)
+       function handleInitClicked(url) {
+        switch (url) {
+            case "/edit":
+                return("/");
+            case "/notification":
+                return("/");
+            case "/flight":
+                return("/");
+            default:
+                return(url); // make the clicked button red === marked
+       }
+     }
+       function handleOnClick(url) {
+        switch (url) {
+            case "/edit":
+                setClicked("/")
+                break;
+            case "/notification":
+                setClicked("/")
+                break;
+            case "/flight":
+            setClicked("/")
+                break;
+            default:
+                setClicked(url); // make the clicked button red === marked
+                break;
+        }   
        }
        
         return(
@@ -29,7 +55,7 @@ const NavBar = (props)=>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>
                         <li key = {index}>
                           <div className ="dropdown ">
-                          <Link onClick ={()=>handleOnClick(item)}
+                          <Link onClick ={()=>handleOnClick(item.url)}
                            className = {clicked===item.url?"clicked-page":item.cName} to = {item.url}>
                            {item.hebrew}
                           </Link>
