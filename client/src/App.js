@@ -8,11 +8,8 @@ import './App.css';
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
 import NotFoundPage from './notFoundPage/NotFoundPage';
+import Manage from './Manage/Manage.js'
 import Navbar from './components/navbar/Navbar';
-// Manage Componnets
-import Flight from './Manage-Items/Flights/flight.js';
-import Edit from './Manage-Items/Edit/Edit.js';
-import Notification from './Manage-Items/Notification/Notification.js'
 
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
@@ -28,7 +25,6 @@ function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
   const [data,setData] = useState({station:'',message:''});
-  const [manager,setManager] = useState(null);
   socket.on('connection',()=>console.log("test"));
   socket.on('disconnect',()=>{
     socket.send("[Client] disconnected");
@@ -67,16 +63,12 @@ return (
         <div>
            <Router>
              <div>
-            <Navbar 
-             Manager = {function(table){setManager(table)}}
+            <Navbar
              url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
-          <Route exact path="/"><Notification/></Route>
+          <Route exact path="/"><Manage/></Route>
           <Route path="/online"><OnlineStation  items = {onlineStations}/></Route>
           <Route path="/offline"><OfflineStation  items = {offlineStations} /></Route>
-          <Route path="/edit"><Edit/></Route>
-          <Route path="/notification"><Notification/></Route>
-          <Route path="/flight"><Flight/></Route>
           <Route path="*"><NotFoundPage/></Route>
         </Switch>
            </div>

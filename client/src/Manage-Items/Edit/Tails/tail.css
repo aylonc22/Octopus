@@ -1,11 +1,15 @@
 .TailsPage{
     display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    height: 600px;
-    width: 40vh;
     border: solid;
+    height: 95%;
+    flex-direction: row;
+    /* 
+   
+    
+    border: solid; */
 }
+
+/* 
 
 .TailsTable{
     width: inherit;
@@ -24,4 +28,4 @@
 
 .InsertTail{
 resize: none;
-}
+} */

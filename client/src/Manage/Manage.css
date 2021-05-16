@@ -1,0 +1,28 @@
+.Page-Manage{
+    height: 93vh;
+    
+}
+
+.Top-Page{
+    display: flex;
+}
+
+.Bottom-Page{
+    display: flex;
+}
+.Flights-Component{
+    width: 50%;
+    height: 56vh;
+    border: solid;
+    
+}
+
+.Notification-Component{
+    width: 50%;
+    height: 56vh;
+    border: solid red;
+}
+
+.Edit-Component{
+    width: 100%;
+}
