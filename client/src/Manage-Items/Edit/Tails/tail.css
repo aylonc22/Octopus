@@ -2,7 +2,8 @@
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-    width:100%;
+    width:20%;
+    border: solid;
 }
 
 .TailsTable{
@@ -10,7 +11,7 @@
 }
 .EmptyTable{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .Tail{

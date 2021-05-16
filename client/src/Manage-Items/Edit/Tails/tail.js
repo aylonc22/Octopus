@@ -1,8 +1,8 @@
 import {React,useEffect,useState} from 'react';
 //axios
-import tail from '../../../api/tail-api';
+import tail from '../../../api/tail-api.js';
 //components 
-import Button from '../../../components/button/Button';
+import Button from '../../../components/button/Button.js';
 import './tail.css'
 
 

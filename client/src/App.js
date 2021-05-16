@@ -7,15 +7,12 @@ import './App.css';
 //Componnets
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
-import HomePage from './homePage/HomePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
 import Navbar from './components/navbar/Navbar';
-// ManageNav Componnets
-import Tail from './homePage/Manage-Items/Tails/tail';
-import Flight from './homePage/Manage-Items/Flights/flight';
-import GDT from './homePage/Manage-Items/GDT/gdt';
-import Frequency from './homePage/Manage-Items/Frequencies/frequency';
-import Station from './homePage/Manage-Items/Stations/station';
+// Manage Componnets
+import Flight from './Manage-Items/Flights/flight.js';
+import Edit from './Manage-Items/Edit/Edit.js';
+import Notification from './Manage-Items/Notification/Notification.js'
 
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
@@ -64,18 +61,7 @@ useEffect(()=>{
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
   
-function handleManager(table) {
-  switch (table) {
-    case "flight":
-    return <Flight/>;
-  
-    //case "edit":
-      //return <Edit/>;
 
-    default:
-      return <Frequency/>
-  }
-}
 return (
     
         <div>
@@ -85,19 +71,16 @@ return (
              Manager = {function(table){setManager(table)}}
              url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
-          <Route exact path="/"><HomePage NotFoundPage = {NotFoundPage}/></Route>
+          <Route exact path="/"><Notification/></Route>
           <Route path="/online"><OnlineStation  items = {onlineStations}/></Route>
           <Route path="/offline"><OfflineStation  items = {offlineStations} /></Route>
-          <Route path="/tail"><Tail /></Route>
-          <Route path="/station"><Station /></Route>
-          <Route path="/gdt"><GDT /></Route>
-          <Route path="/frequency"><Frequency /></Route>
-          <Route path="/flight"><Flight /></Route>
+          <Route path="/edit"><Edit/></Route>
+          <Route path="/notification"><Notification/></Route>
+          <Route path="/flight"><Flight/></Route>
           <Route path="*"><NotFoundPage/></Route>
         </Switch>
            </div>
             </Router>
-            {handleManager(manager)}
         </div>   
     
   );

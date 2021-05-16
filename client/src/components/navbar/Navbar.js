@@ -9,21 +9,17 @@ const NavBar = (props)=>
        const[clicked,setClicked] = useState(props.url.length===0?"/":props.url);
        const showManage = (item)=>{
         return item.title==="Manage"?ManageItems.map((MItem,index)=>(
+            <Link onClick ={()=>setClicked("/")} to = {MItem.url} >
             <div className = "MItem">
-                <label className = "MItem-label" key = {index} onClick = {()=>handleManage(MItem.title)}> {MItem.title} </label>
+                <label className = "MItem-label" key = {index} > {MItem.hebrew} </label>
                 <img className = "MItem-icon" src = {airplane}></img>
-            </div>
+            </div></Link>
         )):null;
        }
-       function onClick(item) {
+       function handleOnClick(item) {
            setClicked(item.url); // make the clicked button red === marked
-          props.Manager(null); // make the App.js state Manager variable null
        }
        
-       //Setting in App.js the State Manager with conditionally render the the chosen table from Manage button
-       function handleManage(table) {
-           props.Manager(table);
-       }
         return(
               
                 <div className="navDiv">
@@ -33,11 +29,11 @@ const NavBar = (props)=>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>
                         <li key = {index}>
                           <div className ="dropdown ">
-                          <Link onClick ={()=>onClick(item)}
+                          <Link onClick ={()=>handleOnClick(item)}
                            className = {clicked===item.url?"clicked-page":item.cName} to = {item.url}>
-                           {item.title}
+                           {item.hebrew}
                           </Link>
-                         <Link onClick ={()=>setClicked("/")} to = "/" className="ManNav-links"> {showManage(item)}</Link>
+                         {<div className="ManNav-links">{showManage(item)}</div>}
                           </div> </li>)}
                         </ul>
                 </div>
