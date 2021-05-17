@@ -3,6 +3,10 @@ import {React,useEffect,useState} from 'react';
 import tail from '../../../api/tail-api.js';
 //components 
 import Button from '../../../components/button/Button.js';
+//Icons
+import LeftArrow from '../../../icons/left-chevron.png';
+import RightArrow from '../../../icons/right-chevron.png';
+//Styling
 import './tail.css'
 
 
@@ -44,8 +48,22 @@ const Tail = props =>{
                    <Button  func = {()=>setSubmitTail(newTail)} name = "הוסף מספר זנב"/>
                    </div>
                </div>
-               <div className = "TailsTable">
-                   {!Tails.length?(<label className ="EmptyTable" >הטבלה ריקה</label>):Tails.map(tail=><label key ={tail.id} className = "Tail">{tail.ID}</label>)}
+               <div className = "Manage-Table-Tails">
+               <div className = "Manage-Table-Top"> trololololololollo </div>
+                   <div className = "Table">
+                    <div className ="Parameter-Name-Component">
+                    <label className = "Parameter-Name-Right">מס"ז</label>
+                    <label className = "Parameter-Name-Left">סוג</label>
+                    <label className = "Count"></label>
+                    </div>
+                    
+                   {!Tails.length?(<label className ="EmptyTable" >הטבלה ריקה</label>):Tails.map(tail=><div className = "Tails">
+                       <label key ={tail.id} className = "Tail">{tail.ID}</label></div>)}
+                   </div>
+                    <div className = "Manage-Table-Bottom"> 
+                    <img className ="Left-Button" src = {LeftArrow} ></img>
+                    <img className ="Right-Button" src = {RightArrow} ></img>
+                    </div>
                </div>
          </div>
     );

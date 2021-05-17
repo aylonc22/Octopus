@@ -1,23 +1,100 @@
 .TailsPage{
     display: flex;
-    border: solid;
-    height: 95%;
-    flex-direction: row;
-    /* 
    
-    
-    border: solid; */
+    height: 100%;
+    width: 50vh;
+    flex-direction: row;
 }
 
+.ManageTails{
+    border: solid red;
+    order: 1;
+}
+
+.Manage-Table-Tails{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Table{
+    border: solid cyan;
+    height: 80%;
+}
+
+.Parameter-Name-Component{
+    display: flex;
+    border-bottom: solid;
+    justify-content: flex-end;
+    width: 100%;
+}
+.Parameter-Name-Right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42%;
+    order: 1;
+    border-left: solid;
+}
+
+.Parameter-Name-Left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42%;
+}
+
+.Count
+{
+    order: 2;
+    width: 15%;
+    border-left: solid;
+}
+
+.EmptyTable{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.Manage-Table-Top{
+    border: yellow solid;
+    height: 10%;
+}
+
+.Manage-Table-Bottom{
+    display: flex;
+    height: 10%;
+    border: blue solid;
+    justify-content: center;
+    align-items: center;
+    
+}
+.Left-Button{
+display: flex;
+width: 10%;
+height: 80%;
+border: solid red;
+}
+
+.Right-Button{
+    display: flex;
+    width: 10%;
+    height: 80%;
+    border: solid red;
+}
+
+.Tails{
+    display: flex;
+    flex-direction: column;
+    border: solid;
+}
 /* 
 
-.TailsTable{
-    width: inherit;
-}
-.EmptyTable{
-    display: flex;
-    justify-content: flex-end;
-}
+
+
 
 .Tail{
     display: flex;

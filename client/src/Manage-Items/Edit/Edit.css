@@ -7,26 +7,26 @@
     display: flex;
     width: 33%;
     justify-content: center;
-    border: solid;
+    
 }
 
 .GDT-Component{
     display:flex;
     width:33%;
     justify-content: center;
-    border: solid;
+    
 }
 
 .Station-Component{
     display:flex;
     width:33%;
     justify-content: center;
-    border: solid;
+    
 }
 
 .Frequency-Component{
     display:flex;
     width:33%;
     justify-content: center;
-    border: solid;
+    
 }
