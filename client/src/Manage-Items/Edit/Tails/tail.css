@@ -1,14 +1,24 @@
 .TailsPage{
     display: flex;
-   
     height: 100%;
     width: 50vh;
     flex-direction: row;
 }
 
-.ManageTails{
+.Manage-Icon-Tails{
+    display: flex;
+    flex-direction: column;
     border: solid red;
     order: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.icon{
+    cursor: pointer;
+    height: 10%;
+    width: 10%;
+    margin-bottom: 2%;;
 }
 
 .Manage-Table-Tails{
@@ -88,9 +98,31 @@ border: solid red;
 
 .Tails{
     display: flex;
-    flex-direction: column;
-    border: solid;
+    border-bottom: solid;
+    width: 100%;
 }
+.Tail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42%;
+    order: 1;
+    border-left:solid ;
+}
+
+.Type{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42%;
+}
+
+.Check{
+    order: 2;
+    width: 15%;
+    border-left: solid;
+}
+
 /* 
 
 
