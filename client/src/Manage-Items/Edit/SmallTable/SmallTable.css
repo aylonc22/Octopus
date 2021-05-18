@@ -1,11 +1,11 @@
-.TailsPage{
+.DataPage{
     display: flex;
     height: 100%;
     width: 50vh;
     flex-direction: row;
 }
 
-.Manage-Icon-Tails{
+.Manage-Icon-Data{
     display: flex;
     flex-direction: column;
     border: solid red;
@@ -21,7 +21,7 @@
     margin-bottom: 2%;;
 }
 
-.Manage-Table-Tails{
+.Manage-Table-Data{
     width: 100%;
     height: 100%;
     display: flex;
@@ -87,6 +87,7 @@ display: flex;
 width: 10%;
 height: 80%;
 border: solid red;
+cursor: pointer;
 }
 
 .Right-Button{
@@ -94,14 +95,15 @@ border: solid red;
     width: 10%;
     height: 80%;
     border: solid red;
+    cursor: pointer;
 }
 
-.Tails{
+.Data{
     display: flex;
     border-bottom: solid;
     width: 100%;
 }
-.Tail{
+.ID{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,6 +137,6 @@ border: solid red;
     align-items: flex-end;
 }
 
-.InsertTail{
+.InsertData{
 resize: none;
 } */

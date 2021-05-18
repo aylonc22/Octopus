@@ -10,21 +10,21 @@ import Add_icon from '../../../icons/add.png';
 import Edit_icon from '../../../icons/edit.png';
 import Trash_icon from '../../../icons/trash.png'; // Delete Icon
 //Styling
-import './tail.css'
+import './SmallTable.css'
 
 
 const Tail = props =>{
 
-    const [newTail,setNewTail] = useState("");
-    const [Tails,setTails] = useState([]);
-    const [submitTail,setSubmitTail] = useState("");
+    const [newID,setNewID] = useState("");
+    const [Data,setData] = useState([]);
+    const [submitData,setSubmitData] = useState("");
     const [_success,Set_Success] = useState(true);
     const [_rightArrow,setRightArrow] = useState(9);
     const [_leftArrow,setLeftArrow] = useState(0);
     
     //Handlers
     const handleRightArrow = ()=>{
-        if(Tails.length && Tails.length>_rightArrow)
+        if(Data.length && Data.length>_rightArrow)
         {
             setRightArrow(_rightArrow + 10);
             setLeftArrow(_leftArrow + 10);
@@ -32,64 +32,64 @@ const Tail = props =>{
     };
     
     const handleLeftArrow = ()=>{
-        if(Tails.length && _leftArrow>0)
+        if(Data.length && _leftArrow>0)
         {
             setRightArrow(_rightArrow - 10);
             setLeftArrow(_leftArrow - 10);
         }
     };
 
-    const handleAdd =( <div className = "">
-    <textarea className = "InsertTail" 
+    const handleAdd =( <div>
+    <textarea className = "InsertData" 
     maxLength= "3" //Tail can be only 3 chars
-    value = {newTail}
-    onChange = {(e)=>setNewTail(e.target.value)}>
+    value = {newID}
+    onChange = {(e)=>setNewID(e.target.value)}>
     </textarea>
-    <Button  func = {()=>{setSubmitTail(newTail);setNewTail("")}} name = "הוסף מספר זנב"/>
+    <Button  func = {()=>{setSubmitData(newID);setNewID("")}} name = "הוסף מספר זנב"/>
     </div>);
 
     useEffect(()=>{
-        tail.getAllTail().then(res=>
+        props.getAllTable.then(res=>//props.getAllTable
             {
-                res.data?setTails(res.data):console.log()
+                res.data?setData(res.data):console.log()
                 res.success?Set_Success(true):Set_Success(false)
             });//TODO when error need to change to mongo doesnt work page
     },[]);
     useEffect(()=>{
         let flag = false;//eslint-disable-next-line
-        Tails.map(tail=>tail.ID==submitTail?flag=true:console.log());
-        !flag && submitTail.length && 
-        Number.isInteger(submitTail*1) &&
-        submitTail.length===3
-        ?tail.insertTail({ID:submitTail}):console.log("FAILED");
-        !flag && submitTail.length &&
-         Number.isInteger(submitTail*1) &&
-         submitTail.length===3
-         ?setTails([...Tails,{ID:submitTail}]):console.log("FAILED2");
-    },[submitTail,Tails])
+        Data.map(tail=>tail.ID==submitData?flag=true:console.log());
+        !flag && submitData.length && 
+        Number.isInteger(submitData*1) &&
+        submitData.length===props.ID_Limit*1//* to convert string to int
+        ?props.insertToTable({ID:submitData}):console.log("FAILED");//props.insertToTable
+        !flag && submitData.length &&
+         Number.isInteger(submitData*1) &&
+         submitData.length===props.ID_Limit*1//* to convert string to int
+         ?setData([...Data,{ID:submitData}]):console.log("FAILED2");
+    },[submitData,Data])
     const success = (
-            <div className = "TailsPage">
-               <div className = "Manage-Icon-Tails">
+            <div className = "DataPage">
+               <div className = "Manage-Icon-Data">
                    <img className = "icon" src = {Add_icon} alt = "הוסף"/>
                    <img className = "icon" src = {Edit_icon} alt = "ערוך"/>
                    <img className = "icon" src = {Trash_icon} alt = "מחק"/>
                     {handleAdd}
                </div>
-               <div className = "Manage-Table-Tails">
+               <div className = "Manage-Table-Data">
                <div className = "Manage-Table-Top"> Date Modification </div>
                    <div className = "Table">
                     <div className ="Parameter-Name-Component">
                     <label className = "Parameter-Name-Right">מס"ז</label>
-                    <label className = "Parameter-Name-Left">סוג</label>
+                    <label className = "Parameter-Name-Left">{props.secondary}</label>
                     <label className = "Count"></label>
                     </div>
                     
-                   {!Tails.length?(<label className ="EmptyTable" >הטבלה ריקה</label>):Tails.map((tail,index)=>{
+                   {!Data.length?(<label className ="EmptyTable" >הטבלה ריקה</label>):Data.map((d,index)=>{
                     if(index>=_leftArrow && index<=_rightArrow)
-                        return(<div className = "Tails">
-                        <label key ={tail.id} className = "Tail">{tail.ID}</label>
-                        <label key ={tail.id} className = "Type">"Type"</label>
-                        <label key ={tail.id} className = "Check"></label>
+                        return(<div className = "Data">
+                        <label key ={d.id} className = "ID">{d.ID}</label>
+                        <label key ={d.id} className = "Type">"Type"</label>
+                        <label key ={d.id} className = "Check"></label>
                         </div>);
                     else
                         return null;
