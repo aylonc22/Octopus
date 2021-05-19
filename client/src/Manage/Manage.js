@@ -10,12 +10,42 @@ return(
     <div className = "Page-Manage">
         <div className = "Top-Page">
             <div className = "Flights-Component"> <Flights/></div>
-            <div className = "Notification-Component"> <Notification/></div>
-        </div>
-        <div className = "Bottom-Page">
-            <div className = "Edit-Component"> <Edit/> </div>
+            <div className = "Right-Page">
+                <div className = "Notification-Component">  <Notification/> </div>
+                 <div className = "Edit-Component"> 
+                 <div className ="Card">
+                 <div className  = "Header-Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
+                   </div>  
+                    <div className ="Card">           
+                    <div className  = "Header-Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>                
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
+                 </div>
+                  </div>     
+            </div>
+            
         </div>
     </div>
 )
 };
 export default Manage;
+//<Edit/>
+

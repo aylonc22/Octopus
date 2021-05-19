@@ -1,26 +1,73 @@
 .Page-Manage{
-    height: 93vh;
+    height: 90vh;
+    
     
 }
 
 .Top-Page{
     display: flex;
+    margin-top: 1%;
+   
 }
 
-.Bottom-Page{
-    display: flex;
-}
+
 .Flights-Component{
     width: 50%;
-    height: 56vh;
-    
+    height:90vh;
+    border: solid;
+   
+}
+
+.Right-Page{
+    display: flex;
+    width: 49%;
+    height: 90vh;
+    border: solid;
+    flex-direction: column;
 }
 
 .Notification-Component{
-    width: 50%;
-    height: 56vh;
+    border: solid;
+    height: 65%;
 }
 
 .Edit-Component{
-    width: 100%;
+ display: flex;
 }
+
+.Card{
+    text-align: center;
+    width: 48%;
+    margin: 2%;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #4d74aa;
+    border-radius: 4px;
+    transition: 0.5s;
+    box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+}
+
+.Row{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.Header-Row{
+    display: flex;
+    background: #4d74aa;
+    justify-content: space-evenly;
+}
+
+.Header-Cell{
+    width: 100%;
+    background: #4d74aa;
+}
+
+.Cell{
+    width: 100%;
+    border: solid green 0.5px;
+}
+
+
