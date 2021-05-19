@@ -108,7 +108,7 @@ getGDTs = async (req, res) => {
         if (!Gdts.length) {
             return res
                 .status(200)
-                .json({ success: true,error: `GDT not found` });
+                .json({ success: true,data:[] ,error: `GDT not found` });
         }
         return res.status(200).json({ success: true, data: Gdts });
     }).catch(err => console.log(err));

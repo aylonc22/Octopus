@@ -108,7 +108,7 @@ getStations = async (req, res) => {
         if (!stations.length) {
             return res
                 .status(200)
-                .json({ success: true,error: `Stations not found` });
+                .json({ success: true,data:[] ,error: `Stations not found` });
         }
         return res.status(200).json({ success: true, data: stations });
     }).catch(err => console.log(err));

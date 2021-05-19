@@ -108,7 +108,7 @@ getFrequencies = async (req, res) => {
         if (!frequencies.length) {
             return res
                 .status(200)
-                .json({ success: true,error: `Frequency not found` });
+                .json({ success: true,data:[],error: `Frequency not found` });
         }
         return res.status(200).json({ success: true, data: frequencies });
     }).catch(err => console.log(err));

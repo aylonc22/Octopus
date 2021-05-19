@@ -1,6 +1,4 @@
 import {React,useEffect,useState} from 'react';
-//axios
-import tail from '../../../api/tail-api.js';
 //components 
 import Button from '../../../components/button/Button.js';
 //Icons
@@ -51,21 +49,26 @@ const Tail = props =>{
     useEffect(()=>{
         props.getAllTable.then(res=>//props.getAllTable
             {
-                res.data?setData(res.data):console.log()
-                res.success?Set_Success(true):Set_Success(false)
+                res.data?setData(res.data.data):console.log()
+                console.log(res.data);
+                res.data.success?Set_Success(true):Set_Success(false)
+                
             });//TODO when error need to change to mongo doesnt work page
-    },[]);
+        //eslint-disable-next-line
+        },[]);
     useEffect(()=>{
-        let flag = false;//eslint-disable-next-line
-        Data.map(tail=>tail.ID==submitData?flag=true:console.log());
+        let flag = false;
+        const insert = props.secondary==="Type"?{ID:submitData,Type:"type"}:{ID:submitData,Location:"Location"};//eslint-disable-next-line
+        Data.map(d=>d.ID==submitData?flag=true:console.log());
         !flag && submitData.length && 
         Number.isInteger(submitData*1) &&
         submitData.length===props.ID_Limit*1//* to convert string to int
-        ?props.insertToTable({ID:submitData}):console.log("FAILED");//props.insertToTable
+        ?props.insertToTable(insert):console.log();//props.insertToTable
         !flag && submitData.length &&
          Number.isInteger(submitData*1) &&
          submitData.length===props.ID_Limit*1//* to convert string to int
-         ?setData([...Data,{ID:submitData}]):console.log("FAILED2");
+         ?setData([...Data,insert]):console.log();
+         //eslint-disable-next-line
     },[submitData,Data])
     const success = (
             <div className = "DataPage">
@@ -80,7 +83,7 @@ const Tail = props =>{
                    <div className = "Table">
                     <div className ="Parameter-Name-Component">
                     <label className = "Parameter-Name-Right">מס"ז</label>
-                    <label className = "Parameter-Name-Left">{props.secondary}</label>
+                    <label className = "Parameter-Name-Left">{props.secondaryH}</label>
                     <label className = "Count"></label>
                     </div>
                     
@@ -88,7 +91,7 @@ const Tail = props =>{
                     if(index>=_leftArrow && index<=_rightArrow)
                         return(<div className = "Data">
                         <label key ={d.id} className = "ID">{d.ID}</label>
-                        <label key ={d.id} className = "Type">"Type"</label>
+                        <label key ={d.id} className = "Type">{d.Type?d.Type:d.Location}</label>
                         <label key ={d.id} className = "Check"></label>
                         </div>);
                     else
