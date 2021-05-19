@@ -9,7 +9,12 @@ const readline = require('readline');
 const stream = require('stream');
 //Mongo 
 const db = require('./mongoDB/mongoConnection');
+//Routes
 const tailRouter = require('./mongoDB/routers/tail-route');
+const frequencyRouter = require('./mongoDB/routers/frequency-route');
+const stationRouter = require('./mongoDB/routers/station-route');
+const gdtRouter = require('./mongoDB/routers/gdt-route');
+
 //Initialization
 const PORT = 4000;
 let _onlineStations = [];
@@ -55,7 +60,6 @@ function stationWatcher(station)
             let outstream = new stream;
             let rl = readline.createInterface(instream,outstream);
             let lastLine;
-            io.sockets.setMaxListeners(1);
             rl.on('line',(line)=>lastLine=line);
             rl.on('close',()=>{
                 console.log(`[Server] found new last line for station:${station.id},${Object.keys(io.sockets.sockets).length}`);
@@ -69,7 +73,7 @@ function stationWatcher(station)
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 db.once('open',()=>console.log("[Mongo] database connection established successfully"))
-app.use('/api',tailRouter);
+app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter);
 
 
 
