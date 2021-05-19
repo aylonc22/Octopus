@@ -54,11 +54,6 @@
     width: 100%;
     justify-content: space-evenly;
 }
-.Header-Row{
-    display: flex;
-    background: #4d74aa;
-    justify-content: space-evenly;
-}
 
 .Header-Cell{
     width: 100%;

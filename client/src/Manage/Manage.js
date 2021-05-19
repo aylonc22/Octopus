@@ -14,7 +14,7 @@ return(
                 <div className = "Notification-Component">  <Notification/> </div>
                  <div className = "Edit-Component"> 
                  <div className ="Card">
-                 <div className  = "Header-Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>
+                 <div className  = "Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>
                     <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
                     <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
                     <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
@@ -27,7 +27,7 @@ return(
                     <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
                    </div>  
                     <div className ="Card">           
-                    <div className  = "Header-Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>                
+                    <div className  = "Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>                
                     <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
                     <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
                     <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
