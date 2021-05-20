@@ -1,8 +1,13 @@
 import React from 'react';
 //Manage components
-import Edit from '../Manage-Items/Edit/Edit.js';
+import SmallTable from './dashboard/SmallTable-Card.js';
 import Flights from '../Manage-Items/Flights/flight.js';
 import Notification from '../Manage-Items/Notification/Notification.js';
+//Axios requests
+import {getAllTail} from '../api/tail-api';
+import {getAllFrequency} from '../api/frequency-api';
+import {getAllStation} from '../api/station-api';
+import {getAllGDT} from '../api/gdt-api';
 //Styling
 import './Manage.css';
 const Manage = props =>{
@@ -13,33 +18,10 @@ return(
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <Notification/> </div>
                  <div className = "Edit-Component"> 
-                 <div className ="Card">
-                 <div className  = "Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                    <div className  = "Row"> <div className = "Cell">777</div> <div className = "Cell">Normal</div> </div>
-                   </div>  
-                    <div className ="Card">           
-                    <div className  = "Row"> <div className = "Header-Cell">d</div> <div className = "Header-Cell">d;</div> </div>                
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                    <div className  = "Row"> <div className = "Cell">40</div> <div className = "Cell">norma;</div> </div>
-                 </div>
-                  </div>     
+                 <SmallTable getAllTable = {getAllTail()} secondary = "Location" secondaryH = "מקום"/>
+                 <SmallTable getAllTable = {getAllFrequency()} secondary = "Location" secondaryH = "מקום"/>
+                   
+                </div>     
             </div>
             
         </div>
