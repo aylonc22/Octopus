@@ -53,12 +53,7 @@
     transition: 0.5s;
 
     }
-.nav-links:focus{
-    background-color:#31586e;
-    border-radius: 4px;
-    transition: all 0.2 ease-out;
-    transition: 0.3s;
-}
+
 .nav-links:active{
     background-color:#31586e;
     border-radius: 4px;

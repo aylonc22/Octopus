@@ -18,8 +18,8 @@ return(
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <Notification/> </div>
                  <div className = "Edit-Component"> 
-                 <SmallTable table = "Tail" getAllTable = {getAllTail()} secondary = "Location" secondaryH = "מקום"/>
-                 <SmallTable table = "Frequency" getAllTable = {getAllFrequency()} secondary = "Location" secondaryH = "מקום"/>
+                 <SmallTable getAllTable = {getAllTail()} secondary = "Location" secondaryH = "מקום"/>
+                 <SmallTable getAllTable = {getAllFrequency()} secondary = "Location" secondaryH = "מקום"/>
                    
                 </div>     
             </div>
@@ -29,5 +29,6 @@ return(
 )
 };
 export default Manage;
-//<Edit/>
+
+
 
