@@ -28,7 +28,7 @@ export const ManageItems = [
     },
     {
         title:"Notification",
-        url:"/",
+        url:"/notification",
         hebrew:"התראות",
         cName:"ManNav-links"
     },
@@ -40,17 +40,3 @@ export const ManageItems = [
     },
 ];
 
-export const EditItems = [
-  {  
-    title:"Tail",
-    cName:"ManNav-links"
-  },
-  {
-      title:"Stations",
-      cName:"ManNav-links"
-  },
-  {
-      title:"GDT",
-      cName:"ManNav-links"
-  },
-];

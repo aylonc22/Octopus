@@ -5,8 +5,8 @@ const SmallTable = props=>{
     useEffect(()=>{
         props.getAllTable.then(res=>//props.getAllTable
             {
-                res.data?setData(res.data.data):console.log()
-                //console.log(res.data.data.length);
+                res.data?setData(res.data.data?res.data.data:[]):console.log()
+                //console.log(res.data);
             });
         //eslint-disable-next-line
         },[]);
@@ -16,12 +16,13 @@ const SmallTable = props=>{
     <div className = "Empty-Cell"></div> <div  className = "Empty-Cell"></div> 
      </div>);}):[...Data.slice(0,9),...Array(10-Data.slice(0,9).length)].map((data,index)=>{
          if(data)
-            return <div key = {index} className  = "Row"> <div className = "Cell">{data.ID}</div> <div  className = "Cell">{data.Type?data.Type:data.Location}</div> </div>                
+            return <div key = {index} className  = "Row"> <div className = "Cell">{data.Type?data.Type:data.Location}</div> <div  className = "Cell">{data.ID}</div> </div>                
         else
             return <div key = {index} className  = "Row"> <div  className = "Empty-Cell"></div> <div  className = "Empty-Cell"></div></div> 
      })
    return( <div key = {props.table} className ="Card">           
-   <div className  = "Row"> <div className = "Header-Cell">מס"ז</div> <div className = "Header-Cell">{props.secondaryH}</div> </div>                
+   <label className = "Table-Name"> {props.name} </label>
+   <div className  = "Row"> <div className = "Header-Cell">{props.secondaryH}</div> <div className = "Header-Cell">מס"ז</div> </div>                
    {card}
 </div>);
 };

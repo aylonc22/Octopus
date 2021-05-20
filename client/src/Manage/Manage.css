@@ -12,6 +12,8 @@
 
 
 .Flights-Component{
+   display: flex;
+   justify-content: center;
     width: 50%;
     height:90vh;
     border: solid;
@@ -31,13 +33,9 @@
     height: 65%;
 }
 
-.Edit-Component{
- display: flex;
-}
-
-.Card{
+.Flight-Table{
     text-align: center;
-    width: 48%;
+    width: 96%;
     margin: 2%;
     text-decoration: none;
     padding: 0.5rem 1rem;
@@ -47,6 +45,44 @@
     box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
     -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
     -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+}
+
+
+
+
+
+
+
+
+
+.Edit-Component{
+    display: flex;
+}
+
+.Edit-Component-Left{
+width: 50%;
+}
+
+.Edit-Component-Right{
+    width: 50%;
+    }
+
+.Card{
+    text-align: center;
+    width: 96%;
+    margin: 2%;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #4d74aa;
+    border-radius: 4px;
+    transition: 0.5s;
+    box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+}
+ 
+.Table-Name{
+    background: #4d74aa;
 }
 
 .Row{
@@ -73,22 +109,6 @@
 }
 
 /* Slide Bar */
-.img-fill{
-    width: 100%;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    text-align: center
-  }
-  
-  .img-fill img {
-    min-height: 100%;
-    min-width: 100%;
-    position: relative;
-    display: inline-block;
-    max-width: none;
-  }
-  
   *,
   *:before,
   *:after {
@@ -117,91 +137,6 @@
   }
   
   /* ==== Slider Style === */
-  .Modern-Slider .item .img-fill{
-    height:100vh;
-    background:#000;
-  }
-  
-  .Modern-Slider .item .img-fill .info{
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px;
-    background:rgba(0,0,0,.50);
-    line-height:100vh;
-    text-align:center;
-  }
-  
-  .Modern-Slider .item .img-fill img{
-    filter:blur(5px);
-  }
-  
-  .Modern-Slider .item .info > div{
-    display:inline-block!important;
-    vertical-align:middle;
-  }
-  
-  .Modern-Slider .NextArrow{
-    position:absolute;
-    top:50%;
-    right:0px;
-    width:45px;
-    height:45px;
-    background:rgba(0,0,0,.50);
-    border:0 none;
-    margin-top:-22.5px;
-    text-align:center;
-    font:20px/45px FontAwesome;
-    color:#FFF;
-    z-index:5;
-  }
-  
-  .Modern-Slider .NextArrow:before{content:'\f105';}
-  
-  .Modern-Slider .PrevArrow{
-    position:absolute;
-    top:50%;
-    left:0px;
-    width:45px;
-    height:45px;
-    background:rgba(0,0,0,.50);
-    border:0 none;
-    margin-top:-22.5px;
-    text-align:center;
-    font:20px/45px FontAwesome;
-    color:#FFF;
-    z-index:5;
-  }
-  
-  .Modern-Slider .PrevArrow:before{content:'\f104';}
-  
-  .Modern-Slider .slick-dots{
-    position:absolute;
-    height:5px;
-    background:rgba(255,255,255,.20);
-    bottom:0px;
-    width:100%;
-    left:0px;
-    padding:0px;
-    margin:0px;
-    list-style-type:none;
-  }
-  .Modern-Slider .slick-dots li button{display:none;}
-  .Modern-Slider .slick-dots li{
-    float:left;
-    width:0px;
-    height:5px;
-    background:#d62828;
-    position:absolute;
-    left:0px;
-    bottom:0px;
-  }
-  
-  .Modern-Slider .slick-dots li.slick-active{
-    width:100%;
-    animation:ProgressDots 11s both;
-  }
   
   .Modern-Slider .item h3{
     font:30px/50px RalewayB;

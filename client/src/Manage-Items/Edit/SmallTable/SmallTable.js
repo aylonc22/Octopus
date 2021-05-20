@@ -49,7 +49,7 @@ const Tail = props =>{
     useEffect(()=>{
         props.getAllTable.then(res=>//props.getAllTable
             {
-                res.data?setData(res.data.data):console.log()
+                res.data?setData(res.data.data?res.data.data:[]):console.log()
                 console.log(res.data);
                 res.data.success?Set_Success(true):Set_Success(false)
                 

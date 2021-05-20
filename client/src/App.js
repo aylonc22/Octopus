@@ -10,6 +10,9 @@ import OnlineStation from './onlineStation/onlineStation';
 import NotFoundPage from './notFoundPage/NotFoundPage';
 import Manage from './Manage/Manage.js'
 import Navbar from './components/navbar/Navbar';
+import Flights from './Manage-Items/Flights/flight';
+import Notification from './Manage-Items/Notification/Notification.js';
+import Edit from './Manage-Items/Edit/Edit.js';
 
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
@@ -53,7 +56,7 @@ useEffect(()=>{
         if(!flag && (data.message || data.station))//if is not already in array and actually have value
         {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
          
-        setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));
+        setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));// order online and offline stations by ID number
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
   
@@ -69,6 +72,9 @@ return (
           <Route exact path="/"><Manage/></Route>
           <Route path="/online"><OnlineStation  items = {onlineStations}/></Route>
           <Route path="/offline"><OfflineStation  items = {offlineStations} /></Route>
+          <Route exact path="/flights"><Flights/></Route>
+          <Route exact path="/notification"><Notification/></Route>
+          <Route exact path="/edit"><Edit/></Route>
           <Route path="*"><NotFoundPage/></Route>
         </Switch>
            </div>
