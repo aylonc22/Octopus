@@ -58,7 +58,7 @@ const NavBar = (props)=>
                            className = {clicked===item.url?"clicked-page":item.cName} to = {item.url}>
                            {item.hebrew}
                           </Link>
-                          {item.title==="Manage"?DropDown:null}
+                          <div className ="ManNav-links">{item.title==="Manage"?DropDown:null}</div>
                           </div> </li>)}
                         </ul>
                 </div>
