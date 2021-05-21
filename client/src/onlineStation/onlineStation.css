@@ -1,3 +1,44 @@
+
+svg {
+  margin: 50px auto;
+  width: 45%;
+}
+
+.logo {
+  fill: #FE4365;
+}
+
+.clip {
+  animation: slide 8s infinite;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(-135px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(-135px);
+  }
+}
+
+.noOnlineStation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.animation{
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+}
+
 .containerOnline{
     display: flex;
     background-color: #A8DADC;
@@ -65,10 +106,6 @@
   .left:hover{
     background-color: rgb(2, 99, 2);
   }
-/*
-   
 
-   
-   */
-
+  
 

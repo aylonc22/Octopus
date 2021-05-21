@@ -17,7 +17,7 @@ const Manage = props =>{
     speed:600,
     slidesToShow:1,
     slidesToScroll:1,
-    pauseOnHover:true,
+    pauseOnHover:false,
     dots:false,
     pauseOnDotsHover:false,
     cssEase:'linear',
