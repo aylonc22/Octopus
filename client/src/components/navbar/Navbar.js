@@ -8,9 +8,9 @@ const NavBar = (props)=>
        // Conditionally render navbar "pressedLink" = clicked based on this condition 
        const[clicked,setClicked] = useState(props.url.length===0?"/":handleInitClicked(props.url));
        const DropDown =  ManageItems.map((MItem,index)=>(
-            <Link onClick ={()=>setClicked("/")} to = {MItem.url} >
+            <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
             <div className = "MItem">
-                <label className = "MItem-label" key = {index} > {MItem.hebrew} </label>
+                <label className = "MItem-label" > {MItem.hebrew} </label>
                 <img className = "MItem-icon" src = {airplane}></img>
             </div></Link>
         ));
@@ -46,8 +46,7 @@ const NavBar = (props)=>
        }
        
         return(
-              
-                <div className="navDiv">
+              <header  className="navDiv">
                     <div className = "NavbarItems"> 
                          <h1  className = "Navbar-logo">תמנון</h1>
                         <div className = "menu-icon"></div>
@@ -62,7 +61,7 @@ const NavBar = (props)=>
                           </div> </li>)}
                         </ul>
                 </div>
-                    </div>
+                    </header>
                
         );
     }
