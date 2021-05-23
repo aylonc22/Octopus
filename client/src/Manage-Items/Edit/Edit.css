@@ -1,15 +1,16 @@
 .Edit-Page{
     display: flex;
-    height: 37vh;
+   justify-content: space-around;
+   width: 96%;
+   height: 100%;
+   margin: 2%;
+   border: solid;
 }
 
-.Tail-Component{
-    display: flex;
-    width: 33%;
-    justify-content: center;
-    
+ .Tail-Component{
+    width: 20%;
 }
-
+/*
 .GDT-Component{
     display:flex;
     width:33%;
@@ -29,4 +30,4 @@
     width:33%;
     justify-content: center;
     
-}
+} */

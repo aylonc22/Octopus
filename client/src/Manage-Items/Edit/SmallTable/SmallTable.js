@@ -71,38 +71,33 @@ const Tail = props =>{
          //eslint-disable-next-line
     },[submitData,Data])
     const success = (
-            <div className = "DataPage">
-               <div className = "Manage-Icon-Data">
+            <div className = "DataCard">
+               {/* <div className = "Manage-Icon-Data">
                    <img className = "icon" src = {Add_icon} alt = "הוסף"/>
                    <img className = "icon" src = {Edit_icon} alt = "ערוך"/>
                    <img className = "icon" src = {Trash_icon} alt = "מחק"/>
                     {handleAdd}
-               </div>
-               <div className = "Manage-Table-Data">
-               <div className = "Manage-Table-Top"> Date Modification </div>
-                   <div className = "Table">
-                    <div className ="Parameter-Name-Component">
-                    <label className = "Parameter-Name-Right">מס"ז</label>
-                    <label className = "Parameter-Name-Left">{props.secondaryH}</label>
-                    <label className = "Count"></label>
-                    </div>
+               </div> */}
+                    {/* <div className ="Row">
+                    <label className = "Header-Cell">מס"ז</label>
+                    <label className = "Header-Cell">{props.secondaryH}</label>
+                    <label className = "Header-Cell"></label>
+                    </div> */}
                     
                    {!Data.length?(<label className ="EmptyTable" >הטבלה ריקה</label>):Data.map((d,index)=>{
                     if(index>=_leftArrow && index<=_rightArrow)
                         return(<div className = "Data">
-                        <label key ={d.id} className = "ID">{d.ID}</label>
+                        {/* <label key ={d.id} className = "ID">{d.ID}</label>
                         <label key ={d.id} className = "Type">{d.Type?d.Type:d.Location}</label>
-                        <label key ={d.id} className = "Check"></label>
+                        <label key ={d.id} className = "Check"></label> */}
                         </div>);
                     else
                         return null;
                     })}
-                   </div>
-                    <div className = "Manage-Table-Bottom"> 
+                    {/* <div className = "Manage-Table-Bottom"> 
                     <img onClick = {()=>handleLeftArrow()} className ="Left-Button" src = {LeftArrow_icon} alt = "שמאל"></img>
                     <img onClick = {()=>handleRightArrow()} className ="Right-Button" src = {RightArrow_icon} alt = "ימין"></img>
-                    </div>
-               </div>
+                    </div> */}
          </div>
     );
     const error = <label>TODO MAKE ERROR PAGE FOR MONGO</label>;//TODO MAKE ERROR PAGE FOR MONGO 
