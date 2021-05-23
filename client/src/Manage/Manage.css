@@ -1,7 +1,5 @@
-.Page-Manage{
-    height: 90vh;
-    
-    
+*{
+  background: #f6f5f5;
 }
 
 .Top-Page{
@@ -15,22 +13,19 @@
    display: flex;
    justify-content: center;
     width: 50%;
-    height:90vh;
-    border: solid;
-   
+    height: 820px;
 }
 
 .Right-Page{
     display: flex;
     width: 49%;
-    height: 90vh;
-    border: solid;
     flex-direction: column;
 }
 
 .Notification-Component{
-    border: solid;
     height: 65%;
+    padding: 0.5rem 1rem;
+
 }
 
 .Flight-Table{
@@ -39,21 +34,13 @@
     margin: 2%;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background: #4d74aa;
+    background: #d3e0ea;
     border-radius: 4px;
     transition: 0.5s;
-    box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
-    -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
-    -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
+    -moz-box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
 }
-
-
-
-
-
-
-
-
 
 .Edit-Component{
     display: flex;
@@ -73,7 +60,7 @@ width: 50%;
     margin: 3%;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background: #4d74aa;
+    background: #d3e0ea;
     border-radius: 4px;
     transition: 0.5s;
     box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
@@ -82,7 +69,9 @@ width: 50%;
 }
  
 .Table-Name{
-    background: #4d74aa;
+    background: #d3e0ea;
+    font-size: 20px ;
+
 }
 
 .Row{
@@ -93,19 +82,21 @@ width: 50%;
 
 .Header-Cell{
     width: 100%;
-    background: #4d74aa;
+    background: #d3e0ea;
+    font-size: 20px ;
 }
 
 .Cell{
     width: 100%;
-    border: solid green 0.5px;
+    border: solid #1687a7 0.5px;
     height: 20px;
+    background: whitesmoke;
 }
 
 .Empty-Cell{
     width: 100%;
     height: 20px;
-    background: #4d74aa;
+    background: #d3e0ea;
 }
 
 /* Slide Bar */

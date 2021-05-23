@@ -1,11 +1,14 @@
+*{
+    text-decoration: none;
+
+}
 .NavbarItems{
-    background: #294c7c;
+    background: #0a1931;
     display: flex;
     justify-content:flex-start;
     flex-direction: row;
     font-size: 1.2rem;
     height: inherit;
-    height: 7vh;
 }
 
 .Navbar-logo{
@@ -17,8 +20,8 @@
     width: 33%;
     margin-left: 20%;
     color: white;
-    font-size: 5vh;
-    background: #294c7c;
+    font-size: 275%;
+    background: #0a1931;
 
 
 }
@@ -30,48 +33,53 @@
     align-items: center;
     width: 66%;
     list-style:none;
-    background: #294c7c;
+    background: #0a1931;
+    height: inherit;
 
 }
 
-
 .nav-links{
+    display: inline-block;
     color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    background: #294c7c;
-    border-radius: 4px;
-    transition: 0.5s;
-    cursor: pointer;
-    
+    font-size: 20px;
+    line-height: 76px;
+    margin: 0 0.85em;
+    overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    background: #0a1931;
+    border-bottom: solid #0a1931;
 }
 
 .nav-links:hover{
-    background-color:#3b6a86;
     border-radius: 4px;
     transition: all 0.2 ease-out;
     transition: 0.5s;
-
+    background: #0f2447;
+    border-color: #00b2cf !important;
     }
 
-.nav-links:active{
-    background-color:#31586e;
-    border-radius: 4px;
-    transition: all 0.2 ease-out;
-    transition: 0.3s;
-}
+#nav-links a:hover {
+        border-bottom-color: #00b2cf !important;
+    }
 
 .clicked-page{
+    display: inline-block;
     color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    background-color:#E63946;
-    border-radius: 4px;
-    transition: all 0.2 ease-out;
-    transition: 0.5s;
+    line-height: 76px;
+    margin: 0 0.85em;
+    overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    background-color:#0f2549;
+    border-bottom: solid #00b2cf;
     cursor: pointer;
+    transition: 0.5s;
+    font-size: 25px;
 }
-
+/*
 .clicked-page:hover{
     background-color:#cc3340;
     border-radius: 4px;
@@ -82,31 +90,34 @@
 }
 .clicked-page:active{
     color: white;
-    text-decoration: none;
     padding: 0.5rem 1rem;
     background-color:#ac2a35;
     border-radius: 4px;
     transition: all 0.2 ease-out;
     transition: 0.3s;
-}
+}*/
 
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown{
     display: inline-block;
     position: relative;
+    border-radius: 4px;
+    background: #0a1931;
 }
 
 
 .ManNav-links{   /*Dropdown Content (Hidden by Default) */
     display: none;
+    align-items: center;
+
     position: absolute;
-    background-color: #f1f1f1;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #0a1931;
+    box-shadow: 2px 8px 16px 2px rgba(0,0,0,0.2);
     z-index: 1;
     overflow: auto;
     color: red;
-    margin-top: 10px;
+    width: 150px;
 }
 
 /* Links inside the dropdown 
@@ -115,23 +126,24 @@
 }*/
 
 /* Change color of dropdown links on hover */
-.MItem:hover {background-color: #ddd;} 
-.MItem:hover .MItem-label{background-color: #ddd;} 
-.MItem:hover .MItem-icon {background-color: #ddd;} 
+.MItem:hover {background-color: #3d4a5f;} 
+.MItem:hover .MItem-label{background-color: #3d4a5f;} 
+.MItem:hover .MItem-icon {background-color: #3d4a5f;} 
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .ManNav-links {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover /*.clicked-page*/ {background-color: #3e8e41;}
+.dropdown:hover /*.clicked-page*/ {background-color: #0a1931;}
 
 /* Links inside the dropdown */
 .MItem{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 110px;
-   
+    border-radius: 4px;
+    width: 150px;
+    background-color: #0a1931;
 }
 
 .MItem-label{
@@ -139,12 +151,13 @@
     display: block;
     cursor: pointer;
     height: 20%;
+    border-radius: 4px;
     order: 1;
     width: 80%;
+    background-color: #0a1931;
+    color: white;
 }
-
-.MItem-icon{
-    height: 20px;
-    width: 20%;
-  
+li{
+    background: #0a1931;
+    color: #0a1931;
 }
