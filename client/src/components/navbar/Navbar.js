@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
 import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
-import airplane from '../../icons/airplane.png'
+
+
 import './Navbar.css';
 const NavBar = (props)=>
     {
@@ -11,7 +12,6 @@ const NavBar = (props)=>
             <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
             <div className = "MItem">
                 <label className = "MItem-label" > {MItem.hebrew} </label>
-                <img className = "MItem-icon" src = {airplane}></img>
             </div></Link>
         ));
        
