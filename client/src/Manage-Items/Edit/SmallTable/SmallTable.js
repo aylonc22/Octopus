@@ -17,7 +17,7 @@ const Tail = props =>{
     const [Data,setData] = useState([]);
     const [submitData,setSubmitData] = useState("");
     const [_success,Set_Success] = useState(true);
-    const [_rightArrow,setRightArrow] = useState(9);
+    const [_rightArrow,setRightArrow] = useState(19);
     const [_leftArrow,setLeftArrow] = useState(0);
     
     //Handlers
@@ -72,27 +72,40 @@ const Tail = props =>{
     },[submitData,Data])
     const success = (
             <div className = "DataCard">
+               <label className = "Table-Name"> {props.name} </label>
                {/* <div className = "Manage-Icon-Data">
                    <img className = "icon" src = {Add_icon} alt = "הוסף"/>
                    <img className = "icon" src = {Edit_icon} alt = "ערוך"/>
                    <img className = "icon" src = {Trash_icon} alt = "מחק"/>
                     {handleAdd}
                </div> */}
-                    {/* <div className ="Row">
+                    <div className ="Row">
                     <label className = "Header-Cell">מס"ז</label>
                     <label className = "Header-Cell">{props.secondaryH}</label>
-                    <label className = "Header-Cell"></label>
-                    </div> */}
+                    <label className = "Header-Delete-Cell"></label>
+                    </div>
                     
-                   {!Data.length?(<label className ="EmptyTable" >הטבלה ריקה</label>):Data.map((d,index)=>{
-                    if(index>=_leftArrow && index<=_rightArrow)
-                        return(<div className = "Data">
-                        {/* <label key ={d.id} className = "ID">{d.ID}</label>
-                        <label key ={d.id} className = "Type">{d.Type?d.Type:d.Location}</label>
-                        <label key ={d.id} className = "Check"></label> */}
+                   {!Data.length?([...Array(20)].map((i,index)=><div key = {index} className = "Row">
+                  <div className = "Empty-Cell"></div>
+                  <div className = "Empty-Cell"></div>       
+                  </div>)):[...Data.slice(_leftArrow,_rightArrow),...Array(20-Data.slice(_leftArrow,_rightArrow).length)].map((d,index)=>{
+                    if(d)
+                        return(<div className = "Row">
+                        <div key ={d.id} className = "Cell">{d.ID}</div>
+                        <div key ={d.id} className = "Cell">{d.Type?d.Type:d.Location}</div>
+                        <div key ={d.id} className = "Delete-Cell">
+                        <div className = "button r">
+                            <input  type="checkbox" className="checkbox"/> 
+                            <div className="knobs"></div>
+                            <div className="layer"></div>
+                        </div>
+                        </div>
                         </div>);
                     else
-                        return null;
+                        return( <div key = {index} className = "Row">
+                        <div className = "Empty-Cell"></div>
+                        <div className = "Empty-Cell"></div>       
+                        </div>);
                     })}
                     {/* <div className = "Manage-Table-Bottom"> 
                     <img onClick = {()=>handleLeftArrow()} className ="Left-Button" src = {LeftArrow_icon} alt = "שמאל"></img>
