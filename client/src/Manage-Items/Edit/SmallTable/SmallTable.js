@@ -19,6 +19,7 @@ const Tail = props =>{
     const [_success,Set_Success] = useState(true);
     const [_rightArrow,setRightArrow] = useState(19);
     const [_leftArrow,setLeftArrow] = useState(0);
+    const [removeClick,setRemoveClick] = useState(false);
     
     //Handlers
     const handleRightArrow = ()=>{
@@ -72,13 +73,17 @@ const Tail = props =>{
     },[submitData,Data])
     const success = (
             <div className = "DataCard">
-               <label className = "Table-Name"> {props.name} </label>
-               {/* <div className = "Manage-Icon-Data">
-                   <img className = "icon" src = {Add_icon} alt = "הוסף"/>
-                   <img className = "icon" src = {Edit_icon} alt = "ערוך"/>
-                   <img className = "icon" src = {Trash_icon} alt = "מחק"/>
+               <div className = "Top-Card">
+                   <label className = "Table-Name"> {props.name} </label>
+                   <div className = "Manage-Icon-Data">
+                   <div className = "icon"> add</div>
+                   <div onClick = {()=>removeClick?setRemoveClick(false):setRemoveClick(true)} className = "icon" id = "delete"> del</div>
+                   <div className = "icon"> ed</div>
+               </div>
+               </div>
+               {/* 
                     {handleAdd}
-               </div> */}
+                */}
                     <div className ="Row">
                     <label className = "Header-Cell">מס"ז</label>
                     <label className = "Header-Cell">{props.secondaryH}</label>
@@ -93,12 +98,9 @@ const Tail = props =>{
                         return(<div className = "Row">
                         <div key ={d.id} className = "Cell">{d.ID}</div>
                         <div key ={d.id} className = "Cell">{d.Type?d.Type:d.Location}</div>
-                        <div key ={d.id} className = "Delete-Cell">
-                        <div className = "button r">
-                            <input  type="checkbox" className="checkbox"/> 
-                            <div className="knobs"></div>
-                            <div className="layer"></div>
-                        </div>
+                        <div key ={d.id} className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
+                        <input type="checkbox" id={index} name={index}/>
+                        <label for={index}></label>
                         </div>
                         </div>);
                     else

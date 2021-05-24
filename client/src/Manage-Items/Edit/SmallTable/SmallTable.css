@@ -2,7 +2,7 @@
     text-align: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background: #4d74aa;
+    background: #d3e0ea;
     border-radius: 4px;
     transition: 0.5s;
     box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
@@ -10,84 +10,66 @@
     -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
 }
 
-
-.button
-{
-    position: relative;
-    top: 50%;
-    width: 74px;
-    height: 36px;
-    margin: -20px auto 0 auto;
-    overflow: hidden;
+.Top-Card{
+    display: flex;
+    justify-content: flex-end;
+    background:#d3e0ea;
 }
 
-.button.r, .button.r .layer
-{
-    border-radius: 100px;
+.Manage-Icon-Data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:25%;
+    background:#d3e0ea;
 }
 
-.button.b2
-{
-    border-radius: 2px;
-}
-
-.checkbox
-{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
+.icon{
+    padding-left: 5%;
+    background:#d3e0ea;
     cursor: pointer;
-    z-index: 3;
 }
 
-.knobs
-{
-    z-index: 2;
+.Delete-Cell{
+    background:#d3e0ea;
+    display: none;
+    border: solid;
 }
 
-.layer
-{
-    width: 100%;
-    background-color: #ebf7fc;
-    transition: 0.3s ease all;
-    z-index: 1;
+.Delete-Cell-Active{
+    background:#d3e0ea;
+    display: block;
 }
 
-.knobs:before
-{
-    content: 'YES';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 20px;
-    height: 10px;
+.input[type=checkbox] + label {
+    display: block;
+    cursor: pointer;
+    
+  }
+  
+  input[type=checkbox] {
+    display: none;
+  }
+  
+  input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+  }
+  
+  input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  }
+  
+  input[type=checkbox]:checked + label:before {
+    background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen;
     color: #fff;
-    font-size: 10px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1;
-    padding: 9px 4px;
-    background-color: #03A9F4;
-    border-radius: 50%;
-    transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
-}
-
-.checkbox:checked + .knobs:before
-{
-    content: 'NO';
-    left: 42px;
-    background-color: #f44336;
-}
-
-.checkbox:checked ~ .layer
-{
-    background-color: #fcebeb;
-}
-
-.knobs,.knobs:before,.layer
-{
-    transition: 0.3s ease all;
-}
+  }

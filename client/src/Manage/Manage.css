@@ -91,6 +91,7 @@ width: 50%;
     border: solid #1687a7 0.5px;
     height: 20px;
     background: whitesmoke;
+    cursor: default;
 }
 
 .Empty-Cell{
