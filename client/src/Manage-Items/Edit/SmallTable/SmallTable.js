@@ -51,7 +51,6 @@ const Tail = props =>{
         props.getAllTable.then(res=>//props.getAllTable
             {
                 res.data?setData(res.data.data?res.data.data:[]):console.log()
-                console.log(res.data);
                 res.data.success?Set_Success(true):Set_Success(false)
                 
             });//TODO when error need to change to mongo doesnt work page
@@ -100,7 +99,7 @@ const Tail = props =>{
                         <div key ={d.id} className = "Cell">{d.Type?d.Type:d.Location}</div>
                         <div key ={d.id} className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
                         <input type="checkbox" id={index} name={index}/>
-                        <label for={index}></label>
+                        <label htmlFor={index}></label>
                         </div>
                         </div>);
                     else
