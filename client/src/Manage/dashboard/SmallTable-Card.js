@@ -6,7 +6,7 @@ const SmallTable = props=>{
         props.getAllTable.then(res=>//props.getAllTable
             {
                 res.data?setData(res.data.data?res.data.data:[]):console.log()
-                //console.log(res.data);
+                //console.log(res.data.data);
             });
         //eslint-disable-next-line
         },[]);

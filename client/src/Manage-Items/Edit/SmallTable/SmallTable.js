@@ -11,7 +11,7 @@ import Trash_icon from '../../../icons/trash.png'; // Delete Icon
 import './SmallTable.css'
 
 
-const Tail = props =>{
+const SmallTable = props =>{
 
     const [newID,setNewID] = useState("");
     const [Data,setData] = useState([]);
@@ -94,10 +94,10 @@ const Tail = props =>{
                   <div className = "Empty-Cell"></div>       
                   </div>)):[...Data.slice(_leftArrow,_rightArrow),...Array(20-Data.slice(_leftArrow,_rightArrow).length)].map((d,index)=>{
                     if(d)
-                        return(<div className = "Row">
-                        <div key ={d.id} className = "Cell">{d.ID}</div>
-                        <div key ={d.id} className = "Cell">{d.Type?d.Type:d.Location}</div>
-                        <div key ={d.id} className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
+                        return(<div  key = {d._id} className = "Row">
+                        <div className = "Cell">{d.ID}</div>
+                        <div className = "Cell">{d.Type?d.Type:d.Location}</div>
+                        <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
                         <input type="checkbox" id={index} name={index}/>
                         <label htmlFor={index}></label>
                         </div>
@@ -121,4 +121,4 @@ const Tail = props =>{
         </div>
     );
 };
-export default Tail;
+export default SmallTable;

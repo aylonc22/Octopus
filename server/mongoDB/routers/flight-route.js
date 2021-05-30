@@ -1,6 +1,6 @@
 const express = require('express');
 
-const FlightCtrl = require('../controllers/gdt-ctrl');
+const FlightCtrl = require('../controllers/flight-ctrl');
 
 const router = express.Router();
 

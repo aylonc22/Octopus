@@ -14,6 +14,7 @@ const tailRouter = require('./mongoDB/routers/tail-route');
 const frequencyRouter = require('./mongoDB/routers/frequency-route');
 const stationRouter = require('./mongoDB/routers/station-route');
 const gdtRouter = require('./mongoDB/routers/gdt-route');
+const flightRouter = require('./mongoDB/routers/flight-route');
 
 //Initialization
 const PORT = 4000;
@@ -73,7 +74,7 @@ function stationWatcher(station)
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 db.once('open',()=>console.log("[Mongo] database connection established successfully"))
-app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter);
+app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter);
 
 
 

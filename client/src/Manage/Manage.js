@@ -1,13 +1,14 @@
 import Slider from 'react-slick';
 //Manage components
 import SmallTable from './dashboard/SmallTable-Card.js';
-import Flights from '../Manage-Items/Flights/flight.js';
+import Flights from './dashboard/FlightTable-Card.js';
 import Notification from '../Manage-Items/Notification/Notification.js';
 //Axios requests
 import {getAllTail} from '../api/tail-api';
 import {getAllFrequency} from '../api/frequency-api';
 import {getAllStation} from '../api/station-api';
 import {getAllGDT} from '../api/gdt-api';
+import {getAllFlight} from '../api/flight-api';
 //Styling
 import './Manage.css';
 const Manage = props =>{    
@@ -29,10 +30,7 @@ const Manage = props =>{
     <div className = "Page-Manage">
         <div className = "Top-Page">
             <div className = "Flights-Component">
-                <div className = "Flight-Table">
-                <div className  = "Row"> <div className = "Header-Cell">תאריך</div><div className = "Header-Cell">תדר</div> <div className = "Header-Cell">גרור</div> <div className = "Header-Cell">תחנה</div> <div className = "Header-Cell">זנב</div> </div>
-                <div className  = "Row"> <div className = "Cell">57</div><div className = "Cell">87</div> <div className = "Cell">578</div> <div className = "Cell">57</div> <div className = "Cell">777</div></div>
-                </div>
+                <Flights getAllTable = {getAllFlight()}/>
             </div>
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <Notification/> </div> 
