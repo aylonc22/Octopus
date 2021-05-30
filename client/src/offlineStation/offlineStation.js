@@ -1,12 +1,16 @@
 import React from 'react'
 import './offlineStation.css'
+import h from '../icons/haziza.png';
 
 const OfflineStation = (props) => {
     let array = props.items.map(item => {
         return (
-            <div key = {item.id} className = "containerOnline">
-            <label className = "stationNameOnline">{item.id}</label>
-                <div className = "dataContainer">
+            <div  key = {item.id} className = "container">
+            <label className = "stationName">{item.id}</label>
+            <div className = "top">
+            <img src={h} alt="haziza"></img>
+            </div>
+            <div className = "bottom">
                     <div className = "Row">
                     <label className = "Cell">{item.message}</label>
                         <label className = "Cell">ג</label>                        
@@ -39,14 +43,14 @@ const OfflineStation = (props) => {
                         <label className = "Cell">1</label>
                         <label className = "Cell">מ</label>
                     </div>  
-                </div>
+            </div>
             </div>
         )
     });
 
     return (
         <div>
-            <div className = "boxOffline">{array}</div>
+            <div className = "StationPage">{array}</div>
         </div>
     )
 }

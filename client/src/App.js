@@ -13,6 +13,7 @@ import Navbar from './components/navbar/Navbar';
 import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
+import PopUp from './components/PopupNotification/PopupNotification.js';
 
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
@@ -26,7 +27,7 @@ rejectUnauthorized: false});
 //APP
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
-  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
+  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo3"},{id:"demo3"}]);
   const [data,setData] = useState({station:'',message:''});
   socket.on('connection',()=>console.log("test"));
   socket.on('disconnect',()=>{

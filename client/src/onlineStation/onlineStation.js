@@ -74,7 +74,7 @@ const OnlineStation = (props) => {
     return(
         <div>
             <h1 className =  "textCenter">תחנות דולקות</h1>
-            <div className = "boxOnline">{array}</div>
+            <div className = "StationPage">{array}</div>
         </div>
     )
 }
