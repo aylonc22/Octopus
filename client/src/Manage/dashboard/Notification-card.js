@@ -4,6 +4,7 @@ const NotificationTable = (props)=>{
     useEffect(()=>{
         props.getAllOpen.then(res=>
             {
+                //BUG HERE setData fucked the axios request or something
                 res.data?setData(res.data.data?res.data.data:[]):console.log();
                 console.log(res);
             });
