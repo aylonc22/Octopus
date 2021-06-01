@@ -6,12 +6,12 @@ import './NotFoundPage.css';
 const NotFoundPage = (props)=>{
   
     useEffect(()=>{
-        // TweenMax.to("#h1", 1, {
-        //     alpha: 1,
-        //     y: 20,
-        //     yoyo: true,
-        //     ease: Power3.easeInOut
-        //   });
+        TweenMax.to("#h1", 1, {
+            alpha: 1,
+            y: 20,
+            yoyo: true,
+            ease: Power3.easeInOut
+          });
           
           TweenMax.staggerTo(
             "#water path",
@@ -126,6 +126,7 @@ const NotFoundPage = (props)=>{
 
 
     return(<div className ="background"><Link to = "/">
+		<h1 id = "h1">Page not found.</h1>
 <svg className ="PageNotFound-SVG" xmlns="http://www.w3.org/2000/svg" width="1226.887px" height="908px" viewBox="0 0 1226.887 908">
 <g id="water">
  <path id="leftWater" fill="#00B6FF" d="M1226.887,908H1887V330.333c0,0-17.78-23.951-43.113-23.951s-50.667,32.724-144.667,32.724
