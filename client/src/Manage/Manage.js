@@ -2,13 +2,14 @@ import Slider from 'react-slick';
 //Manage components
 import SmallTable from './dashboard/SmallTable-Card.js';
 import Flights from './dashboard/FlightTable-Card.js';
-import Notification from '../Manage-Items/Notification/Notification.js';
+import SmallNotification from './dashboard/Notification-card.js';
 //Axios requests
-import {getAllTail} from '../api/tail-api';
-import {getAllFrequency} from '../api/frequency-api';
-import {getAllStation} from '../api/station-api';
-import {getAllGDT} from '../api/gdt-api';
-import {getAllFlight} from '../api/flight-api';
+import {getAllTail} from '../api/tail-api.js';
+import {getAllFrequency} from '../api/frequency-api.js';
+import {getAllStation} from '../api/station-api.js';
+import {getAllGDT} from '../api/gdt-api.js';
+import {getAllFlight} from '../api/flight-api.js';
+import {getAllNotification,getAllOpenNotification} from '../api/notification-api.js';
 //Styling
 import './Manage.css';
 const Manage = props =>{    
@@ -33,7 +34,7 @@ const Manage = props =>{
                 <Flights getAllTable = {getAllFlight()}/>
             </div>
             <div className = "Right-Page">
-                <div className = "Notification-Component">  <Notification/> </div> 
+                <div className = "Notification-Component">  <SmallNotification getAllOpen = {getAllOpenNotification()} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
                      <div className = "Edit-Component-Left">
                         <Slider {...settings}>                

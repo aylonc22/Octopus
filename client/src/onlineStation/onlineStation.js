@@ -1,4 +1,6 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react';
+import {getAllOpenNotification} from '../api/notification-api.js';
+import h from '../icons/haziza.png';
 import './onlineStation.css'
 
 const noOnlineStation =( 
@@ -24,53 +26,99 @@ const noOnlineStation =(
   </g>
 </svg>);
 
+
+
 const OnlineStation = (props) => {
+    //Current duplicate values in online stations by station id
+    const [g,setG] = useState([])
+    
+    useEffect(()=>{
+        const newG =findDuplicate("ג");
+        getAllOpenNotification().then(res=>
+            {
+                
+                console.log(res.data);
+            });
+        setG(newG);
+// eslint-disable-next-line
+    },[props.items]);
     if(props.items.length===0)
         return(<div className ="noOnlineStation">
               <div className = "animation">{noOnlineStation} </div>
               </div>);
     let array = props.items.map(item => {
         return (
-            <div key = {item.id} className = "containerOnline">
-            <label className = "stationNameOnline">{item.id}</label>
-                <div className = "dataContainer">
-                    <div className = "row">
-                        <label className = "right">ג</label>
-                        <label className = "left">{item.message}</label>
+            <div  key = {item.id} className = "container">
+            <label className = "stationName">{item.id}</label>
+            <div className = "top">
+            <img src={h} alt="haziza"></img>
+            </div>
+            <div className = "bottom">
+                    <div className = "Row">
+                        <label className = {g.indexOf(item.id)===-1?"Cell":"DuplicateCell"}>{item.message}</label>
+                        <label className = {g.indexOf(item.id)===-1?"Cell":"DuplicateCell"}>ג</label>                        
                     </div>
-                    <div className = "row">
-                        <label className = "right">ע</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">ע</label>                       
                     </div>
-                    <div className = "row">
-                        <label className = "right">I</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">I</label>                        
                     </div>
-                    <div className = "row">
-                        <label className = "right">מ</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">                        
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">מ</label>
                     </div>
-                    <div className = "row">
-                        <label className = "right">ת</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">ת</label>                        
                     </div>
-                    <div className = "row">
-                        <label className = "right">מ</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">                        
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">מ</label>
                     </div>
-                    <div className = "row">
-                        <label className = "right">1</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">1</label>
                     </div>
-                    <div className = "row">
-                        <label className = "right">מ</label>
-                        <label className = "left">1</label>
+                    <div className = "Row">                       
+                        <label className = "Cell">1</label>
+                        <label className = "Cell">מ</label>
                     </div>  
-                </div>
+            </div>
             </div>
         )
     })
-    
+    // finding all the duplicates of every item in the array 
+    // exapmle [2,4,5,6,2,4][demo1,demo2,demo3,demo4,demo5,demo6] return [demo1,demo2,demo5,demo6]
+    function findRepeating(arr,stations)
+    {
+        let res = [];
+        for (let i = 0; i < arr.length; i++)
+        {
+            for (let j = i + 1; j < arr.length; j++)
+            {
+                if (arr[i] === arr[j])
+                    res = [...res,stations[i],stations[j]];
+            }
+        }
+        return res;
+    }
+
+    function findDuplicate(cell) {
+        let res;
+        switch (cell) {
+            case "ג":{
+               res = findRepeating(...new Array(props.items.map(item=>item.message)),...new Array(props.items.map(item=>item.id)));
+               return res;
+            }
+               
+        
+            default:
+                return "Cell";
+        }
+    }
     return(
         <div>
             <h1 className =  "textCenter">תחנות דולקות</h1>

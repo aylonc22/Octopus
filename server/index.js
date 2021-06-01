@@ -8,13 +8,14 @@ const fs = require('fs');
 const readline = require('readline');
 const stream = require('stream');
 //Mongo 
-const db = require('./mongoDB/mongoConnection');
+const db = require('./mongoDB/mongoConnection.js');
 //Routes
-const tailRouter = require('./mongoDB/routers/tail-route');
-const frequencyRouter = require('./mongoDB/routers/frequency-route');
-const stationRouter = require('./mongoDB/routers/station-route');
-const gdtRouter = require('./mongoDB/routers/gdt-route');
-const flightRouter = require('./mongoDB/routers/flight-route');
+const tailRouter = require('./mongoDB/routers/tail-route.js');
+const frequencyRouter = require('./mongoDB/routers/frequency-route.js');
+const stationRouter = require('./mongoDB/routers/station-route.js');
+const gdtRouter = require('./mongoDB/routers/gdt-route.js');
+const flightRouter = require('./mongoDB/routers/flight-route.js');
+const notificationRouter = require('./mongoDB/routers/notification-route.js')
 
 //Initialization
 const PORT = 4000;
@@ -50,7 +51,6 @@ function stationWatcher(station)
 {
     let path = station.path;
     let modified;
-    let count = 0;
     let watch = fs.watch(path,{recursive:true},('utf8',(eventType,fileName) =>{
         let stats = fs.statSync(path);
         let seconds = +stats.mtime;
@@ -74,7 +74,7 @@ function stationWatcher(station)
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 db.once('open',()=>console.log("[Mongo] database connection established successfully"))
-app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter);
+app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,notificationRouter);
 
 
 
