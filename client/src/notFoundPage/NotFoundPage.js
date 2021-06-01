@@ -1,5 +1,6 @@
 import {React,useEffect} from 'react';
 import {TweenMax,Power1,Power3} from 'gsap';
+import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
 import './NotFoundPage.css';
 
 const NotFoundPage = (props)=>{
@@ -120,8 +121,11 @@ const NotFoundPage = (props)=>{
             ease: Power1.easeInOut
           });
     
-    },[])
-    return(<div className ="background">
+    },[]);
+
+
+
+    return(<div className ="background"><Link to = "/">
 <svg className ="PageNotFound-SVG" xmlns="http://www.w3.org/2000/svg" width="1226.887px" height="908px" viewBox="0 0 1226.887 908">
 <g id="water">
  <path id="leftWater" fill="#00B6FF" d="M1226.887,908H1887V330.333c0,0-17.78-23.951-43.113-23.951s-50.667,32.724-144.667,32.724
@@ -231,7 +235,7 @@ const NotFoundPage = (props)=>{
      l-0.179,0.178l-6.176,6.401L635.314,605.922z" />
 </g>
 </svg>
- </div>
+</Link></div>
     );
 };
 export default NotFoundPage;

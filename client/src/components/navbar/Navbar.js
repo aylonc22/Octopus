@@ -48,7 +48,7 @@ const NavBar = (props)=>
         return(
               <header  className="navDiv">
                     <div className = "NavbarItems"> 
-                         <h1  className = "Navbar-logo">תמנון</h1>
+                        <Link className="Navbar-logo" to = "/404">תמנון</Link>
                         <div className = "menu-icon"></div>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>
                         <li key = {index}>
