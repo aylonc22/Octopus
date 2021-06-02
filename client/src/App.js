@@ -27,7 +27,7 @@ rejectUnauthorized: false});
 //APP
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
-  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
+  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}]);
   const [data,setData] = useState({station:'',message:''});
   socket.on('connection',()=>console.log("test"));
   socket.on('disconnect',()=>{

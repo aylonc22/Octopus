@@ -110,7 +110,7 @@ getFlights = async (req, res) => {
                 .status(200)
                 .json({ success: true,data:[] ,error: `Flight not found` });
         }
-        return res.status(200).json({ success: true, data: flight });
+        return res.status(200).json({ success: true, data: flights });
     }).catch(err => console.log(err));
 };
 

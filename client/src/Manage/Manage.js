@@ -1,8 +1,8 @@
 import Slider from 'react-slick';
 //Manage components
 import SmallTable from './dashboard/SmallTable-Card.js';
-import Flights from './dashboard/FlightTable-Card.js';
-import SmallNotification from './dashboard/Notification-card.js';
+import FlightTable from './dashboard/FlightTable-Card.js';
+import NotificationTable from './dashboard/Notification-Card.js';
 //Axios requests
 import {getAllTail} from '../api/tail-api.js';
 import {getAllFrequency} from '../api/frequency-api.js';
@@ -31,20 +31,20 @@ const Manage = props =>{
     <div className = "Page-Manage">
         <div className = "Top-Page">
             <div className = "Flights-Component">
-                <Flights getAllTable = {getAllFlight()}/>
+                <FlightTable getAllTable = {getAllFlight()}/>
             </div>
             <div className = "Right-Page">
-                <div className = "Notification-Component">  <SmallNotification getAllOpen = {getAllOpenNotification()} getAllTable = {getAllNotification()}/> </div> 
+                <div className = "Notification-Component">  <NotificationTable getAllOpen = {getAllOpenNotification()} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
                      <div className = "Edit-Component-Left">
                         <Slider {...settings}>                
-                        <div ><SmallTable getAllTable = {getAllTail()} secondary = "Location" secondaryH = "מקום" name ="זנבות"/></div>
-                        <div><SmallTable getAllTable = {getAllFrequency()} secondary = "Location" secondaryH = "מקום" name ="תדרים"/></div>
+                        <div ><SmallTable getAllTable = {getAllTail()} secondary = "Type" secondaryH = "סוג" name ="זנבות"/></div>
+                        <div><SmallTable getAllTable = {getAllFrequency()} secondary = "Type" secondaryH = "סוג" name ="תדרים"/></div>
                         </Slider>
                      </div>
                      <div className = "Edit-Component-Right">
                      <Slider {...settings}>                
-                        <div ><SmallTable getAllTable = {getAllStation()} secondary = "Location" secondaryH = "מקום" name ="תחנות"/></div>
+                        <div ><SmallTable getAllTable = {getAllStation()} secondary = "Type" secondaryH = "סוג" name ="תחנות"/></div>
                         <div><SmallTable getAllTable = {getAllGDT()} secondary = "Location" secondaryH = "מקום" name ="גרורים"/></div>
                         </Slider>
                      </div>

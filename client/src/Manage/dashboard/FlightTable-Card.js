@@ -1,12 +1,16 @@
 import {React,useEffect,useState} from 'react';
-
+import {getAllFlight} from '../../api/flight-api.js';
 const FlightTable = (props)=>{
     const [Data,setData] = useState([]);
     useEffect(()=>{
-        props.getAllTable.then(res=>//props.getAllTable
+        getAllFlight().then(res=>//props.getAllTable
             {
+                // CHECK BOOGIE
+                /*
+                אם תוריד את השורה של הסט דטה זה יראה לך את המערך
+                */
                 res.data?setData(res.data.data?res.data.data:[]):console.log()
-                //console.log(res.data.data);
+                console.log(res.data.data);
             });
         //eslint-disable-next-line
         },[]);
