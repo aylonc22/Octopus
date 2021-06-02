@@ -19,24 +19,20 @@ const notificationRouter = require('./mongoDB/routers/notification-route.js')
 
 //Initialization
 const PORT = 4000;
-let _onlineStations = [];
-let _offlineStations = [];
+let _notifications = {g:[]}; //Tracking notifications
 app.use(cors());
 app.use(express.json());
 http.listen(PORT,()=>console.log(`[Server] is running on port: ${PORT}`));
 //Server Client comunication 
 io.on('connection',socket => {
     console.log(`[Server] Client connected`);
-    if(io!=socket)
-    socket.emit('server-message','hey hey hey');
     socket.on('message',(msg)=>console.log(msg))
     socket.on('disconnect',()=>'[Server] client disconnected');
     socket.on('connect_failed',()=>console.log("fail"))
-    socket.on('update',(OnlineStations,OfflineStations)=>{
-        _onlineStations = OnlineStations;
-         _offlineStations = OfflineStations;
-        });//update in server status of online and offline stations
-    socket.on('sendUpdate',()=>socket.emit('sendStations',_onlineStations,_offlineStations)); // send to client updated arrays of station
+    socket.on('updateNotification',(Notifications)=>{
+        _notifications = Notifications;
+       });//update in server status of notifications
+   socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
 });
 
 // station listener

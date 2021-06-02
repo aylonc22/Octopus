@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {getAllOpenNotification} from '../api/notification-api.js';
+import {getAllOpenNotification,insertNotification,updateNotificationById} from '../api/notification-api.js';
 import h from '../icons/haziza.png';
 import './onlineStation.css'
 
@@ -29,16 +29,26 @@ const noOnlineStation =(
 
 
 const OnlineStation = (props) => {
-    //Current duplicate values in online stations by station id
-    const [g,setG] = useState([])
-    
+    // array of current open notifications
+    const [notifications,setNotifications] = useState(null);
+    //Current duplicate values in online stations by station id and duplicate id
+    // example g = [{Station:55,Duplicate:44},{Station:65,Duplicate:44}]
+    const [g,setG] = useState([]);
     useEffect(()=>{
-        const newG =findDuplicate("ג");
         getAllOpenNotification().then(res=>
             {
-                
-                console.log(res.data);
+               setNotifications(res.data.data); 
             });
+    },[]);
+
+    useEffect(()=>{
+        const newG =findDuplicate("ג");
+        
+        if(notifications)
+        {
+            console.log("im here")
+        }
+        props.socket.emit("message","[Client] HELLO IM OFFLINESTATIONS");
         setG(newG);
 // eslint-disable-next-line
     },[props.items]);
@@ -55,8 +65,8 @@ const OnlineStation = (props) => {
             </div>
             <div className = "bottom">
                     <div className = "Row">
-                        <label className = {g.indexOf(item.id)===-1?"Cell":"DuplicateCell"}>{item.message}</label>
-                        <label className = {g.indexOf(item.id)===-1?"Cell":"DuplicateCell"}>ג</label>                        
+                        <label className = {g.map((i)=>i.Station).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>{item.message}</label>
+                        <label className = {g.map((i)=>i.Station).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>ג</label>                        
                     </div>
                     <div className = "Row">
                         <label className = "Cell">1</label>
@@ -100,7 +110,7 @@ const OnlineStation = (props) => {
             for (let j = i + 1; j < arr.length; j++)
             {
                 if (arr[i] === arr[j])
-                    res = [...res,stations[i],stations[j]];
+                    res = [...res,{Station:stations[i],Duplicate:arr[i]},{Station:stations[j],Duplicate:arr[j]}];
             }
         }
         return res;
@@ -110,7 +120,8 @@ const OnlineStation = (props) => {
         let res;
         switch (cell) {
             case "ג":{
-               res = findRepeating(...new Array(props.items.map(item=>item.message)),...new Array(props.items.map(item=>item.id)));
+               res = findRepeating(...new Array(props.items.map(item=>item.message)),
+               ...new Array(props.items.map(item=>item.id)));
                return res;
             }
                
@@ -119,6 +130,9 @@ const OnlineStation = (props) => {
                 return "Cell";
         }
     }
+
+
+    
     return(
         <div>
             <h1 className =  "textCenter">תחנות דולקות</h1>

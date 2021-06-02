@@ -29,12 +29,7 @@ function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
   const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}]);
   const [data,setData] = useState({station:'',message:''});
-  socket.on('connection',()=>console.log("test"));
-  socket.on('disconnect',()=>{
-    socket.send("[Client] disconnected");
-});
-//socket.on('connect_error',(err)=>console.log(err));
-socket.on('error',err=>console.log(`[Client] server is not up: ${err}`))
+  
 useEffect(()=>{
   socket.on('station-listener', (msg,s)=>{
     setData({message:msg,station:s})
@@ -71,7 +66,7 @@ return (
              url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
           <Route exact path="/"><Manage/></Route>
-          <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
+          <Route exact path="/online"><OnlineStation socket = {socket} items = {onlineStations}/></Route>
           <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
           <Route exact path="/flight"><Flights/></Route>
           <Route exact path="/notification"><Notification/></Route>
