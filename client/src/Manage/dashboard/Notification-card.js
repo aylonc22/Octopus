@@ -24,7 +24,7 @@ const NotificationTable = (props)=>{
     return(
             <div className = "Notification-Table">
                 <button onClick = {()=>insertNotification({Stations:[777,752],
-        Type:"ע",
+        Type:"ג",
         Duplicates:[44,44],
         Open:new Date(),
         Close:new Date("1970-01-01")})}>add</button>

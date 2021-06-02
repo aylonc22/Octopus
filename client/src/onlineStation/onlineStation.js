@@ -37,7 +37,9 @@ const OnlineStation = (props) => {
     useEffect(()=>{
         getAllOpenNotification().then(res=>
             {
-               setNotifications(res.data.data); 
+               let gdt = res.data.data.filter((d)=>d.Type==="ג")
+               //console.log(gdt); 
+               setNotifications({g:gdt}); 
             });
     },[]);
 
@@ -46,7 +48,8 @@ const OnlineStation = (props) => {
         
         if(notifications)
         {
-            console.log("im here")
+            let f = findDiffrentNew("ג",newG);
+            console.log(f);
         }
         props.socket.emit("message","[Client] HELLO IM OFFLINESTATIONS");
         setG(newG);
@@ -131,8 +134,19 @@ const OnlineStation = (props) => {
         }
     }
 
+    // get which cell to check on notifications and return the diffrence between 
+    //new notification and mongo notification
+    function findDiffrentNew(cell,array) {
+        switch (cell) {
+            case "ג":{
+            //console.log(array.map((i)=>i.Station));  
+            return(notifications.g.filter((e)=>array.map((i)=>i.Station).indexOf(e.Stations[1])!=-1));}
+        
+            default:
+                break;
+        }
+    }
 
-    
     return(
         <div>
             <h1 className =  "textCenter">תחנות דולקות</h1>
