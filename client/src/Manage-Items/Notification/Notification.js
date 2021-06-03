@@ -4,7 +4,7 @@ import './Notification.css'
 let dateFormat = require('dateformat');
 const Notification = props =>{
     const [Data,setData] = useState([]);
-    const [_rightArrow,setRightArrow] = useState(19);
+    const [_rightArrow,setRightArrow] = useState(37);
     const [_leftArrow,setLeftArrow] = useState(0);
 
     useEffect(()=>{
@@ -38,9 +38,9 @@ const Notification = props =>{
        </div>)):[...Data.slice(_leftArrow,_rightArrow),...Array(37-Data.slice(_leftArrow,_rightArrow).length)].map((d,index)=>{
          if(d)
              return(<div key ={d._id} className = "Row">
-             <div className = "Cell">{new Date(d.Close).getFullYear()===1970?"פתוח":dateFormat(new Date(d.Close),"dd-mm-yyyy:// HH:mm:ss")}</div>
-             <div className = "Cell">{ dateFormat(new Date(d.Open),"dd-mm-yyyy:// HH:mm:ss")}</div>
-             <div className = "Cell">{d.Duplicates}</div>
+             <div className = "Cell">{new Date(d.Close).getFullYear()===1970?"פתוח":dateFormat(new Date(d.Close),"dd-mm-yyyy:// HH:MM:ss")}</div>
+             <div className = "Cell">{ dateFormat(new Date(d.Open),"dd-mm-yyyy:// HH:MM:ss")}</div>
+             <div className = "Cell">{d.Duplicate}</div>
              <div className = "Cell">{d.Type}</div>
              <div className = "Cell">{d.Stations}</div>
              </div>);

@@ -46,10 +46,18 @@ const OnlineStation = (props) => {
     useEffect(()=>{
         const newG =findDuplicate("ג");
         
+        
         if(notifications)
         {
             let f = findDiffrentNew("ג",newG);
+            console.log("diffrent");
             console.log(f);
+            // f.map((i)=>updateNotificationById(i._id,{Stations:i.Stations,
+            // Type:i.Type,
+            // Duplicate:i.Duplicate,
+            // Open:i.Open,
+            // Close:new Date()}));
+            // console.log(f);
         }
         props.socket.emit("message","[Client] HELLO IM OFFLINESTATIONS");
         setG(newG);
@@ -137,10 +145,13 @@ const OnlineStation = (props) => {
     // get which cell to check on notifications and return the diffrence between 
     //new notification and mongo notification
     function findDiffrentNew(cell,array) {
+        let res;
         switch (cell) {
             case "ג":{
-            //console.log(array.map((i)=>i.Station));  
-            return(notifications.g.filter((e)=>array.map((i)=>i.Station).indexOf(e.Stations[1])!=-1));}
+            notifications.g.forEach(e=>{
+                
+            });
+            return res;}
         
             default:
                 break;

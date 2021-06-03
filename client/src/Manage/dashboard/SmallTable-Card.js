@@ -5,9 +5,9 @@ const SmallTable = props=>{
     useEffect(()=>{
         props.getAllTable.then(res=>//props.getAllTable
             {
-                console.log(res.data.data);
+                //console.log(res.data.data);
                 res.data?setData(res.data.data?res.data.data:[]):console.log()
-                console.log(res.data.data);
+                //console.log(res.data.data);
             });
         //eslint-disable-next-line
         },[]);

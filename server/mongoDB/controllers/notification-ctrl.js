@@ -45,6 +45,7 @@ updateNotification = async (req, res) => {
 
     Notification.findOne({ _id: req.params.id }, (err, notification) => {
         if (err) {
+            console.log("ERROR")
             return res.status(404).json({
                 err,
                 message: 'Notification not found!',
@@ -54,6 +55,7 @@ updateNotification = async (req, res) => {
         notification
             .save()
             .then(() => {
+                console.log(body);
                 return res.status(200).json({
                     success: true,
                     id: notification._id,
@@ -61,6 +63,7 @@ updateNotification = async (req, res) => {
                 });
             })
             .catch(error => {
+                console.log("ERROR")
                 return res.status(404).json({
                     error,
                     message: 'Notification not updated!',

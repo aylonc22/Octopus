@@ -11,7 +11,7 @@ const NotificationTable = (props)=>{
                 אם תוריד את השורה של הסט דטה זה יראה לך את המערך
                 */
                 res.data?setData(res.data.data?res.data.data:[]):console.log();
-                console.log(res);
+                //console.log(res);
             });
         if(Data.length===0)
         props.getAllTable.then(res=>//props.getAllTable
@@ -23,9 +23,9 @@ const NotificationTable = (props)=>{
         },[]);
     return(
             <div className = "Notification-Table">
-                <button onClick = {()=>insertNotification({Stations:[777,752],
+                <button onClick = {()=>insertNotification({Stations:["demo1","demo"],
         Type:"ג",
-        Duplicates:[44,44],
+        Duplicate:5,
         Open:new Date(),
         Close:new Date("1970-01-01")})}>add</button>
                 <div className  = "Row"> <div className = "Header-Cell">תאריך סיום</div><div className = "Header-Cell">תאריך התחלה</div> <div className = "Header-Cell">מופע חופף</div> <div className = "Header-Cell">סוג</div> <div className = "Header-Cell">תחנות</div></div>

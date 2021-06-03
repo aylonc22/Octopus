@@ -10,7 +10,7 @@ const FlightTable = (props)=>{
                 אם תוריד את השורה של הסט דטה זה יראה לך את המערך
                 */
                 res.data?setData(res.data.data?res.data.data:[]):console.log()
-                console.log(res.data.data);
+                //console.log(res.data.data);
             });
         //eslint-disable-next-line
         },[]);
