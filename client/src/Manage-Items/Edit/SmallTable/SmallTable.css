@@ -1,0 +1,75 @@
+.DataCard{
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #d3e0ea;
+    border-radius: 4px;
+    transition: 0.5s;
+    box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+}
+
+.Top-Card{
+    display: flex;
+    justify-content: flex-end;
+    background:#d3e0ea;
+}
+
+.Manage-Icon-Data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:25%;
+    background:#d3e0ea;
+}
+
+.icon{
+    padding-left: 5%;
+    background:#d3e0ea;
+    cursor: pointer;
+}
+
+.Delete-Cell{
+    background:#d3e0ea;
+    display: none;
+    border: solid;
+}
+
+.Delete-Cell-Active{
+    background:#d3e0ea;
+    display: block;
+}
+
+.input[type=checkbox] + label {
+    display: block;
+    cursor: pointer;
+    
+  }
+  
+  input[type=checkbox] {
+    display: none;
+  }
+  
+  input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+  }
+  
+  input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  }
+  
+  input[type=checkbox]:checked + label:before {
+    background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen;
+    color: #fff;
+  }

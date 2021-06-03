@@ -1,0 +1,12 @@
+.FlightCard{
+    margin: 1.5%;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #d3e0ea;
+    border-radius: 4px;
+    transition: 0.5s;
+    box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+}

@@ -1,24 +1,18 @@
 *{
-  background-color: #F1FAEE;
+  background-color: #f6f5f5;
   padding: 0;
   margin: 0;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.StationPage{
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+}
 
-.boxOffline{
-  display: flex;
-  justify-content:flex-start;
-  flex-flow: row wrap;
-  
-}
-.boxOnline{
-  display: flex;
-  justify-content:flex-start;
-  flex-flow: row wrap;
-  
-}
 .textCenter{
   display: flex;
   justify-content:center;
 }
+
