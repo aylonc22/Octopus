@@ -59,7 +59,7 @@ function stationWatcher(station)
             let lastLine;
             rl.on('line',(line)=>lastLine=line);
             rl.on('close',()=>{
-                console.log(`[Server] found new last line for station:${station.id},${Object.keys(io.sockets.sockets).length}`);
+                // console.log(`[Server] found new last line for station:${station.id},${Object.keys(io.sockets.sockets).length}`);
                    io.sockets.emit('station-listener',lastLine,station.id).on('error', err=>console.log(err));
             });
         }

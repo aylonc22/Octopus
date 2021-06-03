@@ -34,8 +34,8 @@ createNotification = (req, res) => {
 };
 
 updateNotification = async (req, res) => {
-    const body = req.body
-    console.log(req);
+    console.log("IM HERE");
+    const body = req.body  
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -43,33 +43,19 @@ updateNotification = async (req, res) => {
         });
     }
 
-    Notification.findOne({ _id: req.params.id }, (err, notification) => {
+    await Notification.findOneAndUpdate({ _id: req.params.id }, (err, notification) => {
         if (err) {
-            console.log("ERROR")
-            return res.status(404).json({
-                err,
-                message: 'Notification not found!',
-            });
+            return res.status(400).json({ success: false, error: err });
         }
-        notification.name = body.ID;
-        notification
-            .save()
-            .then(() => {
-                console.log(body);
-                return res.status(200).json({
-                    success: true,
-                    id: notification._id,
-                    message: 'Notification updated!',
-                });
-            })
-            .catch(error => {
-                console.log("ERROR")
-                return res.status(404).json({
-                    error,
-                    message: 'Notification not updated!',
-                });
-            });
-    });
+
+        if (!notification) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Notification not found` });
+        }
+
+        return res.status(200).json({ success: true, data: Notification });
+    },{useFindAndModify: true, new:true}).catch(err => console.log(err));
 };
 
 deleteNotification = async (req, res) => {
@@ -85,7 +71,7 @@ deleteNotification = async (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: Notification });
-    }).catch(err => console.log(err));
+    },{useFindAndModify: false}).catch(err => console.log(err));
 };
 
 getNotificationById = async (req, res) => {

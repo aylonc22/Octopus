@@ -66,7 +66,7 @@ return (
              url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
           <Route exact path="/"><Manage/></Route>
-          <Route exact path="/online"><OnlineStation socket = {socket} items = {onlineStations}/></Route>
+          <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
           <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
           <Route exact path="/flight"><Flights/></Route>
           <Route exact path="/notification"><Notification/></Route>
