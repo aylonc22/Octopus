@@ -7,15 +7,13 @@ import './App.css';
 //Componnets
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
-import HomePage from './homePage/HomePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
+import Manage from './Manage/Manage.js'
 import Navbar from './components/navbar/Navbar';
-// ManageNav Componnets
-import Tail from './homePage/Manage-Items/Tails/tail';
-import Flight from './homePage/Manage-Items/Flights/flight';
-import GDT from './homePage/Manage-Items/GDT/gdt';
-import Frequency from './homePage/Manage-Items/Frequencies/frequency';
-import Station from './homePage/Manage-Items/Stations/station';
+import Flights from './Manage-Items/Flights/flight';
+import Notification from './Manage-Items/Notification/Notification.js';
+import Edit from './Manage-Items/Edit/Edit.js';
+import PopUp from './components/PopupNotification/PopupNotification.js';
 
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
@@ -25,18 +23,13 @@ transports: ['websocket'],
 agent: false, 
 upgrade: false,
 rejectUnauthorized: false});
+
+//APP
 function App() {
-  const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"ADIR NAHUM"}
-  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"}]);
+  const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
+  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}]);
   const [data,setData] = useState({station:'',message:''});
-  // let showOnline = onlineStations.map(s=><OnlineStation key ={s.id} id = {s.id} message = {s.message}/>)
-  // let showOffline = offlineStations.map(s=><OfflineStation key ={s.id} id = {s.id}/>)
-  socket.on('connection',()=>console.log("test"));
-  socket.on('disconnect',()=>{
-    socket.send("[Client] disconnected");
-});
-//socket.on('connect_error',(err)=>console.log(err));
-socket.on('error',err=>console.log(`[Client] server is not up: ${err}`))
+  
 useEffect(()=>{
   socket.on('station-listener', (msg,s)=>{
     setData({message:msg,station:s})
@@ -59,48 +52,26 @@ useEffect(()=>{
         if(!flag && (data.message || data.station))//if is not already in array and actually have value
         {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
          
-        setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));
+        setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));// order online and offline stations by ID number
          setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
 },[data]);
-const routes ={
-  '/': () => <HomePage />,
-  '/online': () => <OnlineStation items = {onlineStations}/>,
-  '/offline': () => <OfflineStation items = {offlineStations}/>,
-};  
+  
+
 return (
     
         <div>
            <Router>
              <div>
-            <Navbar url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
+            <Navbar
+             url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
-          <Route exact path="/">
-            <HomePage NotFoundPage = {NotFoundPage}/>
-          </Route>
-          <Route path="/online">
-            <OnlineStation  items = {onlineStations}/>
-          </Route>
-          <Route path="/offline">
-            <OfflineStation  items = {offlineStations} />
-          </Route>
-          <Route path="/tail">
-            <Tail />
-          </Route>
-          <Route path="/station">
-            <Station />
-          </Route>
-          <Route path="/gdt">
-            <GDT />
-          </Route>
-          <Route path="/frequency">
-            <Frequency />
-          </Route>
-          <Route path="/flight">
-            <Flight />
-          </Route>
-          <Route path="*">
-            <NotFoundPage/>
-          </Route>
+          <Route exact path="/"><Manage/></Route>
+          <Route exact path="/online"><OnlineStation socket = {socket} items = {onlineStations}/></Route>
+          <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
+          <Route exact path="/flight"><Flights/></Route>
+          <Route exact path="/notification"><Notification/></Route>
+          <Route exact path="/edit"><Edit/></Route>
+          <Route path="*"><NotFoundPage/></Route>
         </Switch>
            </div>
             </Router>

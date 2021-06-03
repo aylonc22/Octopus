@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 
 const Tail = new Schema(
     {
-        ID: { type: Number, required: true },
+        ID: { type: Number, required: true},
+        Type: { type: String, required: true}
     },
     { timestamps: true },
 )

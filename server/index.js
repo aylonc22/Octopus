@@ -8,28 +8,31 @@ const fs = require('fs');
 const readline = require('readline');
 const stream = require('stream');
 //Mongo 
-const db = require('./mongoDB/mongoConnection');
-const tailRouter = require('./mongoDB/routers/tail-route');
+const db = require('./mongoDB/mongoConnection.js');
+//Routes
+const tailRouter = require('./mongoDB/routers/tail-route.js');
+const frequencyRouter = require('./mongoDB/routers/frequency-route.js');
+const stationRouter = require('./mongoDB/routers/station-route.js');
+const gdtRouter = require('./mongoDB/routers/gdt-route.js');
+const flightRouter = require('./mongoDB/routers/flight-route.js');
+const notificationRouter = require('./mongoDB/routers/notification-route.js')
+
 //Initialization
 const PORT = 4000;
-let _onlineStations = [];
-let _offlineStations = [];
+let _notifications = {g:[]}; //Tracking notifications
 app.use(cors());
 app.use(express.json());
 http.listen(PORT,()=>console.log(`[Server] is running on port: ${PORT}`));
 //Server Client comunication 
 io.on('connection',socket => {
     console.log(`[Server] Client connected`);
-    if(io!=socket)
-    socket.emit('server-message','hey hey hey');
     socket.on('message',(msg)=>console.log(msg))
     socket.on('disconnect',()=>'[Server] client disconnected');
     socket.on('connect_failed',()=>console.log("fail"))
-    socket.on('update',(OnlineStations,OfflineStations)=>{
-        _onlineStations = OnlineStations;
-         _offlineStations = OfflineStations;
-        });//update in server status of online and offline stations
-    socket.on('sendUpdate',()=>socket.emit('sendStations',_onlineStations,_offlineStations)); // send to client updated arrays of station
+    socket.on('updateNotification',(Notifications)=>{
+        _notifications = Notifications;
+       });//update in server status of notifications
+   socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
 });
 
 // station listener
@@ -44,7 +47,6 @@ function stationWatcher(station)
 {
     let path = station.path;
     let modified;
-    let count = 0;
     let watch = fs.watch(path,{recursive:true},('utf8',(eventType,fileName) =>{
         let stats = fs.statSync(path);
         let seconds = +stats.mtime;
@@ -55,7 +57,6 @@ function stationWatcher(station)
             let outstream = new stream;
             let rl = readline.createInterface(instream,outstream);
             let lastLine;
-            io.sockets.setMaxListeners(1);
             rl.on('line',(line)=>lastLine=line);
             rl.on('close',()=>{
                 console.log(`[Server] found new last line for station:${station.id},${Object.keys(io.sockets.sockets).length}`);
@@ -69,7 +70,7 @@ function stationWatcher(station)
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 db.once('open',()=>console.log("[Mongo] database connection established successfully"))
-app.use('/api',tailRouter);
+app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,notificationRouter);
 
 
 
