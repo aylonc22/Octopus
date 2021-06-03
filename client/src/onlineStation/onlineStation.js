@@ -52,12 +52,12 @@ const OnlineStation = (props) => {
             let f = findDiffrentNew("ג",newG);
             console.log("diffrent");
             console.log(f);
-            // f.map((i)=>updateNotificationById(i._id,{Stations:i.Stations,
-            // Type:i.Type,
-            // Duplicate:i.Duplicate,
-            // Open:i.Open,
-            // Close:new Date()}));
-            // console.log(f);
+            f.map((i)=>{updateNotificationById(i._id,{Stations:i.Stations,
+            Type:i.Type,
+            Duplicate:i.Duplicate,
+            Open:i.Open,
+            Close:new Date()}); return;});
+            console.log(f);
         }
         props.socket.emit("message","[Client] HELLO IM OFFLINESTATIONS");
         setG(newG);
@@ -76,8 +76,8 @@ const OnlineStation = (props) => {
             </div>
             <div className = "bottom">
                     <div className = "Row">
-                        <label className = {g.map((i)=>i.Station).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>{item.message}</label>
-                        <label className = {g.map((i)=>i.Station).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>ג</label>                        
+                        <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>{item.message}</label>
+                        <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>ג</label>                        
                     </div>
                     <div className = "Row">
                         <label className = "Cell">1</label>
@@ -120,8 +120,9 @@ const OnlineStation = (props) => {
         {
             for (let j = i + 1; j < arr.length; j++)
             {
+                // * 1 to convert string to int
                 if (arr[i] === arr[j])
-                    res = [...res,{Station:stations[i],Duplicate:arr[i]},{Station:stations[j],Duplicate:arr[j]}];
+                    res = [...res,{Stations:[stations[i],stations[j]],Duplicate:arr[i]*1}];
             }
         }
         return res;
@@ -145,18 +146,43 @@ const OnlineStation = (props) => {
     // get which cell to check on notifications and return the diffrence between 
     //new notification and mongo notification
     function findDiffrentNew(cell,array) {
-        let res;
+        
+        // filtering notification type "ג" running on every item in array check if 
+        //inside returning what is not inside notification
+        function algo(e) 
+            {
+                let flag = false;
+                for(let i=0;i<array.length;i++){
+                    for(let j=0;j<array.length;j++)
+                       { 
+                           ((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
+                            (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
+                            array[j].Duplicate === e.Duplicate)?
+                            flag=true:console.log();
+                        }
+                        if(flag)
+                            return false;  
+            }
+            return flag?false:true;
+            }
+
+        // Cases 
         switch (cell) {
-            case "ג":{
-            notifications.g.forEach(e=>{
-                
-            });
-            return res;}
+            case "ג":
+            return(notifications.g.filter(e=>algo(e)));
         
             default:
                 break;
         }
     }
+// get array of notification by stations and open it to one array of all the stations
+function openNotificationToStation(arr) {
+    let res = [];
+    arr.forEach(e=>{
+        e.Stations.forEach(s=>res.push(s))
+    })
+    return res;
+}
 
     return(
         <div>

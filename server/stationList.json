@@ -8,5 +8,15 @@
             "id":"demo2",
             "path":"./demoFiles/demo2.log"
         }
+        ,
+        {
+            "id":"demo3",
+            "path":"./demoFiles/demo3.log"
+        }
+        ,
+        {
+            "id":"demo4",
+            "path":"./demoFiles/demo4.log"
+        }
     ]
 }

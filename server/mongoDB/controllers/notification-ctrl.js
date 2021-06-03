@@ -35,7 +35,7 @@ createNotification = (req, res) => {
 
 updateNotification = async (req, res) => {
     const body = req.body
-
+    console.log(req);
     if (!body) {
         return res.status(400).json({
             success: false,
