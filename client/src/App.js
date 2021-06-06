@@ -27,36 +27,15 @@ rejectUnauthorized: false});
 //APP
 function App() {
   const [onlineStations,setOnlineStations] =useState([]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
-  const [offlineStations,setOfflineStations] =useState([{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}]);
-  const [data,setData] = useState({station:'',message:''});
+  const [offlineStations,setOfflineStations] =useState([]);//{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}
   
 useEffect(()=>{
-  socket.on('station-listener', (msg,s)=>{
-    setData({message:msg,station:s})
+  socket.on('sendStations', (onlineStations,offlineStations)=>{
+   setOfflineStations(offlineStations);
+   setOnlineStations(onlineStations);
   });// eslint-disable-next-line
 },[]);
-useEffect(()=>{
-  let newOffline =  [...offlineStations].filter(item=>{return item.id!==data.station;})
-  let newOnline = []; 
-      let flag = false;
-      for(let i = 0; i<onlineStations.length;i++)
-        {
-            if(onlineStations[i].id === data.station)
-             { 
-               flag = true;
-              newOnline =[...newOnline,{id:data.station,message:data.message}];
-            }
-            else
-            newOnline = [...newOnline,{id:onlineStations[i].id,message:onlineStations[i].message}];
-        }
-        if(!flag && (data.message || data.station))//if is not already in array and actually have value
-        {newOnline =[...newOnline,{id:data.station,message:data.message}];;}
-         
-        setOnlineStations(newOnline.sort((a, b) => a.id.localeCompare(b.id)));// order online and offline stations by ID number
-         setOfflineStations(newOffline.sort((a, b) =>  a.id.localeCompare(b.id)));// eslint-disable-next-line
-},[data]);
   
-
 return (
     
         <div>
