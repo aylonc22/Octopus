@@ -16,14 +16,11 @@ const stationRouter = require('./mongoDB/routers/station-route.js');
 const gdtRouter = require('./mongoDB/routers/gdt-route.js');
 const flightRouter = require('./mongoDB/routers/flight-route.js');
 const notificationRouter = require('./mongoDB/routers/notification-route.js');
-const e = require('express');
-const { resolveCname } = require('dns');
 const Notification = require('./mongoDB/models/notification-model');
 // Data
 let _offlineStations = []; //Tracking offline stations
 let _onlineStations = []; //Tracking online stations
-let _notifications = [{g:[]}]; //Tracking notifications
-let newNotifications = [];
+let newNotifications = []; //Tracking live notifications;
 //Initialization
 const PORT = 4000;
 app.use(cors());
@@ -104,17 +101,95 @@ function handleStations(data) {
 // Notification handler
 // open new notifications if necessary
 // or closing
-function handleNotification() {
-    let notifications = [];
-    //
-    getOpenNotification();
-    
-    notifications = [...notifications,{g:newNotifications.filter((d)=>d.Type==="ג")}]
-    console.log(notifications);
-   //console.log(openNotifications);
-  
+ async function handleNotification() {
+   await getOpenNotification();//update list of open notifications
+   if(newNotifications.length)
+    {
+        let f = findDiffrentNew(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
+        for(let i=0;i<f.length;i++)
+            {
+                //TODO understand how to wait for update
+                // updating twice
+                // im worried that it will insert twice to!!   
+                await updateNotification(f[i]._id); 
+                    console.log("WTF");
+            }
+        io.sockets.emit('reRender');
+    }
 }
 
+// finding all the duplicates of every item in the array 
+    // exapmle [2,4,5,6,2,4][demo1,demo2,demo3,demo4,demo5,demo6] return [demo1,demo2,demo5,demo6]
+    function findRepeating(arr,stations)
+    {
+        let res = [];
+        for (let i = 0; i < arr.length; i++)
+        {
+            for (let j = i + 1; j < arr.length; j++)
+            {
+                // * 1 to convert string to int
+                if (arr[i] === arr[j])
+                    res = [...res,{Stations:[stations[i],stations[j]],Duplicate:arr[i]*1}];
+            }
+        }
+        return res;
+    }
+
+    // compare similiar rows in each stations and check if there is any duplicate value
+    // return the duplicated value and the stations ID
+    function findDuplicate(cell) {
+        let res;
+        switch (cell) {
+            case "ג":{
+               res = findRepeating(...new Array(_onlineStations.map(item=>item.message)),
+               ...new Array(_onlineStations.map(item=>item.id)));
+               return res;
+            }
+               
+        
+            default:
+                return [];
+        }
+    }
+
+    // get which cell to check on notifications and return the diffrence between 
+    //new notification and mongo notification
+    function findDiffrentNew(array,_notifications) {
+        // filtering notification type "ג" ==>[Example] running on every item in array check if 
+        //inside returning what is not inside notification
+        function algo(e) 
+            {
+                let flag = false;
+                for(let i=0;i<array.length;i++){
+                    for(let j=0;j<array.length;j++)
+                       { 
+                           if((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
+                            (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
+                            array[j].Duplicate === e.Duplicate)
+                            flag=true;
+                        }
+                        if(flag)
+                            return false;  
+            }
+            return flag?false:true;
+            }
+
+            return(_notifications.filter(e=>algo(e)));
+    }
+
+  
+//Mongo handels
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.once('open',()=>console.log("[Mongo] database connection established successfully"))
+app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,notificationRouter);
+
+
+
+// <------ MONGO QUERIES ------>
+
+  // Mongo DB Query to find all the open notifications
+  // In Mongo type DATE default date is 1970/01/01 
+  // Open notification means the notification is still live
   const getOpenNotification = async(req,res)=> {
    
     await Notification.find({Close:"1970-01-01T00:00:00.000Z"},(err,notifications)=>{
@@ -126,10 +201,15 @@ function handleNotification() {
         newNotifications = notifications;
     })
 }
+ // Mongo DB Queri to find element and update him
+  const updateNotification = async(req,res)=> {
+    await Notification.findOneAndUpdate({_id:req},{$set:{Close:new Date()}},
+    {useFindAndModify: false, new:true},err=>{
+        if(err)
+        console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
 
-//Mongo handels
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-db.once('open',()=>console.log("[Mongo] database connection established successfully"))
-app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,notificationRouter);
+        console.log(`[Mongo] Updated Successfuly ${req}`)
+    },{new:true})
 
+  }
 
