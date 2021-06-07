@@ -23,7 +23,7 @@ const NotificationTable = (props)=>{
         },[]);
     return(
             <div className = "Notification-Table">
-                <button onClick = {()=>insertNotification({Stations:["demo1","demo"],
+                <button onClick = {()=>insertNotification({Stations:["demo1","demo2"],
         Type:"ג",
         Duplicate:5,
         Open:new Date(),

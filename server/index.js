@@ -17,6 +17,7 @@ const gdtRouter = require('./mongoDB/routers/gdt-route.js');
 const flightRouter = require('./mongoDB/routers/flight-route.js');
 const notificationRouter = require('./mongoDB/routers/notification-route.js');
 const Notification = require('./mongoDB/models/notification-model');
+const { networkInterfaces } = require('os');
 // Data
 let _offlineStations = []; //Tracking offline stations
 let _onlineStations = []; //Tracking online stations
@@ -104,8 +105,8 @@ function handleStations(data) {
  async function handleNotification() {
    await getOpenNotification();//update list of open notifications
    if(newNotifications.length)
-    {
-        let f = findDiffrentNew(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
+    {   
+        let f = findDiffrentNewToClose(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
         for(let i=0;i<f.length;i++)
             {
                 //TODO understand how to wait for update
@@ -116,6 +117,17 @@ function handleStations(data) {
             }
         io.sockets.emit('reRender');
     }
+
+    let f1 = newNotifications.length?findDiffrentNewToClose(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג");
+    for(let i=0;i<f1.length;i++)
+        {
+            createNotification({Stations:[f1[i].Stations[0],f1[i].Stations[1]],
+                Type:"ג",
+                Duplicate:f1[i].Duplicate,
+                Open:new Date(),
+                Close:new Date("1970-01-01")})
+        }
+
 }
 
 // finding all the duplicates of every item in the array 
@@ -154,7 +166,30 @@ function handleStations(data) {
 
     // get which cell to check on notifications and return the diffrence between 
     //new notification and mongo notification
-    function findDiffrentNew(array,_notifications) {
+    function findDiffrentNewToClose(array,_notifications) {
+        // filtering notification type "ג" ==>[Example] running on every item in array check if 
+        //inside returning what is not inside notification
+        function algo(e) 
+            {
+                let flag = false;
+                for(let i=0;i<array.length;i++){
+                    for(let j=0;j<array.length;j++)
+                       { 
+                           if((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
+                            (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
+                            array[j].Duplicate === e.Duplicate)
+                            flag=true;
+                        }
+                        if(flag)
+                            return false;  
+            }
+            return flag?false:true;
+            }
+
+            return(_notifications.filter(e=>algo(e)));
+    }
+
+    function findDiffrentNewToOpen(array,_notifications) {
         // filtering notification type "ג" ==>[Example] running on every item in array check if 
         //inside returning what is not inside notification
         function algo(e) 
@@ -201,7 +236,7 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         newNotifications = notifications;
     })
 }
- // Mongo DB Queri to find element and update him
+ // Mongo DB Query to find element and update him
   const updateNotification = async(req,res)=> {
     await Notification.findOneAndUpdate({_id:req},{$set:{Close:new Date()}},
     {useFindAndModify: false, new:true},err=>{
@@ -210,6 +245,15 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
 
         console.log(`[Mongo] Updated Successfuly ${req}`)
     },{new:true})
+  }
 
+  // Mongo DB Query to create new elemt [notification]
+  const createNotification = async(req,res)=>{ 
+    await Notification.create(req,(err,res)=>{
+        if(err)
+        console.log(`[Mongo]  Failed to Create ${req} --->\n ${err}`);
+
+        console.log(`[Mongo] Created Successfuly ${req}`)
+      })
   }
 

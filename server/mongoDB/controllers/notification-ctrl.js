@@ -34,7 +34,6 @@ createNotification = (req, res) => {
 };
 
 updateNotification = async (req, res) => {
-    console.log("IM HERE");
     const body = req.body  
     if (!body) {
         return res.status(400).json({

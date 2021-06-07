@@ -48,7 +48,7 @@ return (
           <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
           <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
           <Route exact path="/flight"><Flights/></Route>
-          <Route exact path="/notification"><Notification/></Route>
+          <Route exact path="/notification"><Notification socket = {socket}/></Route>
           <Route exact path="/edit"><Edit/></Route>
           <Route path="*"><NotFoundPage/></Route>
         </Switch>

@@ -11,8 +11,15 @@ const Notification = props =>{
         getAllNotification().then(res=>//props.getAllTable
             {
                 res.data?setData(res.data.data?res.data.data:[]):console.log()
-                console.log(res.data.data);
             });
+
+        props.socket.on('reRender',()=>{
+            getAllNotification().then(res=>//props.getAllTable
+                {
+                    res.data?setData(res.data.data?res.data.data:[]):console.log()
+                    console.log(res.data.data);
+                });
+        });
         //eslint-disable-next-line
         },[]);
 
