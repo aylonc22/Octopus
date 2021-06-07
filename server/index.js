@@ -104,33 +104,47 @@ function handleStations(data) {
 // or closing
  async function handleNotification() {
    await getOpenNotification();//update list of open notifications
+   // getting notification && type and inserting them to Mongo
+   const insert = (e,type)=>createNotification({Stations:[e.Stations[0],e.Stations[1]],
+    Type:type,
+    Duplicate:e.Duplicate,
+    Open:new Date(),
+    Close:new Date("1970-01-01")})
    if(newNotifications.length)
     {   
-        let f = findDiffrentNewToClose(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
+        let f = findDiffrentNew(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
         for(let i=0;i<f.length;i++)
             {
                 //TODO understand how to wait for update
                 // updating twice
                 // im worried that it will insert twice to!!   
                 await updateNotification(f[i]._id); 
-                    console.log("WTF");
             }
         io.sockets.emit('reRender');
     }
 
-    let f1 = newNotifications.length?findDiffrentNewToClose(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג");
-    for(let i=0;i<f1.length;i++)
+    let needInsert = [newNotifications.length?findDiffrentNew(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג")];
+    for(let i=0;i<needInsert.length;i++)
         {
-            createNotification({Stations:[f1[i].Stations[0],f1[i].Stations[1]],
-                Type:"ג",
-                Duplicate:f1[i].Duplicate,
-                Open:new Date(),
-                Close:new Date("1970-01-01")})
+            for(let j =0;j<needInsert[i].length;j++)
+            {
+                switch (i) {
+                    case 0:
+                        insert(needInsert[i][j],"ג");
+                        break;
+                
+                    default:
+                        break;
+                }
+                
+            }
+            io.sockets.emit('reRender');
         }
-
 }
 
-// finding all the duplicates of every item in the array 
+// <------AUXILIARY FUNCTIONS ------>
+
+    // finding all the duplicates of every item in the array 
     // exapmle [2,4,5,6,2,4][demo1,demo2,demo3,demo4,demo5,demo6] return [demo1,demo2,demo5,demo6]
     function findRepeating(arr,stations)
     {
@@ -166,7 +180,7 @@ function handleStations(data) {
 
     // get which cell to check on notifications and return the diffrence between 
     //new notification and mongo notification
-    function findDiffrentNewToClose(array,_notifications) {
+    function findDiffrentNew(array,_notifications) {
         // filtering notification type "ג" ==>[Example] running on every item in array check if 
         //inside returning what is not inside notification
         function algo(e) 
@@ -188,30 +202,6 @@ function handleStations(data) {
 
             return(_notifications.filter(e=>algo(e)));
     }
-
-    function findDiffrentNewToOpen(array,_notifications) {
-        // filtering notification type "ג" ==>[Example] running on every item in array check if 
-        //inside returning what is not inside notification
-        function algo(e) 
-            {
-                let flag = false;
-                for(let i=0;i<array.length;i++){
-                    for(let j=0;j<array.length;j++)
-                       { 
-                           if((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
-                            (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
-                            array[j].Duplicate === e.Duplicate)
-                            flag=true;
-                        }
-                        if(flag)
-                            return false;  
-            }
-            return flag?false:true;
-            }
-
-            return(_notifications.filter(e=>algo(e)));
-    }
-
   
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -251,9 +241,16 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
   const createNotification = async(req,res)=>{ 
     await Notification.create(req,(err,res)=>{
         if(err)
-        console.log(`[Mongo]  Failed to Create ${req} --->\n ${err}`);
+        {
+            console.log(`[Mongo]  Failed to Create `);
+            console.log(req);
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            console.log(err);
+        }
 
-        console.log(`[Mongo] Created Successfuly ${req}`)
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        console.log(`[Mongo] Created Successfuly`)
+        console.log(req);
       })
   }
 
