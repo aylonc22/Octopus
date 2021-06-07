@@ -17,11 +17,11 @@ const gdtRouter = require('./mongoDB/routers/gdt-route.js');
 const flightRouter = require('./mongoDB/routers/flight-route.js');
 const notificationRouter = require('./mongoDB/routers/notification-route.js');
 const Notification = require('./mongoDB/models/notification-model');
-const { networkInterfaces } = require('os');
 // Data
 let _offlineStations = []; //Tracking offline stations
 let _onlineStations = []; //Tracking online stations
 let newNotifications = []; //Tracking live notifications;
+let NotificationQueue = []; //Tracking which notification sent to insert query
 //Initialization
 const PORT = 4000;
 app.use(cors());
@@ -105,11 +105,11 @@ function handleStations(data) {
  async function handleNotification() {
    await getOpenNotification();//update list of open notifications
    // getting notification && type and inserting them to Mongo
-   const insert = (e,type)=>createNotification({Stations:[e.Stations[0],e.Stations[1]],
-    Type:type,
+   const insert = e=>createNotification({Stations:[e.Stations[0],e.Stations[1]],
+    Type:e.Type,
     Duplicate:e.Duplicate,
     Open:new Date(),
-    Close:new Date("1970-01-01")})
+    Close:new Date("1970-01-01")},e)
    if(newNotifications.length)
     {   
         let f = findDiffrentNew(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
@@ -123,7 +123,22 @@ function handleStations(data) {
         io.sockets.emit('reRender');
     }
 
-    let needInsert = [newNotifications.length?findDiffrentNew(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג")];
+    let tempInsert = [newNotifications.length?findDiffrentNew(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג")];
+    let needInsert = tempInsert;
+    if(NotificationQueue.length)
+    {
+        // for(let i=0;i<tempInsert.length;i++)
+        // {
+        //     let tempType = [];
+        //     for(let j=0;j<tempInsert[i].length;j++)
+        //         if(NotificationQueue.indexOf(tempInsert[i][j]===-1))
+        //             tempType = [...tempType,tempInsert[i][j]];
+                   
+        //     needInsert = [...needInsert,[tempType]];
+        // }
+    }
+
+       // NotificationQueue = [...NotificationQueue,needInsert];
     for(let i=0;i<needInsert.length;i++)
         {
             for(let j =0;j<needInsert[i].length;j++)
@@ -146,7 +161,7 @@ function handleStations(data) {
 
     // finding all the duplicates of every item in the array 
     // exapmle [2,4,5,6,2,4][demo1,demo2,demo3,demo4,demo5,demo6] return [demo1,demo2,demo5,demo6]
-    function findRepeating(arr,stations)
+    function findRepeating(arr,stations,type)
     {
         let res = [];
         for (let i = 0; i < arr.length; i++)
@@ -155,7 +170,7 @@ function handleStations(data) {
             {
                 // * 1 to convert string to int
                 if (arr[i] === arr[j])
-                    res = [...res,{Stations:[stations[i],stations[j]],Duplicate:arr[i]*1}];
+                    res = [...res,{Stations:[stations[i],stations[j]],Duplicate:arr[i]*1,Type:type}];
             }
         }
         return res;
@@ -168,7 +183,7 @@ function handleStations(data) {
         switch (cell) {
             case "ג":{
                res = findRepeating(...new Array(_onlineStations.map(item=>item.message)),
-               ...new Array(_onlineStations.map(item=>item.id)));
+               ...new Array(_onlineStations.map(item=>item.id)),"ג");
                return res;
             }
                
@@ -238,7 +253,7 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
   }
 
   // Mongo DB Query to create new elemt [notification]
-  const createNotification = async(req,res)=>{ 
+  const createNotification = async(req,e)=>{ 
     await Notification.create(req,(err,res)=>{
         if(err)
         {
@@ -251,6 +266,7 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`[Mongo] Created Successfuly`)
         console.log(req);
+        NotificationQueue.slice(NotificationQueue.indexOf(e),1)
       })
   }
 
