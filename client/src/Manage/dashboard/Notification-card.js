@@ -23,11 +23,6 @@ const NotificationTable = (props)=>{
         },[]);
     return(
             <div className = "Notification-Table">
-                <button onClick = {()=>insertNotification({Stations:["demo1","demo2"],
-        Type:"ג",
-        Duplicate:5,
-        Open:new Date(),
-        Close:new Date("1970-01-01")})}>add</button>
                 <div className  = "Row"> <div className = "Header-Cell">תאריך סיום</div><div className = "Header-Cell">תאריך התחלה</div> <div className = "Header-Cell">מופע חופף</div> <div className = "Header-Cell">סוג</div> <div className = "Header-Cell">תחנות</div></div>
                 {!Data.length?[...Array(22)].map((d,index)=><div key = {index} className  = "Row"> 
                 <div className = "Empty-Cell"></div>

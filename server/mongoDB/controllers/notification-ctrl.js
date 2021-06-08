@@ -116,6 +116,10 @@ getOpenNotification = async (req, res) => {
     }).catch(err => console.log(err));
 };
 
+getNotificationsFromTo = async (req, res) => {
+    await Notification.find().sort("updatedAt", -1).slice(req.params).exec();
+};
+
 module.exports = {
     createNotification,
     updateNotification,

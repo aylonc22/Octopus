@@ -31,11 +31,11 @@ function App() {
   
 useEffect(()=>{
   socket.on('sendStations', (onlineStations,offlineStations)=>{
-   setOfflineStations(offlineStations);
+    setOfflineStations(offlineStations);
    setOnlineStations(onlineStations);
   });// eslint-disable-next-line
 },[]);
-  
+
 return (
     
         <div>

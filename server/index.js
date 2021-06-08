@@ -18,10 +18,10 @@ const flightRouter = require('./mongoDB/routers/flight-route.js');
 const notificationRouter = require('./mongoDB/routers/notification-route.js');
 const Notification = require('./mongoDB/models/notification-model');
 // Data
-let _offlineStations = []; //Tracking offline stations
+let _offlineStations = [{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}]; //Tracking offline stations
 let _onlineStations = []; //Tracking online stations
 let newNotifications = []; //Tracking live notifications;
-let NotificationQueue = []; //Tracking which notification sent to insert query
+let NotificationsQueue = [];
 //Initialization
 const PORT = 4000;
 app.use(cors());
@@ -78,7 +78,7 @@ function stationWatcher(station)
 // and update the correct stations
 function handleStations(data) {
 
-    let newOffline =  [_offlineStations].filter(item=>{return item.id!==data.station;})
+    let newOffline =  _offlineStations.filter(item=>item.id!==data.station)
     let newOnline = []; 
         let flag = false;
         for(let i = 0; i<_onlineStations.length;i++)
@@ -109,52 +109,47 @@ function handleStations(data) {
     Type:e.Type,
     Duplicate:e.Duplicate,
     Open:new Date(),
-    Close:new Date("1970-01-01")},e)
-   if(newNotifications.length)
+    Close:new Date("1970-01-01")}); // new Date(<integer>) specifies the datetime as
+    //milliseconds since the UNIX epoch (Jan 1, 1970)
+    
+    if(newNotifications.length)
     {   
         let f = findDiffrentNew(findDuplicate("ג"),newNotifications.filter((d)=>d.Type==="ג"));
         for(let i=0;i<f.length;i++)
-            {
-                //TODO understand how to wait for update
-                // updating twice
-                // im worried that it will insert twice to!!   
+            {  
                 await updateNotification(f[i]._id); 
             }
         io.sockets.emit('reRender');
     }
-
-    let tempInsert = [newNotifications.length?findDiffrentNew(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג")];
-    let needInsert = tempInsert;
-    if(NotificationQueue.length)
+    let tempInsert = []; 
+    tempInsert = tempInsert.concat(newNotifications.length?findDiffrentNew(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג"));
+    let needInsert = [];
+    if(NotificationsQueue.length)
     {
-        // for(let i=0;i<tempInsert.length;i++)
-        // {
-        //     let tempType = [];
-        //     for(let j=0;j<tempInsert[i].length;j++)
-        //         if(NotificationQueue.indexOf(tempInsert[i][j]===-1))
-        //             tempType = [...tempType,tempInsert[i][j]];
-                   
-        //     needInsert = [...needInsert,[tempType]];
-        // }
-    }
-
-       // NotificationQueue = [...NotificationQueue,needInsert];
-    for(let i=0;i<needInsert.length;i++)
-        {
-            for(let j =0;j<needInsert[i].length;j++)
-            {
-                switch (i) {
-                    case 0:
-                        insert(needInsert[i][j],"ג");
-                        break;
+        for(let i=0;i<tempInsert.length;i++)
+           { 
+               let flag = false;
+               for(let j=0;j<NotificationsQueue.length;j++)
+                if(JSON.stringify(NotificationsQueue[j])===JSON.stringify(tempInsert[i]))
+                    flag = true;
                 
-                    default:
-                        break;
-                }
-                
+                if(!flag)
+                   needInsert = [...needInsert,tempInsert[i]];
             }
-            io.sockets.emit('reRender');
+    }
+    else
+        {
+            needInsert = tempInsert;
         }
+        NotificationsQueue = needInsert;
+        for(let i=0;i<needInsert.length;i++)
+        {
+        
+            await insert(needInsert[i]);
+            
+        }
+        if(needInsert.length)
+            io.sockets.emit('reRender');
 }
 
 // <------AUXILIARY FUNCTIONS ------>
@@ -217,6 +212,7 @@ function handleStations(data) {
 
             return(_notifications.filter(e=>algo(e)));
     }
+
   
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -245,19 +241,19 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
   const updateNotification = async(req,res)=> {
     await Notification.findOneAndUpdate({_id:req},{$set:{Close:new Date()}},
     {useFindAndModify: false, new:true},err=>{
-        if(err)
-        console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
+        //if(err)
+        //console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
 
-        console.log(`[Mongo] Updated Successfuly ${req}`)
+        //console.log(`[Mongo] Updated Successfuly ${req}`)
     },{new:true})
   }
 
   // Mongo DB Query to create new elemt [notification]
-  const createNotification = async(req,e)=>{ 
+  const createNotification = async(req)=>{ 
     await Notification.create(req,(err,res)=>{
         if(err)
         {
-            console.log(`[Mongo]  Failed to Create `);
+           console.log(`[Mongo]  Failed to Create `);
             console.log(req);
             console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             console.log(err);
@@ -266,7 +262,7 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`[Mongo] Created Successfuly`)
         console.log(req);
-        NotificationQueue.slice(NotificationQueue.indexOf(e),1)
       })
   }
+
 
