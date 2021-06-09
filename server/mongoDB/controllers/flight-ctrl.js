@@ -114,10 +114,25 @@ getFlights = async (req, res) => {
     }).catch(err => console.log(err));
 };
 
+getFlightsFromTo = async (req, res) => {
+    await Flight.find({}).sort({createdAt:-1}).skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, flights) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!flights.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Flights not found` });
+        }
+        return res.status(200).json({ success: true, data: flights });
+    });
+};
+
 module.exports = {
     createFlight,
     updateFlight,
     deleteFlight,
     getFlights,
     getFlightById,
+    getFlightsFromTo,
 };

@@ -7,6 +7,7 @@ export const getAllFlight = ()=>api.get(`/flights`);
 export const updateFlightById = (id, payload) => api.put(`/flights/${id}`, payload);
 export const deleteFlightById = id => api.delete(`/flights/${id}`);
 export const getFlightById = id => api.get(`/flights/${id}`);
+export const getFlightsFromTo = (from,to)=> api.get(`/flights/${from}/${to}`);
 
 const flightApi = {
     insertFlight,
@@ -14,6 +15,7 @@ const flightApi = {
     updateFlightById,
     deleteFlightById,
     getFlightById,
+    getFlightsFromTo,
 }
 
 export default flightApi;

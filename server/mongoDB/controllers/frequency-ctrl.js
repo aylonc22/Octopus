@@ -114,10 +114,25 @@ getFrequencies = async (req, res) => {
     }).catch(err => console.log(err));
 };
 
+getFrequenciesFromTo = async (req, res) => {
+    await Frequency.find({}).sort({createdAt:-1}).skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, frequencies) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!frequencies.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Frequencies not found` });
+        }
+        return res.status(200).json({ success: true, data: frequencies });
+    });
+};
+
 module.exports = {
     createFrequency,
     updateFrequency,
     deleteFrequency,
     getFrequencies,
     getFrequencyById,
+    getFrequenciesFromTo
 };

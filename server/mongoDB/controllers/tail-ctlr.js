@@ -114,10 +114,26 @@ getTails = async (req, res) => {
     }).catch(err => console.log(err));
 };
 
+getTailsFromTo = async (req, res) => {
+    await Tail.find({}).sort({createdAt:-1}).skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, tails) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!tails.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Tail not found` });
+        }
+        return res.status(200).json({ success: true, data: tails });
+    });
+};
+
+
 module.exports = {
     createTail,
     updateTail,
     deleteTail,
     getTails,
     getTailById,
+    getTailsFromTo,
 };

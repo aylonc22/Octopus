@@ -7,6 +7,7 @@ export const getAllGDT = ()=>api.get(`/gdts`);
 export const updateGDTById = (id, payload) => api.put(`/gdts/${id}`, payload);
 export const deleteGDTById = id => api.delete(`/gdts/${id}`);
 export const getGDTById = id => api.get(`/gdts/${id}`);
+export const getGDTsFromTo = (from,to)=> api.get(`/gdts/${from}/${to}`);
 
 const gdtApi = {
     insertGDT,
@@ -14,6 +15,7 @@ const gdtApi = {
     updateGDTById,
     deleteGDTById,
     getGDTById,
+    getGDTsFromTo,
 }
 
 export default gdtApi;

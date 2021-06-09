@@ -10,5 +10,5 @@ router.delete('/notifications/:id', NotificationCtrl.deleteNotification);
 router.get('/notifications/:id', NotificationCtrl.getNotificationById);
 router.get('/notifications', NotificationCtrl.getNotifications);
 router.get('/opennotifications', NotificationCtrl.getOpenNotification);
-
+router.get('/notifications/:from/:to',NotificationCtrl.getNotificationsFromTo);
 module.exports = router;

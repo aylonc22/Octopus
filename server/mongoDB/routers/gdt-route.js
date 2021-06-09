@@ -9,5 +9,5 @@ router.put('/gdts/:id', GDTCtrl.updateGDT);
 router.delete('/gdts/:id', GDTCtrl.deleteGDT);
 router.get('/gdts/:id', GDTCtrl.getGDTById);
 router.get('/gdts', GDTCtrl.getGDTs);
-
+router.get('/gdts/:from/:to',GDTCtrl.getGDTsFromTo);
 module.exports = router;

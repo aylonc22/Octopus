@@ -114,10 +114,25 @@ getGDTs = async (req, res) => {
     }).catch(err => console.log(err));
 };
 
+getGDTsFromTo = async (req, res) => {
+    await GDT.find({}).sort({createdAt:-1}).skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, Gdts) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!Gdts.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Gdt not found` });
+        }
+        return res.status(200).json({ success: true, data: Gdts });
+    });
+};
+
 module.exports = {
     createGDT,
     updateGDT,
     deleteGDT,
     getGDTs,
     getGDTById,
+    getGDTsFromTo,
 };

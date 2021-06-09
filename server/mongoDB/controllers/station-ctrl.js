@@ -114,10 +114,25 @@ getStations = async (req, res) => {
     }).catch(err => console.log(err));
 };
 
+getStationsFromTo = async (req, res) => {
+    await Station.find({}).sort({createdAt:-1}).skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, stations) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!stations.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Stations not found` });
+        }
+        return res.status(200).json({ success: true, data: stations });
+    });
+};
+
 module.exports = {
     createStation,
     updateStation,
     deleteStation,
     getStations,
     getStationById,
+    getStationsFromTo,
 };

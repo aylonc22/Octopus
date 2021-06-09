@@ -9,5 +9,5 @@ router.put('/stations/:id', StationCtrl.updateStation);
 router.delete('/stations/:id', StationCtrl.deleteStation);
 router.get('/stations/:id', StationCtrl.getStationById);
 router.get('/stations', StationCtrl.getStations);
-
+router.get('/stations/:from/:to',StationCtrl.getStationsFromTo);
 module.exports = router;

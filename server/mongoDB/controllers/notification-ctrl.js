@@ -117,7 +117,17 @@ getOpenNotification = async (req, res) => {
 };
 
 getNotificationsFromTo = async (req, res) => {
-    await Notification.find().sort("updatedAt", -1).slice(req.params).exec();
+    await Notification.find({}).sort({createdAt:-1}).skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, notifications) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!notifications.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Notification not found` });
+        }
+        return res.status(200).json({ success: true, data: notifications });
+    });
 };
 
 module.exports = {
@@ -127,4 +137,5 @@ module.exports = {
     getNotifications,
     getNotificationById,
     getOpenNotification,
+    getNotificationsFromTo,
 };

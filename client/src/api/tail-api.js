@@ -7,6 +7,7 @@ export const getAllTail = ()=>api.get(`/tails`);
 export const updateTailById = (id, payload) => api.put(`/tails/${id}`, payload);
 export const deleteTailById = id => api.delete(`/tails/${id}`);
 export const getTailById = id => api.get(`/tails/${id}`);
+export const getTailsFromTo = (from,to)=> api.get(`/tails/${from}/${to}`);
 
 const tailApi = {
     insertTail,
@@ -14,6 +15,7 @@ const tailApi = {
     updateTailById,
     deleteTailById,
     getTailById,
+    getTailsFromTo,
 }
 
 export default tailApi;

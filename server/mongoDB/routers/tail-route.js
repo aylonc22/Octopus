@@ -9,5 +9,5 @@ router.put('/tails/:id', TailCtrl.updateTail);
 router.delete('/tails/:id', TailCtrl.deleteTail);
 router.get('/tails/:id', TailCtrl.getTailById);
 router.get('/tails', TailCtrl.getTails);
-
+router.get('/tails/:from/:to',TailCtrl.getTailsFromTo);
 module.exports = router;
