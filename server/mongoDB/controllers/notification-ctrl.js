@@ -130,6 +130,22 @@ getNotificationsFromTo = async (req, res) => {
     });
 };
 
+
+getOpenNotificationFromTo = async (req, res) => {
+    await Notification.find({Close:"1970-01-01T00:00:00.000Z"}).sort({createdAt:-1})
+    .skip(req.params.from*1).limit(req.params.to-req.params.from+1).exec((err, notifications) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+        if (!notifications.length) {
+            return res
+                .status(200)
+                .json({ success: true,data:[],error: `Open Notification not found` });
+        }
+        return res.status(200).json({ success: true, data: notifications });
+    });
+};
+
 module.exports = {
     createNotification,
     updateNotification,
@@ -138,4 +154,5 @@ module.exports = {
     getNotificationById,
     getOpenNotification,
     getNotificationsFromTo,
+    getOpenNotificationFromTo,
 };

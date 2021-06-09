@@ -9,6 +9,7 @@ export const deleteNotificationById = id => api.delete(`/notifications/${id}`);
 export const getNotificationById = id => api.get(`/notifications/${id}`);
 export const getAllOpenNotification = ()=> api.get('/opennotifications');
 export const getNotificationsFromTo = (from,to)=> api.get(`/notifications/${from}/${to}`);
+export const getOpenNotificationFromTo = (from,to)=> api.get(`/opennotifications/${from}/${to}`);
 
 const notificationtApi = {
     insertNotification,
@@ -18,6 +19,7 @@ const notificationtApi = {
     getNotificationById,
     getAllOpenNotification,
     getNotificationsFromTo,
+    getOpenNotificationFromTo,
 }
 
 export default notificationtApi;

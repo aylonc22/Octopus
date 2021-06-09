@@ -1,5 +1,5 @@
 import {React,useEffect,useState} from 'react';
-import {getAllNotification} from '../../api/notification-api.js';
+import {getNotificationsFromTo} from '../../api/notification-api.js';
 import './Notification.css'
 let dateFormat = require('dateformat');
 const Notification = props =>{
@@ -8,18 +8,24 @@ const Notification = props =>{
     const [_leftArrow,setLeftArrow] = useState(0);
 
     useEffect(()=>{
-        getAllNotification().then(res=>//props.getAllTable
-            {
-                res.data?setData(res.data.data?res.data.data:[]):console.log()
-            });
-
-        props.socket.on('reRender',()=>{
-            getAllNotification().then(res=>//props.getAllTable
+        let mounted = true;
+        if(mounted)
+        {
+            getNotificationsFromTo(_leftArrow,_rightArrow).then(res=>//props.getAllTable
                 {
                     res.data?setData(res.data.data?res.data.data:[]):console.log()
-                    console.log(res.data.data);
                 });
-        });
+            // rerender the page only if client is on the page
+                props.socket.on('reRender',()=>{
+               if(window.location.href.substring(window.location.href.lastIndexOf('/'))==="/notification")
+                getNotificationsFromTo(_leftArrow,_rightArrow).then(res=>//props.getAllTable
+                    {
+                        res.data?setData(res.data.data?res.data.data:[]):console.log()
+                        console.log(res.data.data);
+                    });
+            });
+        }
+        return ()=> mounted=false;
         //eslint-disable-next-line
         },[]);
 

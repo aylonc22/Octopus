@@ -44,7 +44,7 @@ return (
             <Navbar
              url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
             <Switch>
-          <Route exact path="/"><Manage/></Route>
+          <Route exact path="/"><Manage socket = {socket}/></Route>
           <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
           <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
           <Route exact path="/flight"><Flights/></Route>

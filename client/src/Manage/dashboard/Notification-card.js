@@ -1,24 +1,11 @@
 import {React,useEffect,useState} from 'react';
-import {insertNotification} from '../../api/notification-api.js';
 const NotificationTable = (props)=>{
     const [Data,setData] = useState([]);
     useEffect(()=>{
-        props.getAllOpen.then(res=>
-            {
-                //BUG HERE setData fucked the axios request or something
-                // CHECK BOOGIE
-                /*
-                אם תוריד את השורה של הסט דטה זה יראה לך את המערך
-                */
-                res.data?setData(res.data.data?res.data.data:[]):console.log();
-                //console.log(res);
-            });
-        if(Data.length===0)
-        props.getAllTable.then(res=>//props.getAllTable
-            {
-                res.data?setData(res.data.data?res.data.data:[]):console.log()
-                //console.log(res);
-            });
+        props.socket.emit("requestRender");
+        props.socket.on("reRender-card",(e)=>{ 
+            if(window.location.href.substring(window.location.href.lastIndexOf('/'))==="/")
+                setData(e)});
         //eslint-disable-next-line
         },[]);
     return(

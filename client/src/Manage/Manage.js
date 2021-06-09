@@ -9,7 +9,7 @@ import {getAllFrequency} from '../api/frequency-api.js';
 import {getAllStation} from '../api/station-api.js';
 import {getAllGDT} from '../api/gdt-api.js';
 import {getAllFlight} from '../api/flight-api.js';
-import {getAllNotification,getAllOpenNotification} from '../api/notification-api.js';
+import {getAllNotification,getOpenNotificationFromTo} from '../api/notification-api.js';
 //Styling
 import './Manage.css';
 const Manage = props =>{    
@@ -34,7 +34,7 @@ const Manage = props =>{
                 <FlightTable getAllTable = {getAllFlight()}/>
             </div>
             <div className = "Right-Page">
-                <div className = "Notification-Component">  <NotificationTable getAllOpen = {getAllOpenNotification()} getAllTable = {getAllNotification()}/> </div> 
+                <div className = "Notification-Component">  <NotificationTable socket = {props.socket} getAllOpen = {(from,to)=>getOpenNotificationFromTo(from,to)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
                      <div className = "Edit-Component-Left">
                         <Slider {...settings}>                
