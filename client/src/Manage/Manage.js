@@ -34,7 +34,7 @@ const Manage = props =>{
                 <FlightTable getAllTable = {getAllFlight()}/>
             </div>
             <div className = "Right-Page">
-                <div className = "Notification-Component">  <NotificationTable socket = {props.socket} getAllOpen = {(from,to)=>getOpenNotificationFromTo(from,to)} getAllTable = {getAllNotification()}/> </div> 
+                <div className = "Notification-Component">  <NotificationTable socket = {props.socket} notifications = {props.notifications} getAllOpen = {(from,to)=>getOpenNotificationFromTo(from,to)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
                      <div className = "Edit-Component-Left">
                         <Slider {...settings}>                

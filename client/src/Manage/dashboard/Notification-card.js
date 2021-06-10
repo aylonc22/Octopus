@@ -2,12 +2,13 @@ import {React,useEffect,useState} from 'react';
 const NotificationTable = (props)=>{
     const [Data,setData] = useState([]);
     useEffect(()=>{
-        props.socket.emit("requestRender");
-        props.socket.on("reRender-card",(e)=>{ 
-            if(window.location.href.substring(window.location.href.lastIndexOf('/'))==="/")
-                setData(e)});
+        props.socket.emit("requestRender");   
         //eslint-disable-next-line
         },[]);
+
+        useEffect(()=>{
+            setData(props.notifications);
+        },[props.notifications]);
     return(
             <div className = "Notification-Table">
                 <div className  = "Row"> <div className = "Header-Cell">תאריך סיום</div><div className = "Header-Cell">תאריך התחלה</div> <div className = "Header-Cell">מופע חופף</div> <div className = "Header-Cell">סוג</div> <div className = "Header-Cell">תחנות</div></div>

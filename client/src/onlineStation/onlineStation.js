@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from 'react';
-import {getAllOpenNotification,insertNotification,updateNotificationById,deleteNotificationById} from '../api/notification-api.js';
 import h from '../icons/haziza.png';
 import './onlineStation.css'
 
@@ -33,36 +32,7 @@ const OnlineStation = (props) => {
     // example g = [{Station:55,Duplicate:44},{Station:65,Duplicate:44}]
     const [g,setG] = useState([]);
     useEffect(()=>{
-       let notifications = {g:[]};
-        getAllOpenNotification().then(res=>
-            {
-               let gdt = res.data.data.filter((d)=>d.Type==="ג")
-               notifications = {g:gdt}
-            }); 
             const newG =findDuplicate("ג");
-            let _notification_g;
-            try{_notification_g = [notifications.g];}
-            catch{
-                setG(newG);
-                return;
-            }
-            
-            
-            if(notifications.g.length>0)
-            {
-                let f = findDiffrentNew("ג",newG,notifications.g);
-                console.log(notifications.g);
-                for(let i=0;i<f.length;i++)
-                    {
-                        console.log("diffrent");
-                        updateNotificationById(f[i]._id,{Stations:f[i].Stations,
-                            Type:f[i].Type,
-                            Duplicate:f[i].Duplicate,
-                            Open:f[i].Open,
-                            Close:new Date()})
-                    }
-                f.map(e=>_notification_g.splice(_notification_g.indexOf(e),1));
-            }
             setG(newG);
 // eslint-disable-next-line
     },[props.items]);
@@ -148,36 +118,36 @@ const OnlineStation = (props) => {
 
     // get which cell to check on notifications and return the diffrence between 
     //new notification and mongo notification
-    function findDiffrentNew(cell,array,notifications) {
+    // function findDiffrentNew(cell,array,notifications) {
         
-        // filtering notification type "ג" running on every item in array check if 
-        //inside returning what is not inside notification
-        function algo(e) 
-            {
-                let flag = false;
-                for(let i=0;i<array.length;i++){
-                    for(let j=0;j<array.length;j++)
-                       { 
-                           ((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
-                            (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
-                            array[j].Duplicate === e.Duplicate)?
-                            flag=true:console.log();
-                        }
-                        if(flag)
-                            return false;  
-            }
-            return flag?false:true;
-            }
+    //     // filtering notification type "ג" running on every item in array check if 
+    //     //inside returning what is not inside notification
+    //     function algo(e) 
+    //         {
+    //             let flag = false;
+    //             for(let i=0;i<array.length;i++){
+    //                 for(let j=0;j<array.length;j++)
+    //                    { 
+    //                        ((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
+    //                         (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
+    //                         array[j].Duplicate === e.Duplicate)?
+    //                         flag=true:console.log();
+    //                     }
+    //                     if(flag)
+    //                         return false;  
+    //         }
+    //         return flag?false:true;
+    //         }
 
-        // Cases 
-        switch (cell) {
-            case "ג":
-            return(notifications.filter(e=>algo(e)));
+    //     // Cases 
+    //     switch (cell) {
+    //         case "ג":
+    //         return(notifications.filter(e=>algo(e)));
         
-            default:
-                break;
-        }
-    }
+    //         default:
+    //             break;
+    //     }
+    // }
 // get array of notification by stations and open it to one array of all the stations
 function openNotificationToStation(arr) {
     let res = [];

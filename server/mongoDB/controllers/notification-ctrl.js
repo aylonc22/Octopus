@@ -1,5 +1,5 @@
 const Notification = require('../models/notification-model.js');
-
+const socket = require('../../index.js');
 createNotification = (req, res) => {
     const body = req.body
 
@@ -112,6 +112,7 @@ getOpenNotification = async (req, res) => {
                 .status(200)
                 .json({ success: true,data:[],error: `Open Notification not found` });
         }
+        //socket("dd","HELLO");
         return res.status(200).json({ success: true, data: notifications });
     }).catch(err => console.log(err));
 };

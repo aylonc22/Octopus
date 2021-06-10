@@ -37,7 +37,7 @@ io.on('connection',socket => {
         _notifications = Notifications;
        });//update in server status of notifications
    socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
-   socket.on("requestRender",()=>{getOpenNotification(); console.log(newNotifications); socket.emit("reRender-card",newNotifications)});
+   socket.on("requestRender",()=>socket.emit("reRender-card"));
 });
 
 
@@ -73,9 +73,7 @@ function stationWatcher(station)
         }
     }));
 }
-setInterval(() => {
-    console.log(io.sockets.sockets);
-}, 10000);
+
 //Get new data from stations watcher
 // check if there is new data to update
 // and update the correct stations
@@ -123,7 +121,7 @@ function handleStations(data) {
                 await updateNotification(f[i]._id); 
             }
         io.sockets.emit('reRender');
-        io.sockets.emit('reRender-card',newNotifications);
+        io.sockets.emit('reRender-card');
     }
     let tempInsert = []; 
     tempInsert = tempInsert.concat(newNotifications.length?findDiffrentNew(newNotifications.filter((d)=>d.Type==="ג"),findDuplicate("ג")):findDuplicate("ג"));
@@ -272,4 +270,9 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
       })
   }
 
-
+  module.exports = function(event,data){
+    return function socketToSocket(){
+        //io.sockets.emit(event,data);
+        console.log(data);
+  }
+}

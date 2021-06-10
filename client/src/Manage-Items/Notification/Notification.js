@@ -8,27 +8,16 @@ const Notification = props =>{
     const [_leftArrow,setLeftArrow] = useState(0);
 
     useEffect(()=>{
-        let mounted = true;
-        if(mounted)
-        {
             getNotificationsFromTo(_leftArrow,_rightArrow).then(res=>//props.getAllTable
                 {
                     res.data?setData(res.data.data?res.data.data:[]):console.log()
-                });
-            // rerender the page only if client is on the page
-                props.socket.on('reRender',()=>{
-               if(window.location.href.substring(window.location.href.lastIndexOf('/'))==="/notification")
-                getNotificationsFromTo(_leftArrow,_rightArrow).then(res=>//props.getAllTable
-                    {
-                        res.data?setData(res.data.data?res.data.data:[]):console.log()
-                        console.log(res.data.data);
-                    });
-            });
-        }
-        return ()=> mounted=false;
+                });   
         //eslint-disable-next-line
         },[]);
 
+    useEffect(()=>{
+        setData(props.notifications);
+    },[props.notifications]);
    return(
     <div className = "FlightCard">
     <div className = "Top-Card">
