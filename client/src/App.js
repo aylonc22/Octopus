@@ -14,7 +14,7 @@ import Navbar from './components/navbar/Navbar';
 import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
-import PopUp from './components/PopupNotification/PopupNotification.js';
+
 
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
@@ -41,10 +41,8 @@ useEffect(()=>{
   
   socket.on("reRender-card",()=>{ 
     getAllOpenNotification().then(res=>{
-      //res.data?setNotifications_card(res.data.data?res.data.data:[]):console.log();
-      console.log("DKPAS<FASD<SAF<A{FL<SA{FL<ADLFA<SF");
-      return res.data.data;
-    }).then(res=>{setNotifications_card(res);console.log(res);});
+      console.log(typeof res.data.data);
+    });
     });
 
     socket.on('reRender',()=>{

@@ -158,7 +158,7 @@ function openNotificationToStation(arr) {
 }
 
     return(
-        <div>
+        <div className= "contentDiv">
             <h1 className =  "textCenter">תחנות דולקות</h1>
             <div className = "StationPage">{array}</div>
         </div>

@@ -1,6 +1,6 @@
 import {React,useEffect,useState} from 'react';
 import {getNotificationsFromTo} from '../../api/notification-api.js';
-import './Notification.css'
+import './Notification.css';
 let dateFormat = require('dateformat');
 const Notification = props =>{
     const [Data,setData] = useState([]);
@@ -11,6 +11,7 @@ const Notification = props =>{
             getNotificationsFromTo(_leftArrow,_rightArrow).then(res=>//props.getAllTable
                 {
                     res.data?setData(res.data.data?res.data.data:[]):console.log()
+                    console.log(res.data.data);
                 });   
         //eslint-disable-next-line
         },[]);
@@ -19,6 +20,7 @@ const Notification = props =>{
         setData(props.notifications);
     },[props.notifications]);
    return(
+       <div className="contentDiv">
     <div className = "FlightCard">
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
@@ -59,6 +61,7 @@ const Notification = props =>{
          <img onClick = {()=>handleLeftArrow()} className ="Left-Button" src = {LeftArrow_icon} alt = "שמאל"></img>
          <img onClick = {()=>handleRightArrow()} className ="Right-Button" src = {RightArrow_icon} alt = "ימין"></img>
          </div> */}
+</div>
 </div>
 )
 };

@@ -3,10 +3,10 @@ import './PopupNotification.css';
 
 const PopupNotification = (props)=>{
     return(
-        <div>
-     <label for="one" class="pointer-cursor">
+        <div className="contentDiv">
+     {/* <label for="one" class="pointer-cursor">
       click/toggle notification
-     </label>
+     </label> */}
 
 
   <input type="checkbox" id="one" class="hidden" name="ossm"/>  

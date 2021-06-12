@@ -16,6 +16,7 @@ const Flight = props =>{
         },[]);
 
    return(
+       <div className="contentDiv">
     <div className = "FlightCard">
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
@@ -56,6 +57,7 @@ const Flight = props =>{
          <img onClick = {()=>handleLeftArrow()} className ="Left-Button" src = {LeftArrow_icon} alt = "שמאל"></img>
          <img onClick = {()=>handleRightArrow()} className ="Right-Button" src = {RightArrow_icon} alt = "ימין"></img>
          </div> */}
+</div>
 </div>
 )
 };

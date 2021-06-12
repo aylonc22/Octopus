@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
 import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
 
-
 import './Navbar.css';
 const NavBar = (props)=>
     {
@@ -15,6 +14,17 @@ const NavBar = (props)=>
             </div></Link>
         ));
        
+const PopUp =  <div className="contentDiv">
+                {/* <label for="one" class="pointer-cursor">
+                click/toggle notification
+                </label> */}
+                <input type="checkbox" id="one" class="hidden" name="ossm"/>  
+                <label for="one" class="alert-message">
+                <strong> <i class="fa fa-heart"></i> Attention</strong> CSS is Awesome, click me  !! ...
+                <button class="close">x</button>
+                </label> 
+                </div> 
+
        // Conditionlly make the right button red depends on the url (after page refreshed)
        function handleInitClicked(url) {
         switch (url) {
@@ -61,6 +71,7 @@ const NavBar = (props)=>
                           </div> </li>)}
                         </ul>
                 </div>
+                {PopUp}
                     </header>
                
         );

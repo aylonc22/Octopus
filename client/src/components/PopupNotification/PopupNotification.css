@@ -58,3 +58,6 @@
     100%  { top: -100px; left: 0; }
   }
   
+  .contentDiv{
+    padding-top: 100px;
+  }

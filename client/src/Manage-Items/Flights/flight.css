@@ -10,3 +10,7 @@
     -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
     -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
 }
+
+.contentDiv{
+    padding-top: 100px ;
+  }

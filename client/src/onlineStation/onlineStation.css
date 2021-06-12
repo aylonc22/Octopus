@@ -38,7 +38,9 @@ svg {
   justify-content: center;
   align-items: center;
 }
-
+.contentDiv{
+  padding-top: 100px ;
+}
 .containerOnline{
     display: flex;
     background-color: #A8DADC;

@@ -1,8 +1,9 @@
 .background{
-    background: #00E7DC;
+  background: #00E7DC;
   margin:0; 
   padding:0; 
-  overflow:hidden
+  overflow:hidden;
+  display: flex;
 }
 
 .PageNotFound-SVG{
