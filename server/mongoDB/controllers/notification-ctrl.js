@@ -112,7 +112,6 @@ getOpenNotification = async (req, res) => {
                 .status(200)
                 .json({ success: true,data:[],error: `Open Notification not found` });
         }
-        //socket("dd","HELLO");
         return res.status(200).json({ success: true, data: notifications });
     }).catch(err => console.log(err));
 };

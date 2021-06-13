@@ -18,10 +18,10 @@ const PopUp =  <div className="contentDiv">
                 {/* <label for="one" class="pointer-cursor">
                 click/toggle notification
                 </label> */}
-                <input type="checkbox" id="one" class="hidden" name="ossm"/>  
-                <label for="one" class="alert-message">
-                <strong> <i class="fa fa-heart"></i> Attention</strong> CSS is Awesome, click me  !! ...
-                <button class="close">x</button>
+                <input type="checkbox" id="one" className="hidden" name="ossm"/>  
+                <label htmlFor="one" className="alert-message">
+                <strong> <i className="fa fa-heart"></i> Attention</strong> CSS is Awesome, click me  !! ...
+                <button className="close">x</button>
                 </label> 
                 </div> 
 
