@@ -3,8 +3,7 @@ import io from 'socket.io-client';
 import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
 import './App.css';
 //Mongo api
-import {getNotificationsFromTo} from './api/notification-api.js';
-import {getAllOpenNotification} from './api/notification-api.js';
+import {getAllNotification,getNotificationsFromTo} from './api/notification-api.js';
 //Componnets
 import OfflineStation from './offlineStation/offlineStation';
 import OnlineStation from './onlineStation/onlineStation';
@@ -14,8 +13,8 @@ import Navbar from './components/navbar/Navbar';
 import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
-
-
+//Classes
+import Queue from './classes/queue';
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
 reconnection:true,
@@ -33,17 +32,15 @@ function App() {
   const [offlineStations,setOfflineStations] = useState([]);//{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}
   const [notifications_card,setNotifications_card] =useState([]);
   const [notifications,setNotifications] = useState([]);
+  const [PoPupQueue,setPopUpQueue] = useState(new Queue);
 useEffect(()=>{
   socket.on('sendStations', (_onlineStations,_offlineStations)=>{
     setOfflineStations(_offlineStations);
    setOnlineStations(_onlineStations);
   });
   
-  socket.on("reRender-card",()=>{ 
-    getAllOpenNotification().then(res=>{
-      console.log(typeof res.data.data);
-    });
-    });
+  socket.on('reRender-card',()=>{ 
+    getAllNotification().then(res=>setNotifications_card(res.data.data));});
 
     socket.on('reRender',()=>{
        getNotificationsFromTo(0,37).then(res=>
@@ -51,8 +48,28 @@ useEffect(()=>{
                res.data?setNotifications(res.data.data?res.data.data:[]):console.log()
            });
    });
+   socket.on('newPopUp',(e=>{
+      let queue =PoPupQueue.items;
+      let res = new Queue();
+      for(let i=0;i<queue.length;i++)
+        res.enqueue(queue[i]);
+      
+      res.enqueue(e);
+      setPopUpQueue(res);
+   }));
   // eslint-disable-next-line
 },[]);
+
+// dequeuing notification from popup queue
+const dequeue = ()=>{
+  let queue =PoPupQueue.items;
+  let res = new Queue();
+  for(let i=1;i<queue.length;i++)
+    res.enqueue(queue[i]);
+
+    console.log(res);
+  setPopUpQueue(res);
+}
 
 return (
     
@@ -60,7 +77,8 @@ return (
            <Router>
              <div>
             <Navbar
-             url={window.location.href.substring(window.location.href.lastIndexOf('/'))}/>
+             url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
+             popup = {PoPupQueue} dequeue = {()=>dequeue()}/>
             <Switch>
           <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
           <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>

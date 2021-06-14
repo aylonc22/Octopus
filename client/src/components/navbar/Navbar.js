@@ -7,25 +7,38 @@ const NavBar = (props)=>
     {
        // Conditionally render navbar "pressedLink" = clicked based on this condition 
        const[clicked,setClicked] = useState(props.url.length===0?"/":handleInitClicked(props.url));
+       const[popup,setPopup] = useState(null);
        const DropDown =  ManageItems.map((MItem,index)=>(
             <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
             <div className = "MItem">
                 <label className = "MItem-label" > {MItem.hebrew} </label>
             </div></Link>
         ));
-       
-const PopUp =  <div className="contentDiv">
-                {/* <label for="one" class="pointer-cursor">
-                click/toggle notification
-                </label> */}
-                <input type="checkbox" id="one" className="hidden" name="ossm"/>  
-                <label htmlFor="one" className="alert-message">
-                <strong> <i className="fa fa-heart"></i> Attention</strong> CSS is Awesome, click me  !! ...
-                <button className="close">x</button>
-                </label> 
-                </div> 
-
-       // Conditionlly make the right button red depends on the url (after page refreshed)
+       useEffect(()=>{
+           if(props.popup.items.length)
+           setTimeout(() => {
+            setPopup(props.popup.front());
+           }, 5000);
+           else
+           setTimeout(() => {
+            setPopup(null);
+           }, 5000);
+           //props.dequeue();
+          
+       },[props.popup]);
+       useEffect(()=>{props.dequeue();},[popup]);
+const PopUp = (e)=> <div className="contentDiv">
+                    {/* <label for="one" class="pointer-cursor">
+                    click/toggle notification
+                    </label> */}
+                    <input type="checkbox" id="one" className="hidden" name="ossm"/>  
+                    <label htmlFor="one" className="alert-message">
+                    <strong> <i className="fa fa-heart"></i> Attention</strong> {e.Stations}
+                    <button className="close">x</button>
+                    </label> 
+                    </div> 
+    
+       // Conditionlly make the right button [red/clicked] depends on the url (after page refreshed)
        function handleInitClicked(url) {
         switch (url) {
             case "/edit":
@@ -71,7 +84,7 @@ const PopUp =  <div className="contentDiv">
                           </div> </li>)}
                         </ul>
                 </div>
-                {PopUp}
+                {popup===null?null:PopUp(popup)}
                     </header>
                
         );

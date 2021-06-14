@@ -107,6 +107,7 @@ width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: auto;
     width: 100%;
     border: solid #1687a7 0.5px;
     height: 20px;

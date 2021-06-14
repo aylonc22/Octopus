@@ -148,6 +148,7 @@ function handleStations(data) {
         {
         
             await insert(needInsert[i]);
+            io.sockets.emit('newPopUp',needInsert[i]); // sending a new popup request to client
             
         }
         if(needInsert.length)
@@ -269,10 +270,3 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(req);
       })
   }
-
-  module.exports = function(event,data){
-    return function socketToSocket(){
-        //io.sockets.emit(event,data);
-        console.log(data);
-  }
-}
