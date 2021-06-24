@@ -67,8 +67,8 @@ function stationWatcher(station)
             rl.on('close',()=>{
                 // console.log(`[Server] found new last line for station:${station.id},${Object.keys(io.sockets.sockets).length}`);
                    //io.sockets.emit('station-listener',lastLine,station.id).on('error', err=>console.log(err));
-                   handleStations({message:lastLine,station:station.id})
-                   handleNotification();
+                   handleStations({message:lastLine,station:station.id}).then((res)=>handleNotification());
+                   
             });
         }
     }));
@@ -77,7 +77,7 @@ function stationWatcher(station)
 //Get new data from stations watcher
 // check if there is new data to update
 // and update the correct stations
-function handleStations(data) {
+async function handleStations(data) {
 
     let newOffline =  _offlineStations.filter(item=>item.id!==data.station)
     let newOnline = []; 
@@ -106,11 +106,11 @@ function handleStations(data) {
  async function handleNotification() {
    await getOpenNotification();//update list of open notifications
    // getting notification && type and inserting them to Mongo
-   const insert = e=>createNotification({Stations:[e.Stations[0],e.Stations[1]],
+   async function insert(e){await createNotification({Stations:[e.Stations[0],e.Stations[1]],
     Type:e.Type,
     Duplicate:e.Duplicate,
     Open:new Date(),
-    Close:new Date("1970-01-01")}); // new Date(<integer>) specifies the datetime as
+    Close:new Date("1970-01-01")});} // new Date(<integer>) specifies the datetime as
     //milliseconds since the UNIX epoch (Jan 1, 1970)
     
     if(newNotifications.length)
@@ -147,8 +147,7 @@ function handleStations(data) {
         for(let i=0;i<needInsert.length;i++)
         {
         
-            await insert(needInsert[i]);
-            io.sockets.emit('newPopUp',needInsert[i]); // sending a new popup request to client
+            await insert(needInsert[i]).then(res=>io.sockets.emit('newPopUp',needInsert[i]));
             
         }
         if(needInsert.length)

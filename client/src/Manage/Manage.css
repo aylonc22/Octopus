@@ -121,6 +121,12 @@ width: 50%;
     background: #d3e0ea;
 }
 
+.Stations{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
 /* Slide Bar */
   *,
   *:before,

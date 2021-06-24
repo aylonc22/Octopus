@@ -46,7 +46,12 @@ const Notification = props =>{
              <div className = "Cell">{ dateFormat(new Date(d.Open),"dd-mm-yyyy:// HH:MM:ss")}</div>
              <div className = "Cell">{d.Duplicate}</div>
              <div className = "Cell">{d.Type}</div>
-             <div className = "Cell">{d.Stations}</div>
+             <div className = "Cell">
+                   <div className = "Stations">
+                    <div>{d.Stations[0]}</div>
+                    <div>{d.Stations[1]}</div>
+                    </div>
+             </div>       
              </div>);
          else
              return( <div key = {index} className = "Row">

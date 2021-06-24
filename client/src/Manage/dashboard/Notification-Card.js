@@ -34,10 +34,15 @@ const [Data,setData] = useState([]);
                    { 
                     return(<div key = {d._id} className  = "Row"> 
                     <div className = "Cell">{new Date(d.Close).getFullYear()===1970?"פתוח":isSameDay(new Date(d.Close))?dateFormat(new Date(d.Close),"HH:MM:ss"):dateFormat(new Date(d.Close),"dd-mm-yyyy")}</div>
-                    <div className = "Cell">{isSameDay(new Date(d.Open))?dateFormat(new Date(d.Open),"HH:MM:ss"):dateFormat(new Date(d.Close),"dd-mm-yyyy")}</div>
+                    <div className = "Cell">{isSameDay(new Date(d.Open))?dateFormat(new Date(d.Open),"HH:MM:ss"):dateFormat(new Date(d.Open),"dd-mm-yyyy")}</div>
                     <div className = "Cell">{d.Duplicate}</div>
                     <div className = "Cell">{d.Type}</div> 
-                    <div className = "Cell">{d.Stations}</div>
+                   <div className = "Cell">
+                   <div className = "Stations">
+                    <div>{d.Stations[0]}</div>
+                    <div>{d.Stations[1]}</div>
+                    </div>
+                   </div>
                     </div>);}
                     else
                    {
