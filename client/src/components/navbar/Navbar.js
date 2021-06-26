@@ -19,10 +19,8 @@ const NavBar = (props)=>
            setTimeout(() => {
             setPopup(props.popup.front());
            }, 5000);
-           else
-           setTimeout(() => {
-            setPopup(null);
-           }, 5000);
+        //    
+        ;
            //props.dequeue();
           
        },[props.popup]);
@@ -31,7 +29,7 @@ const PopUp = (e)=> <div className="contentDiv">
                     {/* <label for="one" class="pointer-cursor">
                     click/toggle notification
                     </label> */}
-                    <input type="checkbox" id="one" className="hidden" name="ossm"/>  
+                    <input type="checkbox" id="one" className="hidden popCheckBox" name="ossm"/>  
                     <label htmlFor="one" className="alert-message">
                     <strong> <i className="fa fa-heart"></i> Attention</strong> {e.Stations}
                     <button className="close">x</button>
@@ -69,7 +67,8 @@ const PopUp = (e)=> <div className="contentDiv">
        }
        
         return(
-              <header  className="navDiv">
+            <div>
+                <header  className="navDiv">
                     <div className = "NavbarItems"> 
                         <Link className="Navbar-logo" to = "/404">תמנון</Link>
                         <div className = "menu-icon"></div>
@@ -83,9 +82,13 @@ const PopUp = (e)=> <div className="contentDiv">
                           <div className ="ManNav-links">{item.title==="Manage"?DropDown:null}</div>
                           </div> </li>)}
                         </ul>
-                </div>
-                {popup===null?null:PopUp(popup)}
-                    </header>
+                    </div>
+                    <div className="popDiv">
+                        {/* {popup===null?null:PopUp(popup)} */}
+                        {PopUp({Stations:["asdas","dasdas"]})}
+                    </div>
+                </header>
+            </div>
                
         );
     }

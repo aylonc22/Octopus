@@ -169,12 +169,10 @@ li{
 
 
 
-
-
 .fa{
     line-height:30px;
     font-size:30px;
-    display:inline-bloxk;
+    display:inline-block;
     width:35px;
     height:35px;
   }
@@ -182,11 +180,11 @@ li{
     display:none;
   }
   
-  input[type=checkbox] + label {
-    position:relative;
+  .popCheckBox{
+    position:fixed;
   } 
   
-  input[type=checkbox]:checked + label {
+  .popCheckBox[type=checkbox]:checked + label {
     animation: closing 0.3s forwards ease-in-out,
                moving 0.3s forwards ease-in-out;
   } 
@@ -206,15 +204,16 @@ li{
     color: #b94b45;
     border-radius: 3px;
     line-height:30px;
-    position: absolute;
-    top: 0; left: 0;
+    top: 0; left: 70%;
     display:block;
-    width:100%;
+    width:30%;
     padding: 12px;
+    margin-top: 85px;
     box-sizing: border-box;
     color: rgba(255, 255, 255, .9);
     box-shadow: 0px 10px 50px rgba(0,0,0,.6);
     background:#34495e;
+    position:fixed;
   }
   
   @keyframes closing {
@@ -227,10 +226,11 @@ li{
   }
   
   @keyframes moving {
-    0%, 90% { top: 0; left: 0; }
-    100%  { top: -100px; left: 0; }
+    0%, 90% { top: 0; left: 70%; }
+    100%  { top: -100px; left: 70%; }
   }
   
   .contentDiv{
     padding-top: 100px;
   }
+  
