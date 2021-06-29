@@ -2,8 +2,6 @@ import {React,useEffect,useState} from 'react';
 //components 
 import Button from '../../../components/button/Button.js';
 //Icons
-import LeftArrow_icon from '../../../icons/left-chevron.png';
-import RightArrow_icon from '../../../icons/right-chevron.png';
 import Add_icon from '../../../icons/add.png';
 import Edit_icon from '../../../icons/edit.png';
 import Trash_icon from '../../../icons/trash.png'; // Delete Icon
@@ -17,27 +15,9 @@ const SmallTable = props =>{
     const [Data,setData] = useState([]);
     const [submitData,setSubmitData] = useState("");
     const [_success,Set_Success] = useState(true);
-    const [_rightArrow,setRightArrow] = useState(19);
-    const [_leftArrow,setLeftArrow] = useState(0);
     const [removeClick,setRemoveClick] = useState(false);
     
     //Handlers
-    const handleRightArrow = ()=>{
-        if(Data.length && Data.length>_rightArrow)
-        {
-            setRightArrow(_rightArrow + 10);
-            setLeftArrow(_leftArrow + 10);
-        }
-    };
-    
-    const handleLeftArrow = ()=>{
-        if(Data.length && _leftArrow>0)
-        {
-            setRightArrow(_rightArrow - 10);
-            setLeftArrow(_leftArrow - 10);
-        }
-    };
-
     const handleAdd =( <div>
     <textarea className = "InsertData" 
     maxLength= "3" //Tail can be only 3 chars
@@ -88,30 +68,16 @@ const SmallTable = props =>{
                     <label className = "Header-Cell">{props.secondaryH}</label>
                     <label className = "Header-Delete-Cell"></label>
                     </div>
-                    
-                   {!Data.length?([...Array(20)].map((i,index)=><div key = {index} className = "Row">
-                  <div className = "Empty-Cell"></div>
-                  <div className = "Empty-Cell"></div>       
-                  </div>)):[...Data.slice(_leftArrow,_rightArrow),...Array(20-Data.slice(_leftArrow,_rightArrow).length)].map((d,index)=>{
-                    if(d)
-                        return(<div  key = {d._id} className = "Row">
-                        <div className = "Cell">{d.ID}</div>
-                        <div className = "Cell">{d.Type?d.Type:d.Location}</div>
+                    <div className = "DataTable">
+                        {Data.map((e,index)=><div  key = {e._id} className = "Row">
+                        <div className = "Cell">{e.ID}</div>
+                        <div className = "Cell">{e.Type?e.Type:e.Location}</div>
                         <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
                         <input type="checkbox" id={index} name={index}/>
                         <label htmlFor={index}></label>
                         </div>
-                        </div>);
-                    else
-                        return( <div key = {index} className = "Row">
-                        <div className = "Empty-Cell"></div>
-                        <div className = "Empty-Cell"></div>       
-                        </div>);
-                    })}
-                    {/* <div className = "Manage-Table-Bottom"> 
-                    <img onClick = {()=>handleLeftArrow()} className ="Left-Button" src = {LeftArrow_icon} alt = "שמאל"></img>
-                    <img onClick = {()=>handleRightArrow()} className ="Right-Button" src = {RightArrow_icon} alt = "ימין"></img>
-                    </div> */}
+                        </div>)}
+                    </div>
          </div>
     );
     const error = <label>TODO MAKE ERROR PAGE FOR MONGO</label>;//TODO MAKE ERROR PAGE FOR MONGO 

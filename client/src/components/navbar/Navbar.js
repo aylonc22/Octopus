@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
-import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import './Navbar.css';
 const NavBar = (props)=>
@@ -26,9 +26,9 @@ const NavBar = (props)=>
        },[props.popup]);
        useEffect(()=>{props.dequeue();},[popup]);
 const PopUp = (e)=> <div className="contentDiv">
-                    {/* <label for="one" class="pointer-cursor">
+                    <label htmlFor="one" className="pointer-cursor">
                     click/toggle notification
-                    </label> */}
+                    </label>
                     <input type="checkbox" id="one" className="hidden popCheckBox" name="ossm"/>  
                     <label htmlFor="one" className="alert-message">
                     <strong> <i className="fa fa-heart"></i> Attention</strong> {e.Stations}
@@ -49,22 +49,6 @@ const PopUp = (e)=> <div className="contentDiv">
                 return(url); // make the clicked button red === marked
        }
      }
-       function handleOnClick(url) {
-        switch (url) {
-            case "/edit":
-                setClicked("/")
-                break;
-            case "/notification":
-                setClicked("/")
-                break;
-            case "/flight":
-            setClicked("/")
-                break;
-            default:
-                setClicked(url); // make the clicked button red === marked
-                break;
-        }   
-       }
        
         return(
             <div>

@@ -1,5 +1,5 @@
 
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 //Manage components
 import SmallTable from './dashboard/SmallTable-Card.js';
@@ -11,7 +11,7 @@ import {getAllFrequency} from '../api/frequency-api.js';
 import {getAllStation} from '../api/station-api.js';
 import {getAllGDT} from '../api/gdt-api.js';
 import {getAllFlight} from '../api/flight-api.js';
-import {getAllNotification,getOpenNotificationFromTo,getNotificationsFromTo, getAllOpenNotification} from '../api/notification-api.js';
+import {getAllNotification,getNotificationsFromTo} from '../api/notification-api.js';
 //Styling
 import './Manage.css';
 const Manage = props =>{    

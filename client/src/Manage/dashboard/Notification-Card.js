@@ -5,7 +5,7 @@ const [Data,setData] = useState([]);
     useEffect(()=>{
        props.getAllTable.then(res=>{
         setData(res.data.data.filter(e=>e))
-       });
+       }); // eslint-disable-next-line
    },[]);
 
         useEffect(()=>{

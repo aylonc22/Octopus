@@ -1,6 +1,6 @@
 import {React,useEffect} from 'react';
 import {TweenMax,Power1,Power3} from 'gsap';
-import { BrowserRouter as Router, Switch, Route, Link, withRouter } from "react-router-dom";
+import {Link} from "react-router-dom";
 import './NotFoundPage.css';
 
 const Image = (<svg className ="PageNotFound-SVG" xmlns="http://www.w3.org/2000/svg" width="1226.887px" height="908px" viewBox="0 0 1226.887 908">
@@ -236,7 +236,7 @@ const NotFoundPage = (props)=>{
 
     if(props.isOffline)
     return(<div className ="background">
-		<h1 id = "h1">Page not found.</h1>
+		<h1 id = "h1">השרת לא עובד יש לפנות למחלקת תחקור</h1>
     {Image}
 </div>
     );

@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from 'react';
 import io from 'socket.io-client';
-import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router,Switch, Route} from "react-router-dom";
 import './App.css';
 //Mongo api
 import {getAllNotification,getNotificationsFromTo} from './api/notification-api.js';
@@ -32,13 +32,22 @@ function App() {
   const [offlineStations,setOfflineStations] = useState([]);//{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}
   const [notifications_card,setNotifications_card] =useState([]);
   const [notifications,setNotifications] = useState([]);
-  const [PoPupQueue,setPopUpQueue] = useState(new Queue);
-  const [serverOn,setServerOn] = useState(false);
-  
+  const [PoPupQueue,setPopUpQueue] = useState(new Queue());
+  const [serverOn,setServerOn] = useState(true);
+  const [reconnectAttemp,setReconnectAttemp] = useState(0);
 useEffect(()=>{
-  socket.on("connect",()=>setServerOn(true));
+  socket.on("connect",()=>{
+    setServerOn(true);
+    setReconnectAttemp(0);
+  });
   socket.on("disconnect",()=>setServerOn(false));
-  
+  socket.on("reconnect", ()=>{
+   let newAttemp = reconnectAttemp;
+    setReconnectAttemp(newAttemp++);
+    if(reconnectAttemp>0)
+      setServerOn(false)
+    
+  });
   socket.on('sendStations', (_onlineStations,_offlineStations)=>{
     setOfflineStations(_offlineStations);
    setOnlineStations(_onlineStations);
@@ -75,8 +84,10 @@ const dequeue = ()=>{
     console.log(res);
   setPopUpQueue(res);
 }
-// if socket is connected
-if(serverOn)
+
+if(!serverOn) // if socket can't connect to server
+    return (<NotFoundPage isOffline = "true"/>)
+  else // if socket is connected
   return (
           <div>
             <Router>
@@ -98,8 +109,7 @@ if(serverOn)
           </div>   
       
     );
-    else // if socket can't connect to server
-    return (<NotFoundPage isOffline = "true"/>)
+    
  }
 
 export default App;

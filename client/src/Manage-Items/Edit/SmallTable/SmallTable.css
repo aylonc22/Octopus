@@ -16,6 +16,12 @@
     background:#d3e0ea;
 }
 
+.DataTable{
+  height: 400px;
+  background: #d3e0ea;
+  overflow: auto;
+}
+
 .Manage-Icon-Data{
     display: flex;
     justify-content: space-between;
