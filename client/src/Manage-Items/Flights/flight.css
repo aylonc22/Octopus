@@ -11,6 +11,12 @@
     -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
 }
 
+.FlightTable{
+    height: 740px;
+    background: #d3e0ea;
+    overflow: auto;
+}
+
 .contentDiv{
     padding-top: 100px ;
   }

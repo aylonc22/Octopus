@@ -33,7 +33,12 @@ function App() {
   const [notifications_card,setNotifications_card] =useState([]);
   const [notifications,setNotifications] = useState([]);
   const [PoPupQueue,setPopUpQueue] = useState(new Queue);
+  const [serverOn,setServerOn] = useState(false);
+  
 useEffect(()=>{
+  socket.on("connect",()=>setServerOn(true));
+  socket.on("disconnect",()=>setServerOn(false));
+  
   socket.on('sendStations', (_onlineStations,_offlineStations)=>{
     setOfflineStations(_offlineStations);
    setOnlineStations(_onlineStations);
@@ -70,29 +75,31 @@ const dequeue = ()=>{
     console.log(res);
   setPopUpQueue(res);
 }
-
-return (
-    
-        <div>
-           <Router>
-             <div>
-            <Navbar
-             url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
-             popup = {PoPupQueue} dequeue = {()=>dequeue()}/>
-            <Switch>
-          <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
-          <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
-          <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
-          <Route exact path="/flight"><Flights/></Route>
-          <Route exact path="/notification"><Notification notifications = {notifications}/></Route>
-          <Route exact path="/edit"><Edit/></Route>
-          <Route path="*"><NotFoundPage/></Route>
-        </Switch>
-           </div>
-            </Router>
-        </div>   
-    
-  );
+// if socket is connected
+if(serverOn)
+  return (
+          <div>
+            <Router>
+              <div>
+              <Navbar
+              url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
+              popup = {PoPupQueue} dequeue = {()=>dequeue()}/>
+              <Switch>
+            <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
+            <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
+            <Route exact path="/offline"><OfflineStation  items = {offlineStations} /></Route>
+            <Route exact path="/flight"><Flights/></Route>
+            <Route exact path="/notification"><Notification notifications = {notifications}/></Route>
+            <Route exact path="/edit"><Edit/></Route>
+            <Route path="*"><NotFoundPage/></Route>
+          </Switch>
+            </div>
+              </Router>
+          </div>   
+      
+    );
+    else // if socket can't connect to server
+    return (<NotFoundPage isOffline = "true"/>)
  }
 
 export default App;

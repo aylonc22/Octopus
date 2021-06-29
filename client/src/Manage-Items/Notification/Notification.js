@@ -4,14 +4,10 @@ import './Notification.css';
 let dateFormat = require('dateformat');
 const Notification = props =>{
     const [Data,setData] = useState([]);
-    const [_rightArrow,setRightArrow] = useState(37);
-    const [_leftArrow,setLeftArrow] = useState(0);
-
     useEffect(()=>{
-            getNotificationsFromTo(_leftArrow,_rightArrow).then(res=>//props.getAllTable
+            getNotificationsFromTo().then(res=>//props.getAllTable
                 {
-                    res.data?setData(res.data.data?res.data.data:[]):console.log()
-                    console.log(res.data.data);
+                    res.data?setData(res.data.data?res.data.data:[]):console.log();
                 });   
         //eslint-disable-next-line
         },[]);
@@ -32,40 +28,20 @@ const Notification = props =>{
          <label className = "Header-Cell">סוג</label>
          <label className = "Header-Cell">תחנות</label>
          </div>
-         
-        {!Data.length?([...Array(37)].map((i,index)=><div key = {index} className = "Row">
-       <div className = "Empty-Cell"></div>
-       <div className = "Empty-Cell"></div>
-       <div className = "Empty-Cell"></div>
-       <div className = "Empty-Cell"></div>
-       <div className = "Empty-Cell"></div>      
-       </div>)):[...Data.slice(_leftArrow,_rightArrow),...Array(37-Data.slice(_leftArrow,_rightArrow).length)].map((d,index)=>{
-         if(d)
-             return(<div key ={d._id} className = "Row">
-             <div className = "Cell">{new Date(d.Close).getFullYear()===1970?"פתוח":dateFormat(new Date(d.Close),"dd-mm-yyyy:// HH:MM:ss")}</div>
-             <div className = "Cell">{ dateFormat(new Date(d.Open),"dd-mm-yyyy:// HH:MM:ss")}</div>
-             <div className = "Cell">{d.Duplicate}</div>
-             <div className = "Cell">{d.Type}</div>
+         <div className = "NotificationTable" >
+             {Data.map((e)=><div key ={e._id} className = "Row">
+             <div className = "Cell">{new Date(e.Close).getFullYear()===1970?"פתוח":dateFormat(new Date(e.Close),"dd-mm-yyyy:// HH:MM:ss")}</div>
+             <div className = "Cell">{ dateFormat(new Date(e.Open),"dd-mm-yyyy:// HH:MM:ss")}</div>
+             <div className = "Cell">{e.Duplicate}</div>
+             <div className = "Cell">{e.Type}</div>
              <div className = "Cell">
                    <div className = "Stations">
-                    <div>{d.Stations[0]}</div>
-                    <div>{d.Stations[1]}</div>
+                    <div>{e.Stations[0]}</div>
+                    <div>{e.Stations[1]}</div>
                     </div>
              </div>       
-             </div>);
-         else
-             return( <div key = {index} className = "Row">
-             <div className = "Empty-Cell"></div>
-             <div className = "Empty-Cell"></div>
-             <div className = "Empty-Cell"></div>
-             <div className = "Empty-Cell"></div> 
-             <div className = "Empty-Cell"></div>        
-             </div>);
-         })}
-         {/* <div className = "Manage-Table-Bottom"> 
-         <img onClick = {()=>handleLeftArrow()} className ="Left-Button" src = {LeftArrow_icon} alt = "שמאל"></img>
-         <img onClick = {()=>handleRightArrow()} className ="Right-Button" src = {RightArrow_icon} alt = "ימין"></img>
-         </div> */}
+             </div>)}
+         </div>
 </div>
 </div>
 )

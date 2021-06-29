@@ -246,10 +246,10 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
   const updateNotification = async(req,res)=> {
     await Notification.findOneAndUpdate({_id:req},{$set:{Close:new Date()}},
     {useFindAndModify: false, new:true},err=>{
-        //if(err)
-        //console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
+        if(err)
+        console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
 
-        //console.log(`[Mongo] Updated Successfuly ${req}`)
+        console.log(`[Mongo] Updated Successfuly ${req}`)
     },{new:true})
   }
 
