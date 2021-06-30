@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
+import Bell from '../../icons/notification.svg';
 
 import './Navbar.css';
 const NavBar = (props)=>
@@ -14,17 +15,7 @@ const NavBar = (props)=>
                 <label className = "MItem-label" > {MItem.hebrew} </label>
             </div></Link>
         ));
-       useEffect(()=>{
-           if(props.popup.items.length)
-           setTimeout(() => {
-            setPopup(props.popup.front());
-           }, 5000);
-        //    
-        ;
-           //props.dequeue();
-          
-       },[props.popup]);
-       useEffect(()=>{props.dequeue();},[popup]);
+
 const PopUp = (e)=> <div className="contentDiv">
                     <label htmlFor="one" className="pointer-cursor">
                     click/toggle notification
@@ -55,7 +46,13 @@ const PopUp = (e)=> <div className="contentDiv">
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
                         <Link className="Navbar-logo" to = "/404">תמנון</Link>
-                        <div className = "menu-icon"></div>
+                        <div className = "notifications-icon">
+                            <div className = "wrapper">
+                                <div className = "button">
+                                    <img  src = {Bell} className = "bell"></img>
+                                </div>
+                            </div>
+                        </div>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>
                         <li key = {index}>
                           <div className ="dropdown ">
@@ -66,10 +63,6 @@ const PopUp = (e)=> <div className="contentDiv">
                           <div className ="ManNav-links">{item.title==="Manage"?DropDown:null}</div>
                           </div> </li>)}
                         </ul>
-                    </div>
-                    <div className="popDiv">
-                        {/* {popup===null?null:PopUp(popup)} */}
-                        {PopUp({Stations:["asdas","dasdas"]})}
                     </div>
                 </header>
             </div>

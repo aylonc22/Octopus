@@ -14,6 +14,60 @@
     
 }
 
+.notifications-icon{
+  margin-left: 2%;
+  background: #0a1931;
+  display: flex;
+ justify-content: center;
+ align-items: center;
+ 
+}
+
+.wrapper{
+  background: #0a1931;
+    float:right;
+    border-radius: 25px 25px 0 0;
+    position: relative;
+    display: block;
+    width: 250px;
+    overflow:hidden;
+}
+
+.button{
+  background: #0a1931;
+  width: 70px;
+  height: 55px;
+  border-radius: 40px;
+  background-image: -webkit-linear-gradient(161deg, #008ca2, #00a9c3);
+  background-image: linear-gradient(289deg, #008ca2, #00a9c3);
+  cursor: pointer;
+}
+
+.bell{
+  margin-top: 8px;
+  margin-left: 20px;
+  width: 30px;
+  height: 35px;
+  background-image: -webkit-linear-gradient(161deg, #008ca2, #00a9c3);
+  background-image: linear-gradient(289deg, #008ca2, #00a9c3);
+  cursor: pointer;
+}
+
+.button:hover .bell {
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotate{
+  0%{transform: rotate(0deg)}
+  25%{transform: rotate(40deg)}
+  50%{transform: rotate(0deg)}
+  75%{transform: rotate(-40deg)}
+  100%{transform: rotate(0deg)}
+}
+
 .Navbar-logo{
     order: 1;
     display: flex;
@@ -233,4 +287,8 @@ li{
   .contentDiv{
     padding-top: 100px;
   }
+  
+
+
+
   
