@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
-
+import BellDef from '../../icons/ring.svg';
 import './Navbar.css';
 const NavBar = (props)=>
     {
@@ -49,7 +49,7 @@ const PopUp = (e)=> <div className="contentDiv">
                         <div className = "notifications-icon">
                             <div className = "wrapper">
                                 <div className = "button">
-                                    <img  src = {Bell} className = "bell"></img>
+                                    <img  src = {BellDef} className = "bell"></img>
                                 </div>
                             </div>
                         </div>
