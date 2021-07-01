@@ -46,19 +46,30 @@ const PopUp = (e)=> <div className="contentDiv">
             <div>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
-                        <Link className="Navbar-logo" to = "/404">תמנון</Link>
+                        <div className="Navbar-logo"><Link className ="Octopus-Label" to = "/404">תמנון</Link></div>
                         <div className = "notifications-icon">
                             <div className = "wrapper">
                                 <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"button clicked"}>
-                                    <img  src = {BellDef} className = "bell"></img>
+                                    <img  src = {notifications.length?Bell:BellDef} className = "bell"></img>
                                     {//only visible when user clicked on notification button
-                                        notificationOpen?<div className="text"> <span className = "number"> {notifications.length}</span>התראות</div>:null}
-                                </div>
+                                        notificationOpen?<div className="text"> <span className = "number"> {notifications.length}</span>התראות</div>:null} 
+                                 </div>
+                                    {//only visible when user clicked on notification button
+                                    notificationOpen?<div className="notifications">
+                                                    
+        			                                        <li className="notification">
+          				                                    Walter White added you 
+        			                                        </li>
+        			                                        <li className="notification">
+          			                                        	John Smithwould like 
+        			                                        </li>
+      			                                        
+                                                     </div>:null}
                             </div>
                         </div>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>
                         <li key = {index}>
-                          <div className ="dropdown ">
+                          <div className ="dropdown-menu">
                           <Link onClick ={()=>setClicked(item.url)}
                            className = {clicked===item.url?"clicked-page":item.cName} to = {item.url}>
                            {item.hebrew}
