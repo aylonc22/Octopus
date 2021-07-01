@@ -8,7 +8,8 @@ const NavBar = (props)=>
     {
        // Conditionally render navbar "pressedLink" = clicked based on this condition 
        const[clicked,setClicked] = useState(props.url.length===0?"/":handleInitClicked(props.url));
-       const[popup,setPopup] = useState(null);
+       const[notifications,setNotifications] = useState([]);
+       const [notificationOpen,setNotificationOpen] = useState(false);
        const DropDown =  ManageItems.map((MItem,index)=>(
             <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
             <div className = "MItem">
@@ -40,7 +41,7 @@ const PopUp = (e)=> <div className="contentDiv">
                 return(url); // make the clicked button red === marked
        }
      }
-       
+       console.log(notificationOpen);
         return(
             <div>
                 <header  className="navDiv">
@@ -48,8 +49,10 @@ const PopUp = (e)=> <div className="contentDiv">
                         <Link className="Navbar-logo" to = "/404">תמנון</Link>
                         <div className = "notifications-icon">
                             <div className = "wrapper">
-                                <div className = "button">
+                                <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"button clicked"}>
                                     <img  src = {BellDef} className = "bell"></img>
+                                    {//only visible when user clicked on notification button
+                                        notificationOpen?<div className="text"> <span className = "number"> {notifications.length}</span>התראות</div>:null}
                                 </div>
                             </div>
                         </div>

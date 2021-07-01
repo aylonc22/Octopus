@@ -34,23 +34,31 @@
 }
 
 .button{
-  background: #0a1931;
+  position: relative;
+  z-index: 9;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 70px;
   height: 55px;
   border-radius: 40px;
-  background-image: -webkit-linear-gradient(161deg, #008ca2, #00a9c3);
-  background-image: linear-gradient(289deg, #008ca2, #00a9c3);
   cursor: pointer;
+  transition: width 2s;
+  background-color: #008ca2;
+}
+
+.button.clicked{
+  width: 250px;
+  
 }
 
 .bell{
+  background-color: #008ca2;
   margin-top: 8px;
   margin-left: 20px;
   width: 30px;
   height: 35px;
-  background-image: -webkit-linear-gradient(161deg, #008ca2, #00a9c3);
-  background-image: linear-gradient(289deg, #008ca2, #00a9c3);
-  cursor: pointer;
 }
 
 .button:hover .bell {
@@ -66,6 +74,31 @@
   50%{transform: rotate(0deg)}
   75%{transform: rotate(-40deg)}
   100%{transform: rotate(0deg)}
+}
+
+.text {
+  
+  display: flex;
+  background-color: #008ca2;
+  font-weight: normal;
+  position: relative;
+  align-self: center;
+  flex: 0 auto;
+  margin-left: auto;
+  margin-right:auto;
+  animation: showAfter2S 0s 0.5s forwards;
+  visibility: hidden;
+  color: #fff;
+}
+
+.number{
+  margin-left: 5%;
+  background-color: #008ca2;
+  order: 1;
+}
+
+@keyframes showAfter2S {
+  to   { visibility: visible; }
 }
 
 .Navbar-logo{
