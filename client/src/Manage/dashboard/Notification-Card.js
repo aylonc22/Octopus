@@ -29,31 +29,19 @@ const [Data,setData] = useState([]);
     return(
             <div className = "Notification-Table">
                 <div className  = "Row"> <div className = "Header-Cell">תאריך סיום</div><div className = "Header-Cell">תאריך התחלה</div> <div className = "Header-Cell">מופע חופף</div> <div className = "Header-Cell">סוג</div> <div className = "Header-Cell">תחנות</div></div>
-                { [...Data.filter(e=>e.Close==="1970-01-01T00:00:00.000Z").splice(0,21),...Array(22-Data.filter(e=>e.Close==="1970-01-01T00:00:00.000Z").splice(0,21).length)].map((d,index)=>{
-                    if(d)
-                   { 
-                    return(<div key = {d._id} className  = "Row"> 
-                    <div className = "Cell">{new Date(d.Close).getFullYear()===1970?"פתוח":isSameDay(new Date(d.Close))?dateFormat(new Date(d.Close),"HH:MM:ss"):dateFormat(new Date(d.Close),"dd-mm-yyyy")}</div>
-                    <div className = "Cell">{isSameDay(new Date(d.Open))?dateFormat(new Date(d.Open),"HH:MM:ss"):dateFormat(new Date(d.Open),"dd-mm-yyyy")}</div>
-                    <div className = "Cell">{d.Duplicate}</div>
-                    <div className = "Cell">{d.Type}</div> 
+                {Data.filter(e=>e.Close==="1970-01-01T00:00:00.000Z").splice(0,21).map((element)=><div key = {element._id} className  = "Row"> 
+                    <div className = "Cell">{new Date(element.Close).getFullYear()===1970?"פתוח":isSameDay(new Date(element.Close))?dateFormat(new Date(element.Close),"HH:MM:ss"):dateFormat(new Date(element.Close),"dd-mm-yyyy")}</div>
+                    <div className = "Cell">{isSameDay(new Date(element.Open))?dateFormat(new Date(element.Open),"HH:MM:ss"):dateFormat(new Date(element.Open),"dd-mm-yyyy")}</div>
+                    <div className = "Cell">{element.Duplicate}</div>
+                    <div className = "Cell">{element.Type}</div> 
                    <div className = "Cell">
                    <div className = "Stations">
-                    <div>{d.Stations[0]}</div>
-                    <div>{d.Stations[1]}</div>
+                    <div>{element.Stations[0]}</div>
+                    <div>{element.Stations[1]}</div>
                     </div>
                    </div>
-                    </div>);}
-                    else
-                   {
-                       return(<div key = {index} className  = "Row"> 
-                    <div className = "Empty-Cell"></div>
-                    <div className = "Empty-Cell"></div>
-                    <div className = "Empty-Cell"></div>
-                    <div className = "Empty-Cell"></div> 
-                    <div className = "Empty-Cell"></div>
-                    </div>);}
-                    })}
+                    </div>)}
+               
             </div>
 );
 };
