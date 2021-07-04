@@ -13,8 +13,6 @@ import Navbar from './components/navbar/Navbar';
 import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
-//Classes
-import Queue from './classes/queue';
 //Client
 const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
 reconnection:true,
@@ -32,7 +30,7 @@ function App() {
   const [offlineStations,setOfflineStations] = useState([]);//{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}
   const [notifications_card,setNotifications_card] =useState([]);
   const [notifications,setNotifications] = useState([]);
-  const [PoPupQueue,setPopUpQueue] = useState(new Queue());
+  const [newNotifications,setNewNotifications] = useState(undefined);
   const [serverOn,setServerOn] = useState(true);
   const [reconnectAttemp,setReconnectAttemp] = useState(false);
 useEffect(()=>{
@@ -63,27 +61,11 @@ useEffect(()=>{
            });
    });
    socket.on('newPopUp',(e=>{
-      let queue =PoPupQueue.items;
-      let res = new Queue();
-      for(let i=0;i<queue.length;i++)
-        res.enqueue(queue[i]);
-      
-      res.enqueue(e);
-      setPopUpQueue(res);
+    setNewNotifications(e);
    }));
   // eslint-disable-next-line
 },[]);
 
-// dequeuing notification from popup queue
-const dequeue = ()=>{
-  let queue =PoPupQueue.items;
-  let res = new Queue();
-  for(let i=1;i<queue.length;i++)
-    res.enqueue(queue[i]);
-
-    console.log(res);
-  setPopUpQueue(res);
-}
 if(!serverOn) // if socket can't connect to server
     return (<NotFoundPage isOffline = "true"/>)
   else // if socket is connected
@@ -93,7 +75,7 @@ if(!serverOn) // if socket can't connect to server
               <div>
               <Navbar
               url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
-              popup = {PoPupQueue} dequeue = {()=>dequeue()}/>
+              NewNotifications = {newNotifications}/>
               <Switch>
             <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
             <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>

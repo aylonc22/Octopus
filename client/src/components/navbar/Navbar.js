@@ -3,6 +3,7 @@ import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
+import {getAllOpenNotification} from '../../api/notification-api.js';
 
 import './Navbar.css';
 const NavBar = (props)=>
@@ -11,24 +12,13 @@ const NavBar = (props)=>
        const[clicked,setClicked] = useState(props.url.length===0?"/":handleInitClicked(props.url));
        const[notifications,setNotifications] = useState([]);
        const [notificationOpen,setNotificationOpen] = useState(false);
+       let uniqid = require('uniqid');
        const DropDown =  ManageItems.map((MItem,index)=>(
             <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
             <div className = "MItem">
                 <label className = "MItem-label" > {MItem.hebrew} </label>
             </div></Link>
-        ));
-
-const PopUp = (e)=> <div className="contentDiv">
-                    <label htmlFor="one" className="pointer-cursor">
-                    click/toggle notification
-                    </label>
-                    <input type="checkbox" id="one" className="hidden popCheckBox" name="ossm"/>  
-                    <label htmlFor="one" className="alert-message">
-                    <strong> <i className="fa fa-heart"></i> Attention</strong> {e.Stations}
-                    <button className="close">x</button>
-                    </label> 
-                    </div> 
-    
+        ));    
        // Conditionlly make the right button [red/clicked] depends on the url (after page refreshed)
        function handleInitClicked(url) {
         switch (url) {
@@ -42,29 +32,45 @@ const PopUp = (e)=> <div className="contentDiv">
                 return(url); // make the clicked button red === marked
        }
      }
-       console.log(notificationOpen);
+     // get notification and remove it from the notifications array
+     function removeNotification(e)
+     {
+        setNotifications(notifications.filter(element=>`${element.Stations[0]} ${element.Stations[1]} ${element.Duplicate} ${element.Type}`!==e));
+        // if client delete last notification the notification div will close automaticlly
+        if(notifications.length===1)
+        setNotificationOpen(false);
+
+    }
+     useEffect(()=>{
+        getAllOpenNotification().then(res=>{
+            setNotifications(res.data.data.filter(e=>e))
+        }); // eslint-disable-next-line
+    },[]);
+
+     useEffect(()=>{
+        if(props.NewNotifications!==undefined)
+            {setNotifications([...notifications,props.NewNotifications]);
+            console.log("IM HERE");}
+            // eslint-disable-next-line
+    },[props.NewNotifications]);
         return(
             <div>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
                         <div className="Navbar-logo"><Link className ="Octopus-Label" to = "/404">תמנון</Link></div>
                         <div className = "notifications-icon">
-                            <div className = "wrapper">
+                            <div tabIndex = "3" onBlur={()=>setNotificationOpen(false)} className = "wrapper" >
                                 <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"btnClicked"}>
-                                    <img  src = {notifications.length?Bell:BellDef} className = "bell"></img>
+                                    <img  alt ="" src = {notifications.length?Bell:BellDef} className = "bell"></img>
                                     <div className={notificationOpen?"text":"textClose"}> <span className = "number"> {notifications.length}</span>התראות</div>
                                  </div>
                                     {/*only visible when user clicked on notification button*/}
                                     <div className={notificationOpen?"notifications":"notificationsOpen"}>
                                                     
-                                                    <li className="notification">
-                                                      Walter White added you 
-                                                    </li>
-                                                    <li className="notification">
-                                                          John Smithwould like 
-                                                    </li>
-                                                    
-                                                  
+                                                   {notifications.map((e,index)=><li onClick = {(el)=>removeNotification(el.target.innerText)}
+                                                   key ={uniqid()} className="notification">
+                                                       {`${e.Stations[0]} ${e.Stations[1]} ${e.Duplicate} ${e.Type}`}
+                                                    </li>)} 
                                              </div>
                             </div>
                         </div>

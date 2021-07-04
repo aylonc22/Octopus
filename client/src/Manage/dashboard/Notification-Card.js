@@ -16,10 +16,6 @@ const [Data,setData] = useState([]);
     // get date return true if the date is the date of current day
     function isSameDay(date) {
         let today = new Date();
-       console.log("DATE")
-       console.log(date);
-       console.log("TODAY");
-       console.log(today);
         if(today.getMonth()===date.getMonth() && today.getFullYear()===date.getFullYear() 
         && today.getDay()=== date.getDay())
             return true;
