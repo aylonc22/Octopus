@@ -11,48 +11,48 @@
 .Flights-Component{
    display: flex;
    justify-content: center;
-    width: 50%;
+    width: 48%;
+    height: 80%;
 }
 
 .Right-Page{
     display: flex;
-    width: 49%;
+    justify-content: center;
+    width: 48%;
+    height: 80%;
     flex-direction: column;
 }
 
-.Notification-Component{
-    height: 65%;
-    padding: 0.5rem 1rem;
-}
+
 
 .Flight-Table{
     text-align: center;
     height: 740px;
     width: 96%;
-    margin: 2%;
+    margin: 20px;
     text-decoration: none;
     padding: 0.5rem 1rem;
     background: #182A48;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: 0.5s;
-    box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
-    -webkit-box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
-    -moz-box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
+    box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+    -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 }
 
 .Notification-Table{
   text-align: center;
   height: 460px;
   width: 100%;
-  margin: 0%;
   text-decoration: none;
+  margin-top: 20px;
   padding: 0.5rem 1rem;
   background: #182A48;
   border-radius: 4px;
   transition: 0.5s;
-  box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
-  -webkit-box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
-  -moz-box-shadow: 6px 5px 10px -8px rgba(0,0,0,0.69);
+  box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 }
 
 .Edit-Component{
@@ -70,16 +70,16 @@ width: 50%;
 .Card{
     text-align: center;
     height: 220px;
-    width: 96%;
-    margin: 3%;
+    width: 95%;
     text-decoration: none;
+    margin: 2%;
     padding: 0.5rem 1rem;
     background: #182A48;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: 0.5s;
-    box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
-    -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
-    -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+    -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 }
  
 .Table-Name{
@@ -92,7 +92,8 @@ width: 50%;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
-    border-radius: 4px;
+    border-radius: 6px;
+    margin-bottom: 5px;
 }
 
 .Header-Cell{
@@ -112,14 +113,14 @@ width: 50%;
     width: 100%;
     height: 20px;
     cursor: default;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .Empty-Cell{
     width: 100%;
     height: 20px;
     background: #28283e;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .Stations{
@@ -127,7 +128,7 @@ width: 50%;
   width: 100%;
   justify-content: space-evenly;
   font-size: auto;
-  border-radius: 4px;
+  border-radius: 6px;
   
 }
 
