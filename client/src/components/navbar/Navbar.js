@@ -63,6 +63,7 @@ const PopUp = (e)=> <div className="contentDiv">
                                                     <li className="notification">
                                                           John Smithwould like 
                                                     </li>
+                                                    
                                                   
                                              </div>
                             </div>

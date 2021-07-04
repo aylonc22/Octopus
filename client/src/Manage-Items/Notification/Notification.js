@@ -36,8 +36,8 @@ const Notification = props =>{
              <div className = "Cell">{e.Type}</div>
              <div className = "Cell">
                    <div className = "Stations">
-                    <div>{e.Stations[0]}</div>
-                    <div>{e.Stations[1]}</div>
+                    <div className = "Cell">{e.Stations[0]}</div>
+                    <div className = "Cell">{e.Stations[1]}</div>
                     </div>
              </div>       
              </div>)}

@@ -36,8 +36,8 @@ const [Data,setData] = useState([]);
                     <div className = "Cell">{element.Type}</div> 
                    <div className = "Cell">
                    <div className = "Stations">
-                    <div>{element.Stations[0]}</div>
-                    <div>{element.Stations[1]}</div>
+                    <div className = "Cell">{element.Stations[0]}</div>
+                    <div className = "Cell">{element.Stations[1]}</div>
                     </div>
                    </div>
                     </div>)}
