@@ -2,4 +2,5 @@
 showing live data 
 in client server style
 
-Aylon Cohen && Boogie©
+Aylon Cohen && Nadav Inbar
+©
