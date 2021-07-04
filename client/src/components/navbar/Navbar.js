@@ -53,20 +53,19 @@ const PopUp = (e)=> <div className="contentDiv">
                             <div className = "wrapper">
                                 <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"button clicked"}>
                                     <img  src = {notifications.length?Bell:Try} className = "bell"></img>
-                                    {//only visible when user clicked on notification button
-                                        notificationOpen?<div className="text"> <span className = "number"> {notifications.length}</span>התראות</div>:null} 
+                                    <div className={notificationOpen?"text":"textClose"}> <span className = "number"> {notifications.length}</span>התראות</div>
                                  </div>
-                                    {//only visible when user clicked on notification button
-                                    notificationOpen?<div className="notifications">
+                                    {/*only visible when user clicked on notification button*/}
+                                    <div className={notificationOpen?"notifications":"notificationsOpen"}>
                                                     
-        			                                        <li className="notification">
-          				                                    Walter White added you 
-        			                                        </li>
-        			                                        <li className="notification">
-          			                                        	John Smithwould like 
-        			                                        </li>
-      			                                        
-                                                     </div>:null}
+                                                    <li className="notification">
+                                                      Walter White added you 
+                                                    </li>
+                                                    <li className="notification">
+                                                          John Smithwould like 
+                                                    </li>
+                                                  
+                                             </div>
                             </div>
                         </div>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>

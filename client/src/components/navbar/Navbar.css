@@ -135,7 +135,7 @@
 .notifications::after{
   opacity: 1;
 }
-.notificationOpen{
+.notificationsOpen{
   animation: slide-up 1s;
 }
 
