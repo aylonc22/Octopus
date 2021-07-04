@@ -34,19 +34,19 @@ function App() {
   const [notifications,setNotifications] = useState([]);
   const [PoPupQueue,setPopUpQueue] = useState(new Queue());
   const [serverOn,setServerOn] = useState(true);
-  const [reconnectAttemp,setReconnectAttemp] = useState(0);
+  const [reconnectAttemp,setReconnectAttemp] = useState(false);
 useEffect(()=>{
+  if(reconnectAttemp)
+  setServerOn(false);
+},[reconnectAttemp]);
+  useEffect(()=>{
   socket.on("connect",()=>{
     setServerOn(true);
-    setReconnectAttemp(0);
+    setReconnectAttemp(false);
   });
   socket.on("disconnect",()=>setServerOn(false));
-  socket.on("reconnect", ()=>{
-   let newAttemp = reconnectAttemp;
-    setReconnectAttemp(newAttemp++);
-    if(reconnectAttemp>0)
-      setServerOn(false)
-    
+  socket.on("reconnect_attempt", ()=>{
+    setReconnectAttemp(true);
   });
   socket.on('sendStations', (_onlineStations,_offlineStations)=>{
     setOfflineStations(_offlineStations);
@@ -84,7 +84,7 @@ const dequeue = ()=>{
     console.log(res);
   setPopUpQueue(res);
 }
-
+console.log(serverOn);
 if(!serverOn) // if socket can't connect to server
     return (<NotFoundPage isOffline = "true"/>)
   else // if socket is connected
