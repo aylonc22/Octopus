@@ -3,7 +3,6 @@ import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
-import Try from '../../icons/try.svg';
 
 import './Navbar.css';
 const NavBar = (props)=>
@@ -51,8 +50,8 @@ const PopUp = (e)=> <div className="contentDiv">
                         <div className="Navbar-logo"><Link className ="Octopus-Label" to = "/404">תמנון</Link></div>
                         <div className = "notifications-icon">
                             <div className = "wrapper">
-                                <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"button clicked"}>
-                                    <img  src = {notifications.length?Bell:Try} className = "bell"></img>
+                                <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"btnClicked"}>
+                                    <img  src = {notifications.length?Bell:BellDef} className = "bell"></img>
                                     <div className={notificationOpen?"text":"textClose"}> <span className = "number"> {notifications.length}</span>התראות</div>
                                  </div>
                                     {/*only visible when user clicked on notification button*/}
