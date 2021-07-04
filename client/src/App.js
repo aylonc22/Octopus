@@ -84,7 +84,6 @@ const dequeue = ()=>{
     console.log(res);
   setPopUpQueue(res);
 }
-console.log(serverOn);
 if(!serverOn) // if socket can't connect to server
     return (<NotFoundPage isOffline = "true"/>)
   else // if socket is connected
