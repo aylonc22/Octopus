@@ -8,6 +8,7 @@ const Notification = new Schema(
         Duplicate: { type: Number , required: true},
         Open: { type: Date, required: true},
         Close: { type: Date, required: true},
+        Clients: { type: Array, required: false},
     },
     { timestamps: true },
 )

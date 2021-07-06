@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
 import {getAllOpenNotification} from '../../api/notification-api.js';
-
 import './Navbar.css';
 const NavBar = (props)=>
     {
@@ -42,15 +41,17 @@ const NavBar = (props)=>
 
     }
      useEffect(()=>{
+        //props.socket.emit("sendIP");
+        if(props.clientIpAddress!==undefined)
         getAllOpenNotification().then(res=>{
-            setNotifications(res.data.data.filter(e=>e))
+            //getting only the notifications which are still open in the eact client individualy
+            setNotifications(res.data.data.filter(e=>e.Clients.indexOf(props.clientIpAddress)===-1));
         }); // eslint-disable-next-line
-    },[]);
+    },[props.clientIpAddress]);
 
      useEffect(()=>{
         if(props.NewNotifications!==undefined)
-            {setNotifications([...notifications,props.NewNotifications]);
-            console.log("IM HERE");}
+            setNotifications([...notifications,props.NewNotifications]);
             // eslint-disable-next-line
     },[props.NewNotifications]);
         return(

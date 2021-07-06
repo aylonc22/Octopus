@@ -33,6 +33,7 @@ function App() {
   const [newNotifications,setNewNotifications] = useState(undefined);
   const [serverOn,setServerOn] = useState(true);
   const [reconnectAttemp,setReconnectAttemp] = useState(false);
+  const [clientIpAddress,setClientIpAddress] = useState(undefined);
 useEffect(()=>{
   if(reconnectAttemp)
   setServerOn(false);
@@ -41,7 +42,9 @@ useEffect(()=>{
   socket.on("connect",()=>{
     setServerOn(true);
     setReconnectAttemp(false);
+    socket.emit("sendIP");
   });
+  socket.on("getIP",(ip)=>setClientIpAddress(ip));
   socket.on("disconnect",()=>setServerOn(false));
   socket.on("reconnect_attempt", ()=>{
     setReconnectAttemp(true);
@@ -75,7 +78,8 @@ if(!serverOn) // if socket can't connect to server
               <div>
               <Navbar
               url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
-              NewNotifications = {newNotifications}/>
+              NewNotifications = {newNotifications}
+              clientIpAddress ={clientIpAddress}/>
               <Switch>
             <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
             <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>

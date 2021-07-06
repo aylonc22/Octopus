@@ -145,6 +145,15 @@ getOpenNotificationFromTo = async (req, res) => {
         return res.status(200).json({ success: true, data: notifications });
     });
 };
+const updateNotificationClients = async(req,res)=> {
+    await Notification.findOneAndUpdate({_id:req.id},{$set:{Clients:[...Clients,req.client]}},
+    {useFindAndModify: false, new:true},err=>{
+        if(err)
+        console.log(`[Mongo]  Failed to update ${req.id} --->\n ${err}`);
+
+        console.log(`[Mongo] Updated Successfuly ${req.id}`)
+    },{new:true})
+  }
 
 module.exports = {
     createNotification,
@@ -155,4 +164,5 @@ module.exports = {
     getOpenNotification,
     getNotificationsFromTo,
     getOpenNotificationFromTo,
+    updateNotificationClients
 };

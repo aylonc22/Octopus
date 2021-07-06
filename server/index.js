@@ -30,8 +30,7 @@ app.use(express.json());
 http.listen(PORT,IPADDRESS,()=>console.log(`[Server] is running on port: ${PORT}`));
 //Server Client comunication 
 io.on('connection',socket => {
-    console.log(`[Server] Client connected`);
-    console.log(socket.request.connection.remoteAddress);
+    console.log(`[Server] ${socket.request.connection.remoteAddress} is connected`);
     socket.on('message',(msg)=>console.log(msg))
     socket.on('disconnect',()=>'[Server] client disconnected');
     socket.on('connect_failed',()=>console.log("fail"))
@@ -40,6 +39,7 @@ io.on('connection',socket => {
        });//update in server status of notifications
    socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
    socket.on("requestRender",()=>socket.emit("reRender-card"));
+   socket.on("sendIP",()=>socket.emit("getIP",socket.request.connection.remoteAddress)); // send client ip when client ask for it
 });
 
 

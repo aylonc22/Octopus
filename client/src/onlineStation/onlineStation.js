@@ -38,7 +38,7 @@ const OnlineStation = (props) => {
     },[props.items]);
     if(props.items.length===0)
         return(<div className ="noOnlineStation">
-              <div className = "animation">{noOnlineStation} </div>
+              <div className = "animation">{noOnlineStation}</div>
               </div>);
     let array = props.items.map(item => {
         return (
