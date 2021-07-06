@@ -23,7 +23,6 @@ upgrade: false,
 rejectUnauthorized: false});
 
 
-
 //APP
 function App() {
   const [onlineStations,setOnlineStations] = useState([]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
@@ -44,6 +43,7 @@ useEffect(()=>{
     setReconnectAttemp(false);
     socket.emit("sendIP");
   });
+  socket.on("serverIp",(serverIp)=>console.log(serverIp));
   socket.on("getIP",(ip)=>setClientIpAddress(ip));
   socket.on("disconnect",()=>setServerOn(false));
   socket.on("reconnect_attempt", ()=>{
@@ -68,7 +68,6 @@ useEffect(()=>{
    }));
   // eslint-disable-next-line
 },[]);
-
 if(!serverOn) // if socket can't connect to server
     return (<NotFoundPage isOffline = "true"/>)
   else // if socket is connected

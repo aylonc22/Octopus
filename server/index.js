@@ -23,11 +23,16 @@ let _onlineStations = []; //Tracking online stations
 let newNotifications = []; //Tracking live notifications;
 let NotificationsQueue = [];
 //Initialization
-const PORT = 4000;
-const IPADDRESS = '192.168.43.251';
+const colors = require('colors');
+const PORT = 4000;      
+// <----->    <----->
+const IPADDRESS = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
 app.use(cors());
 app.use(express.json());
-http.listen(PORT,IPADDRESS,()=>console.log(`[Server] is running on port: ${PORT}`));
+http.listen(PORT,IPADDRESS,()=>console.log(`[Server] ip address: ${IPADDRESS} \n running  on port: ${PORT} 
+ATTENTION!! you may need to copy this ip address to Octopus Client's 
+Terminal in order to set the configurations 
+If needed you will be asked to in the client's terminal`.bgRed.white.bold + '\n'));
 //Server Client comunication 
 io.on('connection',socket => {
     console.log(`[Server] ${socket.request.connection.remoteAddress} is connected`);
@@ -40,6 +45,7 @@ io.on('connection',socket => {
    socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
    socket.on("requestRender",()=>socket.emit("reRender-card"));
    socket.on("sendIP",()=>socket.emit("getIP",socket.request.connection.remoteAddress)); // send client ip when client ask for it
+   socket.emit("serverIp",IPADDRESS);
 });
 
 
@@ -271,3 +277,4 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(req);
       })
   }
+  
