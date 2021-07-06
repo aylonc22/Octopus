@@ -61,7 +61,7 @@ const NavBar = (props)=>
                         <div className = "notifications-icon">
                             <div tabIndex = "3" onBlur={()=>setNotificationOpen(false)} className = "wrapper" >
                                 <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"btnClicked"}>
-                                    <img  alt ="" src = {notifications.length?Bell:BellDef} className = "bell"></img>
+                                    <img  alt ="" src = {!notifications.length?Bell:BellDef} className = "bell"></img>
                                     <div className={notificationOpen?"text":"textClose"}> <span className = "number"> {notifications.length}</span>התראות</div>
                                  </div>
                                     {/*only visible when user clicked on notification button*/}
@@ -71,6 +71,15 @@ const NavBar = (props)=>
                                                    key ={uniqid()} className="notification">
                                                        {`${e.Stations[0]} ${e.Stations[1]} ${e.Duplicate} ${e.Type}`}
                                                     </li>)} 
+                                                    <li className="notification">
+                                                       {`brrrrr`}
+                                                    </li>
+                                                    <li className="notification">
+                                                       {`brrrrr`}
+                                                    </li>
+                                                    <li className="notification">
+                                                       {`brrrrr`}
+                                                    </li>
                                              </div>
                             </div>
                         </div>
