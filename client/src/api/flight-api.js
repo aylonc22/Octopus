@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: "http://localhost:4000/api"});
+const api = axios.create({ baseURL: "http://192.168.43.251:4000/api"});
 
 export const insertFlight = payload => api.post(`/flights`, payload);
 export const getAllFlight = ()=>api.get(`/flights`);

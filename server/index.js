@@ -24,12 +24,14 @@ let newNotifications = []; //Tracking live notifications;
 let NotificationsQueue = [];
 //Initialization
 const PORT = 4000;
+const IPADDRESS = '192.168.43.251';
 app.use(cors());
 app.use(express.json());
-http.listen(PORT,()=>console.log(`[Server] is running on port: ${PORT}`));
+http.listen(PORT,IPADDRESS,()=>console.log(`[Server] is running on port: ${PORT}`));
 //Server Client comunication 
 io.on('connection',socket => {
     console.log(`[Server] Client connected`);
+    console.log(socket.request.connection.remoteAddress);
     socket.on('message',(msg)=>console.log(msg))
     socket.on('disconnect',()=>'[Server] client disconnected');
     socket.on('connect_failed',()=>console.log("fail"))

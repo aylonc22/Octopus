@@ -14,7 +14,7 @@ import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
 //Client
-const socket = io.connect('http://localhost:4000',{reconnectionDelay: 1000,
+const socket = io.connect('http://192.168.43.251:4000',{reconnectionDelay: 1000,
 reconnection:true,
 reconnectionAttempts: 10,
 transports: ['websocket'],
