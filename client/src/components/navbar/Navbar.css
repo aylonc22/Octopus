@@ -3,7 +3,7 @@
 }
 
 .NavbarItems{
-    background: #01050C;
+    background: #090929;
     display: flex;
     position: fixed;
     justify-content:flex-start;
@@ -15,14 +15,14 @@
 
 .notifications-icon{
   margin-left: 2%;
-  background: #01050C;
+  background: #090929;
   display: flex;
  justify-content: center;
  align-items: center;
 }
 
 .wrapper{
-  background: #01050C;
+  background: #090929;
     float:right;
     border-radius: 25px 25px 0 0;
     position: relative;
@@ -44,7 +44,7 @@
   cursor: pointer;
   transition: width 1s;
   transition-delay: 0.6s;
-  background-color: #182A48;
+  background-color: #28285A;
 }
 
 .btnClicked{
@@ -59,7 +59,7 @@
   border-radius: 40px;
   cursor: pointer;
   transition: width 1s;
-  background-color: #182A48;
+  background-color: #28285A;
 }
 
 .btnClicked:hover .bell {
@@ -70,7 +70,7 @@
 }
 
 .bell{
-  background-color: #182A48;
+  background-color: #28285A;
   margin-top: 8px;
   margin-left: 20px;
   width: 30px;
@@ -128,9 +128,9 @@
 .notifications {
    position: fixed;
    z-index: 8;
-   border: 1px solid #2A3E5E;
+   border: 1px solid #3D3D6F;
    border-radius: 3px 3px 30px 30px;
-   background-color: #2A3E5E;
+   background-color: #3D3D6F;
    margin-top: -27.5px;
    padding-top: 35px;
    padding-bottom: 30px;
@@ -164,9 +164,9 @@
 .notificationsOpen{
   position: fixed;
   z-index: 8;
-  border: 1px solid #2A3E5E;
+  border: 1px solid #3D3D6F;
   border-radius: 3px 3px 30px 30px;
-  background-color: #2A3E5E;
+  background-color: #3D3D6F;
   margin-top: -27.5px;
   padding-top: 35px;
   padding-bottom: 30px;
@@ -207,7 +207,7 @@
    background-repeat: no-repeat;
    margin-left: 20px;
    margin-right: 20px;
-   background: #2A3E5E;
+   background: #3D3D6F;
  }
  
  .wrapper li:hover{
@@ -226,11 +226,11 @@
     margin-left: 20%;
     color: white;
     font-size: 275%;
-    background: #01050C;
+    background: #090929;
 }
 
 .Octopus-Label{
-  background: #01050C;
+  background: #090929;
   color: white;
 }
 
@@ -241,7 +241,7 @@
     align-items: center;
     width: 66%;
     list-style:none;
-    background: #01050C;
+    background: #090929;
     height: inherit;
 
 }
@@ -256,7 +256,7 @@
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 2px;
-    background: #01050C;
+    background: #090929;
     border-bottom: solid #0a1931;
     width: 100%;
 }
@@ -282,7 +282,7 @@
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 2px;
-    background-color:#01050C;
+    background-color:#090929;
     border-bottom: solid #00b2cf;
     cursor: pointer;
     width: 100%;
@@ -293,7 +293,7 @@
     display: inline-block;
     position: relative;
     border-radius: 4px;
-    background: #01050C;
+    background: #090929;
     width: none;
 }
 
@@ -302,7 +302,7 @@
     display: none;
     align-items: center;
     position: absolute;
-    background-color: #01050C;
+    background-color: #090929;
     box-shadow: 2px 8px 16px 2px rgba(0,0,0,0.2);
     z-index: 1;
     overflow: auto;
@@ -324,7 +324,7 @@
 .dropdown-menu:hover .ManNav-links {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-menu:hover /*.clicked-page*/ {background-color: #01050C;}
+.dropdown-menu:hover /*.clicked-page*/ {background-color: #090929;}
 
 /* Links inside the dropdown */
 .MItem{
@@ -333,7 +333,7 @@
     justify-content: flex-end;
     border-radius: 4px;
     width: 150px;
-    background-color: #01050C;
+    background-color: #090929;
 }
 
 .MItem-label{
@@ -344,11 +344,11 @@
     border-radius: 6px;
     order: 1;
     width: 80%;
-    background-color: #01050C;
+    background-color: #090929;
     color: white;
 }
 li{
-    background: #01050C;
+    background: #090929;
     color: #0a1931;
 }
 
