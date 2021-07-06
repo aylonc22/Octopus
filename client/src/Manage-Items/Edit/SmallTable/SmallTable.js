@@ -77,6 +77,22 @@ const SmallTable = props =>{
                         <label htmlFor={index}></label>
                         </div>
                         </div>)}
+                        <div className = "Row">
+                        <div className = "Cell">dsadsa</div>
+                        <div className = "Cell">dsadsa</div>
+                        <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
+                        <input type="checkbox" id={0} name={0}/>
+                        <label htmlFor={0}></label>
+                        </div>
+                        </div>
+                        <div className = "Row">
+                        <div className = "Cell">dsadsa</div>
+                        <div className = "Cell">dsadsa</div>
+                        <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
+                        <input type="checkbox" id={1} name={1}/>
+                        <label htmlFor={1}></label>
+                        </div>
+                        </div>
                     </div>
          </div>
     );

@@ -66,9 +66,9 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[]);
 
-if(!serverOn) // if socket can't connect to server
-    return (<NotFoundPage isOffline = "true"/>)
-  else // if socket is connected
+// if(!serverOn) // if socket can't connect to server
+//     return (<NotFoundPage isOffline = "true"/>)
+//   else // if socket is connected
   return (
           <div>
             <Router>

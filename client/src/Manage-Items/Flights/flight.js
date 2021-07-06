@@ -34,6 +34,27 @@ const Flight = props =>{
              <div className = "Cell">{e.Station}</div>
              <div className = "Cell">{e.Tail}</div>
              </div>)}
+             <div className = "Row">
+             <div className = "Cell">dasdsa</div>
+             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">fff</div>
+             <div className = "Cell">ccaa</div>
+             </div>
+             <div className = "Row">
+             <div className = "Cell">dasdsa</div>
+             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">fff</div>
+             <div className = "Cell">ccaa</div>
+             </div>
+             <div className = "Row">
+             <div className = "Cell">dasdsa</div>
+             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">fff</div>
+             <div className = "Cell">ccaa</div>
+             </div>
          </div>
 </div>
 </div>

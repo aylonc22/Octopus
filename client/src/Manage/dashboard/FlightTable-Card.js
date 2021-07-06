@@ -26,6 +26,27 @@ const FlightTable = (props)=>{
                         <div className = "Cell"></div>
                         </div>)
                 }
+                <div className  = "Row"> 
+                        <div className = "Cell">fdf</div>
+                        <div className = "Cell">fds</div>
+                        <div className = "Cell">fds</div>
+                        <div className = "Cell">fds</div> 
+                        <div className = "Cell">fds</div>
+                        </div>
+                        <div className  = "Row"> 
+                        <div className = "Cell">fdf</div>
+                        <div className = "Cell">fds</div>
+                        <div className = "Cell">fds</div>
+                        <div className = "Cell">fds</div> 
+                        <div className = "Cell">fds</div>
+                        </div>
+                        <div className  = "Row"> 
+                        <div className = "Cell">fdf</div>
+                        <div className = "Cell">fds</div>
+                        <div className = "Cell">fds</div>
+                        <div className = "Cell">fds</div> 
+                        <div className = "Cell">fds</div>
+                        </div>
             </div>
 );
 };

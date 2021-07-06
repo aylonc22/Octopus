@@ -37,6 +37,42 @@ const [Data,setData] = useState([]);
                     </div>
                    </div>
                     </div>)}
+                    <div className  = "Row"> 
+                    <div className = "Cell">dddd</div>
+                    <div className = "Cell">dasdsadasd</div>
+                    <div className = "Cell">dsadsa</div>
+                    <div className = "Cell">dsadsa</div> 
+                   <div className = "Cell">
+                   <div className = "Stations">
+                    <div className = "Cell">dsdsa</div>
+                    <div className = "Cell">dsadsadsa</div>
+                    </div>
+                   </div>
+                    </div>
+                    <div className  = "Row"> 
+                    <div className = "Cell">dddd</div>
+                    <div className = "Cell">dasdsadasd</div>
+                    <div className = "Cell">dsadsa</div>
+                    <div className = "Cell">dsadsa</div> 
+                   <div className = "Cell">
+                   <div className = "Stations">
+                    <div className = "Cell">dsdsa</div>
+                    <div className = "Cell">dsadsadsa</div>
+                    </div>
+                   </div>
+                    </div>
+                    <div className  = "Row"> 
+                    <div className = "Cell">dddd</div>
+                    <div className = "Cell">dasdsadasd</div>
+                    <div className = "Cell">dsadsa</div>
+                    <div className = "Cell">dsadsa</div> 
+                   <div className = "Cell">
+                   <div className = "Stations">
+                    <div className = "Cell">dsdsa</div>
+                    <div className = "Cell">dsadsadsa</div>
+                    </div>
+                   </div>
+                    </div>
                
             </div>
 );
