@@ -29,10 +29,12 @@ const PORT = 4000;
 const IPADDRESS = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
 app.use(cors());
 app.use(express.json());
-http.listen(PORT,IPADDRESS,()=>console.log(`[Server] ip address: ${IPADDRESS} \n running  on port: ${PORT} 
+http.listen(PORT,IPADDRESS,()=>console.log(`<--------------------------------> 
+[Server] ip address: ${IPADDRESS} 
+[Server] running  on port: ${PORT} 
 ATTENTION!! you may need to copy this ip address to Octopus Client's 
 Terminal in order to set the configurations 
-If needed you will be asked to in the client's terminal`.bgRed.white.bold + '\n'));
+If needed you will be asked to in the client's terminal`.bgRed.white.bold + '\n<--------------------------------> '.bgRed.white.bold));
 //Server Client comunication 
 io.on('connection',socket => {
     console.log(`[Server] ${socket.request.connection.remoteAddress} is connected`);
