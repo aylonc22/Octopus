@@ -38,8 +38,8 @@ const [Data,setData] = useState([]);
                    </div>
                     </div>)}
                     <div className  = "Row"> 
-                    <div className = "Cell">dddd</div>
-                    <div className = "Cell">dasdsadasd</div>
+                    <div className = "Cell">פתוח</div>
+                    <div className = "Cell">06-07-2021:// 20:13:12</div>
                     <div className = "Cell">dsadsa</div>
                     <div className = "Cell">dsadsa</div> 
                    <div className = "Cell">
@@ -50,8 +50,8 @@ const [Data,setData] = useState([]);
                    </div>
                     </div>
                     <div className  = "Row"> 
-                    <div className = "Cell">dddd</div>
-                    <div className = "Cell">dasdsadasd</div>
+                    <div className = "Cell">פתוח</div>
+                    <div className = "Cell">06-07-2021:// 20:13:12</div>
                     <div className = "Cell">dsadsa</div>
                     <div className = "Cell">dsadsa</div> 
                    <div className = "Cell">
@@ -62,8 +62,8 @@ const [Data,setData] = useState([]);
                    </div>
                     </div>
                     <div className  = "Row"> 
-                    <div className = "Cell">dddd</div>
-                    <div className = "Cell">dasdsadasd</div>
+                    <div className = "Cell">פתוח</div>
+                    <div className = "Cell">06-07-2021:// 20:13:12</div>
                     <div className = "Cell">dsadsa</div>
                     <div className = "Cell">dsadsa</div> 
                    <div className = "Cell">

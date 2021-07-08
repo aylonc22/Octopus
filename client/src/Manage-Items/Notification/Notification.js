@@ -42,8 +42,8 @@ const Notification = props =>{
              </div>       
              </div>)}
              <div className = "Row">
-             <div className = "Cell">dsdsa</div>
-             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">06-07-2021:// 20:13:12</div>
+             <div className = "Cell">06-07-2021:// 20:13:12</div>
              <div className = "Cell">dsads</div>
              <div className = "Cell">dsdsa</div>
              <div className = "Cell">
@@ -54,8 +54,8 @@ const Notification = props =>{
              </div>       
              </div>
              <div className = "Row">
-             <div className = "Cell">dsdsa</div>
-             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">06-07-2021:// 20:13:12</div>
+             <div className = "Cell">06-07-2021:// 20:13:12</div>
              <div className = "Cell">dsads</div>
              <div className = "Cell">dsdsa</div>
              <div className = "Cell">
@@ -66,8 +66,8 @@ const Notification = props =>{
              </div>       
              </div>
              <div className = "Row">
-             <div className = "Cell">dsdsa</div>
-             <div className = "Cell">dsadsa</div>
+             <div className = "Cell">06-07-2021:// 20:13:12</div>
+             <div className = "Cell">06-07-2021:// 20:13:12</div>
              <div className = "Cell">dsads</div>
              <div className = "Cell">dsdsa</div>
              <div className = "Cell">
