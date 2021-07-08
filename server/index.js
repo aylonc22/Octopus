@@ -36,6 +36,15 @@ ATTENTION!! you may need to copy this ip address to Octopus Client's
 Terminal in order to set the configurations 
 If needed you will be asked to in the client's terminal`.bgRed.white.bold + '\n<--------------------------------> '.bgRed.white.bold));
 //Server Client comunication 
+
+//<---------------->
+// giving the client the host ip
+const edit_json_file = require('edit-json-file');
+let file = edit_json_file('../client/src/HostAddress.json');
+file.set("HostIpAddress",IPADDRESS);
+file.save();
+//<---------------->
+
 io.on('connection',socket => {
     console.log(`[Server] ${socket.request.connection.remoteAddress} is connected`);
     socket.on('message',(msg)=>console.log(msg))
@@ -47,9 +56,7 @@ io.on('connection',socket => {
    socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
    socket.on("requestRender",()=>socket.emit("reRender-card"));
    socket.on("sendIP",()=>socket.emit("getIP",socket.request.connection.remoteAddress)); // send client ip when client ask for it
-   socket.emit("serverIp",IPADDRESS);
 });
-
 
 // station listener
 let rawData = fs.readFileSync('./stationList.json');

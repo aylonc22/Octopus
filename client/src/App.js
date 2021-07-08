@@ -14,7 +14,7 @@ import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
 //Client
-const socket = io.connect('http://192.168.43.251:4000',{reconnectionDelay: 1000,
+const socket = io.connect(`http://${require('./HostAddress.json').HostIpAddress}:4000`,{reconnectionDelay: 1000,
 reconnection:true,
 reconnectionAttempts: 10,
 transports: ['websocket'],
@@ -43,7 +43,6 @@ useEffect(()=>{
     setReconnectAttemp(false);
     socket.emit("sendIP");
   });
-  socket.on("serverIp",(serverIp)=>console.log(serverIp));
   socket.on("getIP",(ip)=>setClientIpAddress(ip));
   socket.on("disconnect",()=>setServerOn(false));
   socket.on("reconnect_attempt", ()=>{
@@ -68,6 +67,7 @@ useEffect(()=>{
    }));
   // eslint-disable-next-line
 },[]);
+
 if(!serverOn) // if socket can't connect to server
     return (<NotFoundPage isOffline = "true"/>)
   else // if socket is connected
