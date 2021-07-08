@@ -1,2 +1,5 @@
 server/demoFiles/demo1.log
 server/demoFiles/demo2.log
+client/src/HostAddress.json
+server/demoFiles/demo4.log
+server/demoFiles/demo3.log
