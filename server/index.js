@@ -29,20 +29,22 @@ const PORT = 4000;
 const IPADDRESS = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
 app.use(cors());
 app.use(express.json());
-http.listen(PORT,IPADDRESS,()=>console.log(`<--------------------------------> 
+http.listen(PORT,IPADDRESS,()=>console.log(`
+<--------------------------------> 
 [Server] ip address: ${IPADDRESS} 
 [Server] running  on port: ${PORT} 
-ATTENTION!! you may need to copy this ip address to Octopus Client's 
-Terminal in order to set the configurations 
-If needed you will be asked to in the client's terminal`.bgRed.white.bold + '\n<--------------------------------> '.bgRed.white.bold));
+<-------------------------------->\n`.bgRed.white.bold));
 //Server Client comunication 
 
 //<---------------->
 // giving the client the host ip
 const edit_json_file = require('edit-json-file');
 let file = edit_json_file('../client/src/HostAddress.json');
-file.set("HostIpAddress",IPADDRESS);
-file.save();
+if(file.get().HostIpAddress!=IPADDRESS)
+{
+    file.set("HostIpAddress",IPADDRESS);
+    file.save();
+}
 //<---------------->
 
 io.on('connection',socket => {
@@ -286,4 +288,3 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(req);
       })
   }
-  
