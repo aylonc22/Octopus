@@ -9,7 +9,8 @@
 
 
 .Flights-Component{
- display: flex;
+ order: 1;
+  display: flex;
  justify-content: center;
   width: 48%;
   height: 80%;

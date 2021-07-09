@@ -16,6 +16,7 @@ const FlightTable = (props)=>{
         },[]);
     return(
             <div className = "Flight-Table">
+                <label className = "Table-Name"> גיחות </label>
                 <div className  = "Row"> <div className = "Header-Cell">תאריך</div><div className = "Header-Cell">תדר</div> <div className = "Header-Cell">גרור</div> <div className = "Header-Cell">תחנה</div> <div className = "Header-Cell">זנב</div> </div>
                 {
                     Data.splice(0,35).map((e)=><div key = {e._id} className  = "Row"> 

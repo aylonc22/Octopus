@@ -18,6 +18,7 @@ const Notification = props =>{
    return(
        <div className="contentDiv">
     <div className = "FlightCard">
+    <label className = "Table-Name"> התראות </label>
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
     </div>
