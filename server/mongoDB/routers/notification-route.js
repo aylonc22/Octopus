@@ -12,4 +12,5 @@ router.get('/notifications', NotificationCtrl.getNotifications);
 router.get('/opennotifications', NotificationCtrl.getOpenNotification);
 router.get('/opennotifications/:from/:to', NotificationCtrl.getOpenNotificationFromTo);
 router.get('/notifications/:from/:to',NotificationCtrl.getNotificationsFromTo);
+router.get('/opennotifications/:id/:client',NotificationCtrl.updateNotificationClients);
 module.exports = router;

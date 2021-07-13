@@ -69,7 +69,7 @@ useEffect(()=>{
 },[]);
 
 if(!serverOn) // if socket can't connect to server
-    return (<NotFoundPage isOffline = "true"/>)
+        return (<NotFoundPage isOffline = "true"/>)
   else // if socket is connected
   return (
           <div>
@@ -78,7 +78,8 @@ if(!serverOn) // if socket can't connect to server
               <Navbar
               url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
               NewNotifications = {newNotifications}
-              clientIpAddress ={clientIpAddress}/>
+              clientIpAddress ={clientIpAddress}
+              socket = {socket}/>
               <Switch>
             <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
             <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>

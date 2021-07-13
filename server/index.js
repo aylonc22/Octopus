@@ -26,7 +26,8 @@ let NotificationsQueue = [];
 const colors = require('colors');
 const PORT = 4000;      
 // <----->    <----->
-const IPADDRESS = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
+const IPADDRESS = process.argv[2] || require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
+console.log(IPADDRESS);
 app.use(cors());
 app.use(express.json());
 http.listen(PORT,IPADDRESS,()=>console.log(`
@@ -58,6 +59,7 @@ io.on('connection',socket => {
    socket.on('sendUpdateNotification',()=>socket.emit('sendNotifications',_notifications)); // send to client updated arrays of notifications    
    socket.on("requestRender",()=>socket.emit("reRender-card"));
    socket.on("sendIP",()=>socket.emit("getIP",socket.request.connection.remoteAddress)); // send client ip when client ask for it
+   socket.on("updateClient",(id,client)=>updateNotificationClients({id:id,client:client}));
 });
 
 // station listener
@@ -269,7 +271,7 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
 
         console.log(`[Mongo] Updated Successfuly ${req}`)
-    },{new:true})
+    },{new:true});
   }
 
   // Mongo DB Query to create new elemt [notification]
@@ -288,3 +290,15 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
         console.log(req);
       })
   }
+  const updateNotificationClients = async({id,client})=>{ 
+      console.log("HELLO");
+      console.log(client);
+      console.log(id);
+      await Notification.findOneAndUpdate({_id:id},{$addToSet:{Clients:client}},
+      {useFindAndModify: false, new:true},err=>{
+          if(err)
+          console.log(`[Mongo]  Failed to update ${id} --->\n ${err}`);
+  
+          console.log(`[Mongo] Updated Successfuly ${id}`)
+      },{new:true});
+}

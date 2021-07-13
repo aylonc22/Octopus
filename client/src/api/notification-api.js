@@ -10,6 +10,8 @@ export const getNotificationById = id => api.get(`/notifications/${id}`);
 export const getAllOpenNotification = ()=> api.get('/opennotifications');
 export const getNotificationsFromTo = (from,to)=> api.get(`/notifications/${from}/${to}`);
 export const getOpenNotificationFromTo = (from,to)=> api.get(`/opennotifications/${from}/${to}`);
+export const updateNotificationClients = (id,client)=> api.put(`/opennotifications/${id}/${client}`);
+
 
 const notificationtApi = {
     insertNotification,
@@ -20,6 +22,7 @@ const notificationtApi = {
     getAllOpenNotification,
     getNotificationsFromTo,
     getOpenNotificationFromTo,
+    updateNotificationClients,
 }
 
 export default notificationtApi;

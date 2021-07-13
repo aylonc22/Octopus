@@ -3,7 +3,7 @@ import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
-import {getAllOpenNotification} from '../../api/notification-api.js';
+import {getAllOpenNotification,updateNotificationClients} from '../../api/notification-api.js';
 import './Navbar.css';
 const NavBar = (props)=>
     {
@@ -34,10 +34,20 @@ const NavBar = (props)=>
      // get notification and remove it from the notifications array
      function removeNotification(e)
      {
-        setNotifications(notifications.filter(element=>`${element.Stations[0]} ${element.Stations[1]} ${element.Duplicate} ${element.Type}`!==e));
+        // filtering out the choosen notifications
+        setNotifications(notifications.filter(element=>{
+            if(`${element.Stations[0]} ${element.Stations[1]} ${element.Duplicate} ${element.Type}`===e)
+            {
+                props.socket.emit("updateClient",element._id,props.clientIpAddress);
+                return false;
+            }
+            else
+                return true;
+        }));
+        
         // if client delete last notification the notification div will close automaticlly
         if(notifications.length===1)
-        setNotificationOpen(false);
+            setNotificationOpen(false);
 
     }
      useEffect(()=>{
@@ -45,13 +55,17 @@ const NavBar = (props)=>
         if(props.clientIpAddress!==undefined)
         getAllOpenNotification().then(res=>{
             //getting only the notifications which are still open in the eact client individualy
+            console.log(res.data.data);
             setNotifications(res.data.data.filter(e=>e.Clients.indexOf(props.clientIpAddress)===-1));
         }); // eslint-disable-next-line
     },[props.clientIpAddress]);
 
      useEffect(()=>{
         if(props.NewNotifications!==undefined)
-            setNotifications([...notifications,props.NewNotifications]);
+        getAllOpenNotification().then(res=>{
+            //getting only the notifications which are still open in the eact client individualy
+            setNotifications(res.data.data.filter(e=>e.Clients.indexOf(props.clientIpAddress)===-1));
+        });
             // eslint-disable-next-line
     },[props.NewNotifications]);
         return(
