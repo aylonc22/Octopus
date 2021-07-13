@@ -45,9 +45,7 @@ useEffect(()=>{
   });
   socket.on("getIP",(ip)=>setClientIpAddress(ip));
   socket.on("disconnect",()=>setServerOn(false));
-  socket.on("reconnect_attempt", ()=>{
-    setReconnectAttemp(true);
-  });
+  socket.on("reconnect_attempt", ()=>setReconnectAttemp(true));
   socket.on('sendStations', (_onlineStations,_offlineStations)=>{
     setOfflineStations(_offlineStations);
    setOnlineStations(_onlineStations);

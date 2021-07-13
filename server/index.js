@@ -27,13 +27,13 @@ const colors = require('colors');
 const PORT = 4000;      
 // <----->    <----->
 const IPADDRESS = process.argv[2] || require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
-console.log(IPADDRESS);
 app.use(cors());
 app.use(express.json());
 http.listen(PORT,IPADDRESS,()=>console.log(`
 <--------------------------------> 
 [Server] ip address: ${IPADDRESS} 
 [Server] running  on port: ${PORT} 
+ Started At ${new Date().toLocaleString()}
 <-------------------------------->\n`.bgRed.white.bold));
 //Server Client comunication 
 
@@ -49,10 +49,7 @@ if(file.get().HostIpAddress!=IPADDRESS)
 //<---------------->
 
 io.on('connection',socket => {
-    console.log(`[Server] ${socket.request.connection.remoteAddress} is connected`);
-    socket.on('message',(msg)=>console.log(msg))
-    socket.on('disconnect',()=>'[Server] client disconnected');
-    socket.on('connect_failed',()=>console.log("fail"))
+    console.log(`[Server]`.magenta +` ${socket.request.connection.remoteAddress} is connected at ` + `${new Date().toLocaleString()}`.magenta.bold);
     socket.on('updateNotification',(Notifications)=>{
         _notifications = Notifications;
        });//update in server status of notifications
@@ -242,7 +239,7 @@ async function handleStations(data) {
   
 //Mongo handels
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-db.once('open',()=>console.log("[Mongo] database connection established successfully"))
+db.once('open',()=>console.log("[Mongo]".magenta + " database connection established successfully"))
 app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,notificationRouter);
 
 
@@ -268,9 +265,10 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
     await Notification.findOneAndUpdate({_id:req},{$set:{Close:new Date()}},
     {useFindAndModify: false, new:true},err=>{
         if(err)
-        console.log(`[Mongo]  Failed to update ${req} --->\n ${err}`);
-
-        console.log(`[Mongo] Updated Successfuly ${req}`)
+        console.log(`[Mongo]`.magenta  + ` Failed to update ${req} --->\n ${err}`);
+        else
+            console.log(`[Mongo]`.magenta + ` Updated Successfuly ${req}` + ` AT ${new Date().toLocaleString()}`.magenta.bold);
+        console.log();
     },{new:true});
   }
 
@@ -279,26 +277,31 @@ app.use('/api',tailRouter,frequencyRouter,gdtRouter,stationRouter,flightRouter,n
     await Notification.create(req,(err,res)=>{
         if(err)
         {
-           console.log(`[Mongo]  Failed to Create `);
+            console.log("<-------------------------------->".magenta);
+            console.log(` AT ${new Date().toLocaleString()}`.magenta.bold);
+            console.log(`[Mongo]`.magenta +  ` Failed to Create `);
             console.log(req);
-            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             console.log(err);
+            console.log("<-------------------------------->".magenta);
+            console.log();
         }
 
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        console.log(`[Mongo] Created Successfuly`)
+        console.log("<-------------------------------->".magenta);
+        console.log(` AT ${new Date().toLocaleString()}`.magenta.bold);
+        console.log(`[Mongo]`.magenta + ` Created Successfuly`)
         console.log(req);
+        console.log("<-------------------------------->".magenta);
+        console.log();
       })
   }
+  // MongoDB Query to find notification and add client to it
   const updateNotificationClients = async({id,client})=>{ 
-      console.log("HELLO");
-      console.log(client);
-      console.log(id);
       await Notification.findOneAndUpdate({_id:id},{$addToSet:{Clients:client}},
       {useFindAndModify: false, new:true},err=>{
           if(err)
-          console.log(`[Mongo]  Failed to update ${id} --->\n ${err}`);
-  
-          console.log(`[Mongo] Updated Successfuly ${id}`)
+          console.log(`[Mongo]`.magenta + ` Failed to update ${id} --->\n ${err}`);
+            else
+          console.log(`[Mongo]`.magenta + ` Updated Successfuly ${client} to ${id}` + ` AT ${new Date().toLocaleString()}`.magenta.bold);
+          console.log();
       },{new:true});
 }
