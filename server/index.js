@@ -50,6 +50,7 @@ if(file.get().HostIpAddress!=IPADDRESS)
 
 io.on('connection',socket => {
     console.log(`[Server]`.magenta +` ${socket.request.connection.remoteAddress} is connected at ` + `${new Date().toLocaleString()}`.magenta.bold);
+    socket.emit("sendStations",_onlineStations,_offlineStations)
     socket.on('updateNotification',(Notifications)=>{
         _notifications = Notifications;
        });//update in server status of notifications
