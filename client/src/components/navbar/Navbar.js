@@ -3,6 +3,7 @@ import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
+import urlSound from '../../sounds/Another One DJ Khaled.mp3'
 import {getAllOpenNotification,updateNotificationClients} from '../../api/notification-api.js';
 import './Navbar.css';
 const NavBar = (props)=>
@@ -62,10 +63,15 @@ const NavBar = (props)=>
 
      useEffect(()=>{
         if(props.NewNotifications!==undefined)
-        getAllOpenNotification().then(res=>{
+        {
+            getAllOpenNotification().then(res=>{
             //getting only the notifications which are still open in the eact client individualy
             setNotifications(res.data.data.filter(e=>e.Clients.indexOf(props.clientIpAddress)===-1));
+            // conditionlly play alert sound effect
+            let audio = new Audio(urlSound);
+            audio.play();
         });
+    }
             // eslint-disable-next-line
     },[props.NewNotifications]);
         return(
