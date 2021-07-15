@@ -142,6 +142,7 @@
    animation-delay: 0.5s;
    opacity: 0;
    animation-fill-mode: forwards;
+   cursor: default;
 }
 @keyframes slide-right {
   0% {

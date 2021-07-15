@@ -35,7 +35,8 @@ const NavBar = (props)=>
      // get notification and remove it from the notifications array
      function removeNotification(e)
      {
-        // filtering out the choosen notifications
+        // filtering out the choosen notifications only if it's open
+        if(notificationOpen)
         setNotifications(notifications.filter(element=>{
             if(`${element.Stations[0]} ${element.Stations[1]} ${element.Duplicate} ${element.Type}`===e)
             {
