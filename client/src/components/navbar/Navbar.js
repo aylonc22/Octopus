@@ -12,6 +12,7 @@ const NavBar = (props)=>
        const[clicked,setClicked] = useState(props.url.length===0?"/":handleInitClicked(props.url));
        const[notifications,setNotifications] = useState([]);
        const [notificationOpen,setNotificationOpen] = useState(false);
+       const [freshPage,setFreshPage] = useState(true); // if fresh page doesnt show notifications 
        let uniqid = require('uniqid');
        const DropDown =  ManageItems.map((MItem,index)=>(
             <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
@@ -60,12 +61,12 @@ const NavBar = (props)=>
                         <div className="Navbar-logo"><Link className ="Octopus-Label" to = "/404">תמנון</Link></div>
                         <div className = "notifications-icon">
                             <div tabIndex = "3" onBlur={()=>setNotificationOpen(false)} className = "wrapper" >
-                                <div  onClick = {()=>notificationOpen?setNotificationOpen(false):setNotificationOpen(true)} className = {!notificationOpen?"button":"btnClicked"}>
+                                <div  onClick = {()=>{notificationOpen?setNotificationOpen(false):setNotificationOpen(true);if(freshPage)setFreshPage(false);}} className = {!notificationOpen?"button":"btnClicked"}>
                                     <img  alt ="" src = {!notifications.length?Bell:BellDef} className = "bell"></img>
                                     <div className={notificationOpen?"text":"textClose"}> <span className = "number"> {notifications.length}</span>התראות</div>
                                  </div>
                                     {/*only visible when user clicked on notification button*/}
-                                    <div className={notificationOpen?"notifications":"notificationsOpen"}>
+                                    {!freshPage?<div className={notificationOpen?"notifications":"notificationsOpen"}>
                                                     
                                                    {notifications.map((e,index)=><li onClick = {(el)=>removeNotification(el.target.innerText)}
                                                    key ={uniqid()} className="notification">
@@ -80,7 +81,7 @@ const NavBar = (props)=>
                                                     <li className="notification">
                                                        {`brrrrr`}
                                                     </li>
-                                             </div>
+                                             </div>:null}
                             </div>
                         </div>
                         <ul className = "nav-menu"> {MenuItems.map((item,index)=>
