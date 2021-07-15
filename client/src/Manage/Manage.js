@@ -62,7 +62,7 @@ const Manage = props =>{
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <NotificationTable notifications = {props.notifications} getAllOpen = {getNotificationsFromTo(0,21)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
-                    <div className  = "Row"><div className = "Header-Cell" onClick={()=>setSmallTable("gdt")}>גרור</div> <div className = "Header-Cell"  onClick={()=>setSmallTable("frequency")}>תדר</div> <div className = "Header-Cell" onClick={()=>setSmallTable("station")}>תחנה</div> <div className = "Header-Cell" onClick={()=>setSmallTable("tail")}>זנבות</div></div>
+                    <div className  = "Row"><div className = "smallTableCards" onClick={()=>setSmallTable("gdt")}>גרור</div> <div className = "smallTableCards"  onClick={()=>setSmallTable("frequency")}>תדר</div> <div className = "smallTableCards" onClick={()=>setSmallTable("station")}>תחנה</div> <div className = "smallTableCards"onClick={()=>setSmallTable("tail")}>זנבות</div></div>
                     <SmallTable getAllTable = {smallTableAttributes(smallTable).getAllTable} secondary = {smallTableAttributes(smallTable).secondary} secondaryH = {smallTableAttributes(smallTable).secondaryH} name ={smallTableAttributes(smallTable).name}/>
                 </div> 
             </div>           
