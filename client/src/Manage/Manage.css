@@ -57,7 +57,19 @@ box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 }
 
 .Edit-Component{
-  display: flex;
+  text-align: center;
+  height: 740px;
+  width: 96%;
+  margin: 20px;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #090929;
+  border-radius: 6px;
+  transition: 0.5s;
+  box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);;
+
 }
 
 .Edit-Component-Left{
