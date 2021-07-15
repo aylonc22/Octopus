@@ -1,9 +1,11 @@
 *{
   color: #FFF;
+  
 }
 
 .Top-Page{
   display: flex;
+  justify-content:space-evenly;
  padding-top: 100px;
 }
 
@@ -96,7 +98,7 @@ width: 50%;
   border-radius: 6px;
   margin-bottom: 5px;
   background: #161640;
-
+  padding: 10px;
 }
 
 .Header-Cell{
@@ -133,7 +135,7 @@ width: 100%;
 justify-content: space-evenly;
 font-size: auto;
 border-radius: 6px;
-
+background: #161640;
 }
 
 /* Slide Bar */
