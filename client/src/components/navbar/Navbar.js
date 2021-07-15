@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
 import urlSound from '../../sounds/Another One DJ Khaled.mp3'
-import {getAllOpenNotification,updateNotificationClients} from '../../api/notification-api.js';
+import {getAllOpenNotification} from '../../api/notification-api.js';
 import './Navbar.css';
 const NavBar = (props)=>
     {
