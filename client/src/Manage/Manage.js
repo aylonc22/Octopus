@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React ,{useState} from 'react';
 import Slider from 'react-slick';
 //Manage components
 import SmallTable from './dashboard/SmallTable-Card.js';
@@ -29,6 +29,30 @@ const Manage = props =>{
     draggable:false,
     arrows: false,
     };
+    const[smallTable,setSmallTable] = useState("tail");
+    const smallTableAttributes = table=>{
+        if(table==="tail")
+            return {getAllTable: getAllTail(),
+                secondary:"Type",
+                secondaryH:"סוג",
+                name:"זנבות"};
+         if(table==="frequency")
+            return {getAllTable: getAllFrequency(),                       
+                secondary:"Type",
+                secondaryH:"סוג",
+                name:"תדרים"};
+        if(table==="station")
+            return {getAllTable: getAllStation(), 
+                secondary:"Type",
+                secondaryH:"סוג",
+                name:"תחנות"};
+        if(table==="gdt")
+            return {getAllTable: getAllGDT(),
+                secondary:"Type",
+                secondaryH:"מקום",
+                name:"גרורים"};
+        
+    }
     return(
     <div className = "Page-Manage">
         <div className = "Top-Page">
@@ -38,18 +62,8 @@ const Manage = props =>{
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <NotificationTable notifications = {props.notifications} getAllOpen = {getNotificationsFromTo(0,21)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
-                     <div className = "Edit-Component-Left">
-                        <Slider {...settings}>                
-                        <div ><SmallTable getAllTable = {getAllTail()} secondary = "Type" secondaryH = "סוג" name ="זנבות"/></div>
-                        <div><SmallTable getAllTable = {getAllFrequency()} secondary = "Type" secondaryH = "סוג" name ="תדרים"/></div>
-                        </Slider>
-                     </div>
-                     <div className = "Edit-Component-Right">
-                     <Slider {...settings}>                
-                        <div ><SmallTable getAllTable = {getAllStation()} secondary = "Type" secondaryH = "סוג" name ="תחנות"/></div>
-                        <div><SmallTable getAllTable = {getAllGDT()} secondary = "Location" secondaryH = "מקום" name ="גרורים"/></div>
-                        </Slider>
-                     </div>
+                    <div className  = "Row"><div className = "Header-Cell" onClick={()=>setSmallTable("gdt")}>גרור</div> <div className = "Header-Cell"  onClick={()=>setSmallTable("frequency")}>תדר</div> <div className = "Header-Cell" onClick={()=>setSmallTable("station")}>תחנה</div> <div className = "Header-Cell" onClick={()=>setSmallTable("tail")}>זנבות</div></div>
+                    <SmallTable getAllTable = {smallTableAttributes(smallTable).getAllTable} secondary = {smallTableAttributes(smallTable).secondary} secondaryH = {smallTableAttributes(smallTable).secondaryH} name ={smallTableAttributes(smallTable).name}/>
                 </div> 
             </div>           
         </div>
