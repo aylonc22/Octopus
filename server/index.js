@@ -26,6 +26,7 @@ let NotificationsQueue = [];
 const colors = require('colors');
 const PORT = 4000;      
 // <----->    <----->
+//conditionlly pick first ipv4 on pc or if there is inserted ip take the inserted ip
 const IPADDRESS = process.argv[2] || require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]].filter(e=>e.family==='IPv4')[0].address;
 app.use(cors());
 app.use(express.json());
