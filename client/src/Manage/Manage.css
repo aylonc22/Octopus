@@ -157,9 +157,8 @@ background: #161640;
   line-height: 76px;
   margin: 0 0.85em;
   overflow: hidden;
-  padding-left: 12px;
-  padding-right: 12px;
   padding-top: 2px;
+  margin: 0px;
   background: #090929;
   border-bottom: solid #0a1931;
   width: 100%;
@@ -181,16 +180,24 @@ background: #161640;
     display: inline-block;
     color: white;
     line-height: 76px;
-    margin: 0 0.85em;
+    margin: 0px;
     overflow: hidden;
-    padding-left: 12px;
-    padding-right: 12px;
     padding-top: 2px;
     background-color:#090929;
     border-bottom: solid #00b2cf;
     cursor: pointer;
     width: 100%;
     text-align: center;
+}
+
+.smallRow{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  background: #161640;
+  padding: 10px;
 }
 /* Slide Bar */
 *,
