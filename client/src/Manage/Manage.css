@@ -6,7 +6,8 @@
 .Top-Page{
   display: flex;
   justify-content:space-evenly;
- padding-top: 100px;
+  padding-top: 100px;
+  height: 100%;
 }
 
 
@@ -15,14 +16,13 @@
   display: flex;
  justify-content: center;
   width: 48%;
-  height: 80%;
 }
 
 .Right-Page{
   display: flex;
   justify-content: center;
   width: 48%;
-  height: 80%;
+  height: 770px;
   flex-direction: column;
 }
 
@@ -30,7 +30,7 @@
 
 .Flight-Table{
   text-align: center;
-  height: 740px;
+  height: 750px;
   width: 96%;
   margin: 20px;
   text-decoration: none;
@@ -45,7 +45,7 @@
 
 .Notification-Table{
 text-align: center;
-height: 460px;
+height: 375px;
 width: 100%;
 text-decoration: none;
 margin-top: 20px;
@@ -60,18 +60,17 @@ box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 
 .Edit-Component{
   text-align: center;
-  height: 740px;
-  width: 96%;
-  margin: 20px;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  background: #090929;
-  border-radius: 6px;
-  transition: 0.5s;
-  box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
-  -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
-  -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);;
-
+height: 375px;
+width: 100%;
+text-decoration: none;
+margin-top: 20px;
+padding: 0.5rem 1rem;
+background: #090929;
+border-radius: 4px;
+transition: 0.5s;
+box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+-webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+-moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 }
 
 .Edit-Component-Left{
@@ -150,6 +149,48 @@ border-radius: 6px;
 background: #161640;
 }
 
+/*shit*/
+.smallTableCards{
+  display: inline-block;
+  color: white;
+  text-align: center;
+  line-height: 76px;
+  margin: 0 0.85em;
+  overflow: hidden;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 2px;
+  background: #090929;
+  border-bottom: solid #0a1931;
+  width: 100%;
+}
+.smallTableCards:hover{
+  border-radius: 4px;
+  transition: all 0.2 ease-out;
+  transition: 0.5s;
+  background: #0f2447;
+  border-color: #00b2cf !important;
+  }
+
+#smallTableCards:hover {
+      border-bottom-color: #00b2cf !important;
+  }
+
+.smallTableCardsClicked{
+    display: inline-block;
+    color: white;
+    line-height: 76px;
+    margin: 0 0.85em;
+    overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    background-color:#090929;
+    border-bottom: solid #00b2cf;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
 /* Slide Bar */
 *,
 *:before,
