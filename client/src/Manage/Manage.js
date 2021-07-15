@@ -15,21 +15,8 @@ import {getAllNotification,getNotificationsFromTo} from '../api/notification-api
 //Styling
 import './Manage.css';
 const Manage = props =>{    
-    const settings = {
-    autoplay:true,
-    autoplaySpeed:10000,
-    speed:600,
-    slidesToShow:1,
-    slidesToScroll:1,
-    pauseOnHover:false,
-    dots:false,
-    pauseOnDotsHover:false,
-    cssEase:'linear',
-   // fade:true,
-    draggable:false,
-    arrows: false,
-    };
     const[smallTable,setSmallTable] = useState("tail");
+    const[isClicked,setIsClicked] = useState("tail");
     const smallTableAttributes = table=>{
         if(table==="tail")
             return {getAllTable: getAllTail(),
@@ -62,7 +49,7 @@ const Manage = props =>{
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <NotificationTable notifications = {props.notifications} getAllOpen = {getNotificationsFromTo(0,21)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
-                    <div className  = "Row"><div className = "smallTableCards" onClick={()=>setSmallTable("gdt")}>גרור</div> <div className = "smallTableCards"  onClick={()=>setSmallTable("frequency")}>תדר</div> <div className = "smallTableCards" onClick={()=>setSmallTable("station")}>תחנה</div> <div className = "smallTableCards"onClick={()=>setSmallTable("tail")}>זנבות</div></div>
+                    <div className  = "Row"><div className = {isClicked==="gdt"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("gdt");setIsClicked("gdt");}}>גרור</div> <div className ={isClicked==="frequency"?"smallTableCardsClicked":"smallTableCards"}   onClick={()=>{setSmallTable("frequency");setIsClicked("gdt");}}>תדר</div> <div className ={isClicked==="station"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("station");setIsClicked("station");}}>תחנה</div> <div className = {isClicked==="tail"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("tail");setIsClicked("tail");}}>זנבות</div></div>
                     <SmallTable getAllTable = {smallTableAttributes(smallTable).getAllTable} secondary = {smallTableAttributes(smallTable).secondary} secondaryH = {smallTableAttributes(smallTable).secondaryH} name ={smallTableAttributes(smallTable).name}/>
                 </div> 
             </div>           
