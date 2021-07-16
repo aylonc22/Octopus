@@ -3,7 +3,9 @@ import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
+import About from '../../icons/info.png';
 import {getAllOpenNotification} from '../../api/notification-api.js';
+
 
 import './Navbar.css';
 const NavBar = (props)=>
@@ -58,7 +60,10 @@ const NavBar = (props)=>
             <div>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
-                        <div className="Navbar-logo"><Link className ="Octopus-Label" to = "/404">תמנון</Link></div>
+                        <div className="Navbar-logo">
+                            <Link className ="Octopus-Label" to = "/404">תמנון</Link>
+                            <div className ="about-button" onClick={()=>props.shouldBlur(true)} > <img   alt ="" src = {About} className = "info"></img></div>
+                            </div>
                         <div className = "notifications-icon">
                             <div tabIndex = "3" onBlur={()=>setNotificationOpen(false)} className = "wrapper" >
                                 <div  onClick = {()=>{notificationOpen?setNotificationOpen(false):setNotificationOpen(true);if(freshPage)setFreshPage(false);}} className = {!notificationOpen?"button":"btnClicked"}>
@@ -69,16 +74,16 @@ const NavBar = (props)=>
                                     {!freshPage?<div className={notificationOpen?"notifications":"notificationsOpen"}>
                                                     
                                                    {notifications.map((e,index)=><li onClick = {(el)=>removeNotification(el.target.innerText)}
-                                                   key ={uniqid()} className="notification">
+                                                   key ={uniqid()}  className={notificationOpen?"notification":"notification close"}>
                                                        {`${e.Stations[0]} ${e.Stations[1]} ${e.Duplicate} ${e.Type}`}
                                                     </li>)} 
-                                                    <li className="notification">
+                                                    <li className={notificationOpen?"notification":"notification close"}>
                                                        {`brrrrr`}
                                                     </li>
-                                                    <li className="notification">
+                                                    <li className={notificationOpen?"notification":"notification close"}>
                                                        {`brrrrr`}
                                                     </li>
-                                                    <li className="notification">
+                                                    <li className={notificationOpen?"notification":"notification close"}>
                                                        {`brrrrr`}
                                                     </li>
                                              </div>:null}

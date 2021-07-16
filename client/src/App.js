@@ -33,6 +33,7 @@ function App() {
   const [newNotifications,setNewNotifications] = useState(undefined);
   const [serverOn,setServerOn] = useState(true);
   const [reconnectAttemp,setReconnectAttemp] = useState(false);
+  const [shouldBlur,setShouldBlur] = useState(false);
 useEffect(()=>{
   if(reconnectAttemp)
   setServerOn(false);
@@ -72,10 +73,11 @@ useEffect(()=>{
   return (
           <div>
             <Router>
-              <div>
+              <div className = {shouldBlur?"blur":""} onClick = {()=>{if(shouldBlur)setShouldBlur(false);/*if aboutus is open any click on the page will close it */}}>
               <Navbar
               url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
-              NewNotifications = {newNotifications}/>
+              NewNotifications = {newNotifications}
+              shouldBlur = {flag=>setShouldBlur(flag)}/>
               <Switch>
             <Route exact path="/"><Manage socket = {socket} notifications = {notifications_card}/></Route>
             <Route exact path="/online"><OnlineStation  items = {onlineStations}/></Route>
@@ -86,6 +88,11 @@ useEffect(()=>{
             <Route path="*"><NotFoundPage/></Route>
           </Switch>
             </div>
+            {shouldBlur?<div className = "about-page">
+               <div className="about">something something
+               <div className = "exit" onClick={()=>setShouldBlur(false)}>סגור</div>
+               </div>
+               </div>:null}
               </Router>
           </div>   
       

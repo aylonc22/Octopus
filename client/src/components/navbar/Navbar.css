@@ -208,12 +208,17 @@
    margin-left: 20px;
    margin-right: 20px;
    background: #3D3D6F;
+   cursor:pointer;
+ }
+
+ .notification.close{
+  cursor:default;
  }
  
  .wrapper li:hover{
    color: #00a9c3;
    transition: width 0s;
-   cursor:pointer;
+   
  }
 
 .Navbar-logo{
@@ -226,6 +231,26 @@
     color: white;
     font-size: 275%;
     background: #090929;
+}
+
+.about-button{
+  margin-left: 2%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  transition: width 1s;
+  transition-delay: 0.6s;
+  background: #090929;
+}
+
+.info{
+  background: #090929;
+  margin-top: 8px;
+  margin-left: 20px;
+  width: 35px;
+  height: 35px;
 }
 
 .Octopus-Label{

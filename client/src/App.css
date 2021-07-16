@@ -15,3 +15,38 @@
   display: flex;
   justify-content:center;
 }
+
+.blur{
+  filter: blur(3px);
+}
+
+.about-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about{
+  display: flex;
+  width: 400px;
+  height: 700px;
+  position: fixed;
+  margin-bottom: 850px;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #090929;
+  border-radius: 6px;
+  transition: 0.5s;
+  box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+}
+
+.exit{
+  justify-self: center;
+  align-self: flex-end;
+  cursor: pointer;
+  background:#040411;
+    border-radius: 3px;
+    padding: 10px 20px;
+}
