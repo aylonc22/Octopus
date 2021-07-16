@@ -49,7 +49,8 @@ const OfflineStation = (props) => {
     });
 
     return (
-        <div>
+        <div  className= "contentDiv">
+            <h1 className =  "textCenter">תחנות מכובות</h1>
             <div className = "StationPage">{array}</div>
         </div>
     )

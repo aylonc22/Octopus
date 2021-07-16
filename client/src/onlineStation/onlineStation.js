@@ -116,38 +116,6 @@ const OnlineStation = (props) => {
         }
     }
 
-    // get which cell to check on notifications and return the diffrence between 
-    //new notification and mongo notification
-    // function findDiffrentNew(cell,array,notifications) {
-        
-    //     // filtering notification type "ג" running on every item in array check if 
-    //     //inside returning what is not inside notification
-    //     function algo(e) 
-    //         {
-    //             let flag = false;
-    //             for(let i=0;i<array.length;i++){
-    //                 for(let j=0;j<array.length;j++)
-    //                    { 
-    //                        ((array[j].Stations[0] === e.Stations[0] || array[j].Stations[0] === e.Stations[1]) &&
-    //                         (array[j].Stations[1] === e.Stations[0] || array[j].Stations[1] === e.Stations[1]) &&
-    //                         array[j].Duplicate === e.Duplicate)?
-    //                         flag=true:console.log();
-    //                     }
-    //                     if(flag)
-    //                         return false;  
-    //         }
-    //         return flag?false:true;
-    //         }
-
-    //     // Cases 
-    //     switch (cell) {
-    //         case "ג":
-    //         return(notifications.filter(e=>algo(e)));
-        
-    //         default:
-    //             break;
-    //     }
-    // }
 // get array of notification by stations and open it to one array of all the stations
 function openNotificationToStation(arr) {
     let res = [];
