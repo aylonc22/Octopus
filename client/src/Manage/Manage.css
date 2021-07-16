@@ -165,7 +165,6 @@ background: #161640;
   cursor: pointer;
 }
 .smallTableCards:hover{
-  border-radius: 4px;
   transition: all 0.2 ease-out;
   transition: 0.5s;
   background: #0f2447;

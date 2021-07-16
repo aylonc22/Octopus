@@ -1,6 +1,5 @@
 
-import React ,{useState} from 'react';
-import Slider from 'react-slick';
+import React ,{useState,useEffect} from 'react';
 //Manage components
 import SmallTable from './dashboard/SmallTable-Card.js';
 import FlightTable from './dashboard/FlightTable-Card.js';
@@ -16,7 +15,8 @@ import {getAllNotification,getNotificationsFromTo} from '../api/notification-api
 import './Manage.css';
 const Manage = props =>{    
     const[smallTable,setSmallTable] = useState("tail");
-    const[isClicked,setIsClicked] = useState("tail");
+    const[isClicked,setIsClicked] = useState(undefined);
+    const names = ["tail","station","frequency","gdt"]
     const smallTableAttributes = table=>{
         if(table==="tail")
             return {getAllTable: getAllTail(),
@@ -38,8 +38,26 @@ const Manage = props =>{
                 secondary:"Type",
                 secondaryH:"מקום",
                 name:"גרורים"};
-        
     }
+
+    // make the slider
+    useEffect(()=>{
+       
+        setTimeout(() => {
+            if(!isClicked)setSmallTable(names.indexOf(smallTable)+2>names.length?names[0]:names[names.indexOf(smallTable)+1]);
+        }, 5000); // eslint-disable-next-line
+    },[smallTable,isClicked]);
+
+    useEffect(()=>{
+        if(isClicked)
+        {
+            setTimeout(() => {
+                setSmallTable(names.indexOf(smallTable)+2>names.length?names[0]:names[names.indexOf(smallTable)+1]);
+                setIsClicked(false);
+            }, 5000);
+        } // eslint-disable-next-line
+    },[isClicked]);
+
     return(
     <div className = "Page-Manage">
         <div className = "Top-Page">
@@ -49,7 +67,7 @@ const Manage = props =>{
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <NotificationTable notifications = {props.notifications} getAllOpen = {getNotificationsFromTo(0,21)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
-                    <div className  = "smallRow"><div className = {isClicked==="gdt"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("gdt");setIsClicked("gdt");}}>גרור</div> <div className ={isClicked==="frequency"?"smallTableCardsClicked":"smallTableCards"}   onClick={()=>{setSmallTable("frequency");setIsClicked("frequency");}}>תדר</div> <div className ={isClicked==="station"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("station");setIsClicked("station");}}>תחנה</div> <div className = {isClicked==="tail"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("tail");setIsClicked("tail");}}>זנבות</div></div>
+                    <div className  = "smallRow"><div className = {smallTable==="gdt"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("gdt");setIsClicked(true);}}>גרור</div> <div className ={smallTable==="frequency"?"smallTableCardsClicked":"smallTableCards"}   onClick={()=>{setSmallTable("frequency");setIsClicked(true);}}>תדר</div> <div className ={smallTable==="station"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("station");setIsClicked(true);}}>תחנה</div> <div className = {smallTable==="tail"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("tail");setIsClicked(true);}}>זנבות</div></div>
                     <SmallTable getAllTable = {smallTableAttributes(smallTable).getAllTable} secondary = {smallTableAttributes(smallTable).secondary} secondaryH = {smallTableAttributes(smallTable).secondaryH} name ={smallTableAttributes(smallTable).name}/>
                 </div> 
             </div>           
