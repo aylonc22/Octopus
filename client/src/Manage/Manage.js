@@ -16,6 +16,7 @@ import './Manage.css';
 const Manage = props =>{    
     const[smallTable,setSmallTable] = useState("tail");
     const[isClicked,setIsClicked] = useState(undefined);
+    const [slider,setSlider] = useState(undefined);
     const names = ["tail","station","frequency","gdt"]
     const smallTableAttributes = table=>{
         if(table==="tail")
@@ -43,14 +44,15 @@ const Manage = props =>{
     // make the slider
     useEffect(()=>{
        
-        setTimeout(() => {
+       setSlider( setTimeout(() => {
             if(!isClicked)setSmallTable(names.indexOf(smallTable)+2>names.length?names[0]:names[names.indexOf(smallTable)+1]);
-        }, 5000); // eslint-disable-next-line
+        }, 5000)) // eslint-disable-next-line
     },[smallTable,isClicked]);
 
     useEffect(()=>{
         if(isClicked)
         {
+            clearTimeout(slider);
             setTimeout(() => {
                 setSmallTable(names.indexOf(smallTable)+2>names.length?names[0]:names[names.indexOf(smallTable)+1]);
                 setIsClicked(false);
