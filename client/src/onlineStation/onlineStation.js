@@ -28,6 +28,7 @@ const noOnlineStation =(
 
 
 const OnlineStation = (props) => {
+    const[focus,setFocus] = useState(undefined);
     //Current duplicate values in online stations by station id and duplicate id
     // example g = [{Station:55,Duplicate:44},{Station:65,Duplicate:44}]
     const [g,setG] = useState([]);
@@ -42,44 +43,44 @@ const OnlineStation = (props) => {
               </div>);
     let array = props.items.map(item => {
         return (
-            <div  key = {item.id} className = "container">
+            <div  onMouseLeave={()=>setFocus(undefined)} onMouseEnter ={()=>setFocus(item.id)} key = {item.id} className = "container">
+             <div className = "card">
             <label className = "stationName">{item.id}</label>
-            <div className = "top">
-            <img src={h} alt="haziza"></img>
-            </div>
-            <div className = "bottom">
-                    <div className = "Row">
-                        <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>{item.message}</label>
-                        <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"Cell":"DuplicateCell"}>ג</label>                        
+            <img src = {h} className = {focus===item.id?"card-image selected":"card-image"}/>
+            <div className = "card-footer">
+                    <div className = "SRow">
+                        <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"SCell":"DuplicateCell"}>{item.message}</label>
+                        <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"SCell":"DuplicateCell"}>ג</label>                        
                     </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">ע</label>                       
+                    <div className = "SRow">
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">ע</label>                       
                     </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">I</label>                        
+                    <div className = "SRow">
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">I</label>                        
                     </div>
-                    <div className = "Row">                        
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">מ</label>
+                    <div className = "SRow">                        
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">מ</label>
                     </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">ת</label>                        
+                    <div className = "SRow">
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">ת</label>                        
                     </div>
-                    <div className = "Row">                        
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">מ</label>
+                    <div className = "SRow">                        
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">מ</label>
                     </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">1</label>
+                    <div className = "SRow">
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">1</label>
                     </div>
-                    <div className = "Row">                       
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">מ</label>
+                    <div className = "SRow">                       
+                        <label className = "SCell">1</label>
+                        <label className = "SCell">מ</label>
                     </div>  
+            </div>
             </div>
             </div>
         )
