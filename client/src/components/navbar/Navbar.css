@@ -11,6 +11,7 @@
     font-size: 1.2rem;
     height: inherit;
     width: 100%;
+    z-index: 5;
 }
 
 .notifications-icon{
@@ -127,14 +128,13 @@
 
 .notifications {
    position: fixed;
-   z-index: 8;
    border: 1px solid #3D3D6F;
    border-radius: 3px 3px 30px 30px;
    background-color: #3D3D6F;
    margin-top: -27.5px;
    padding-top: 35px;
    padding-bottom: 30px;
-   z-index: 1;
+   z-index:  2;
    display: flex;
    flex-flow: column;
    width: inherit;
@@ -163,14 +163,13 @@
 }
 .notificationsOpen{
   position: fixed;
-  z-index: 8;
   border: 1px solid #3D3D6F;
   border-radius: 3px 3px 30px 30px;
   background-color: #3D3D6F;
   margin-top: -27.5px;
   padding-top: 35px;
   padding-bottom: 30px;
-  z-index: 1;
+  z-index:  2;
   display: flex;
   flex-flow: column;
   width: inherit;
@@ -326,7 +325,7 @@
     position: absolute;
     background-color: #090929;
     box-shadow: 2px 8px 16px 2px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index:  2;
     overflow: auto;
     width: 150px;
     border-radius: 6px;
