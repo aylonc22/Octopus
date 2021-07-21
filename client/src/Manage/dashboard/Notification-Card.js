@@ -23,6 +23,8 @@ const [Data,setData] = useState([]);
         return false;
     }
     return(
+        <div className="contentDiv">
+    <div className = "notificationCard">
             <div className = "Notification-Table">
                 <label className = "Table-Name"> התראות </label>
                 <div className  = "Row"> <div className = "Header-Cell">תאריך סיום</div><div className = "Header-Cell">תאריך התחלה</div> <div className = "Header-Cell">מופע חופף</div> <div className = "Header-Cell">סוג</div> <div className = "Header-Cell">תחנות</div></div>
@@ -75,6 +77,8 @@ const [Data,setData] = useState([]);
                    </div>
                     </div>
                
+            </div>
+            </div>
             </div>
 );
 };
