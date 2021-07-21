@@ -398,16 +398,13 @@ li{
      cursor: pointer; cursor: hand;
   }
   .close{
-  
       float:right;
-      color: #b94b45;
       cursor: pointer; cursor: hand;
   }
   
   .alert-message{
     background-color: #f2dede;
     border: 1px solid rgba(#34495e, 0.25);
-    color: #b94b45;
     border-radius: 3px;
     line-height:30px;
     top: 0; left: 70%;
