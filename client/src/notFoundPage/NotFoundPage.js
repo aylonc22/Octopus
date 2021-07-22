@@ -241,10 +241,10 @@ const NotFoundPage = (props)=>{
 </div>
     );
     else
-    return(<div className ="background"><Link to = "/">
+    return(<div className ="background"><a href = "/">
 		<h1 id = "h1">Page not found.</h1>
     {Image}
-</Link></div>
+</a></div>
     );
 };
 export default NotFoundPage;
