@@ -46,7 +46,7 @@ const OnlineStation = (props) => {
             <div  onMouseLeave={()=>setFocus(undefined)} onMouseEnter ={()=>setFocus(item.id)} key = {item.id} className = "container">
              <div className = "card">
             <label className = "stationName">{item.id}</label>
-            <img src = {h} className = {focus===item.id?"card-image selected":"card-image"}/>
+            <img alt = ""  src = {h} className = {focus===item.id?"card-image selected":"card-image"}/>
             <div className = "card-footer">
                     <div className = "SRow">
                         <label className = {openNotificationToStation(g).indexOf(item.id)===-1?"SCell":"DuplicateCell"}>{item.message}</label>

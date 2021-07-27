@@ -9,7 +9,7 @@ const OfflineStation = (props) => {
             <div  onMouseLeave={()=>setFocus(undefined)} onMouseEnter ={()=>setFocus(item.id)} key = {item.id} className = "container">
             <div className="card"> 
             <div  className = "stationName">{item.id}</div>
-            <img src = {h} className = {focus===item.id?"card-image selected":"card-image"}/>
+            <img alt = "" src = {h} className = {focus===item.id?"card-image selected":"card-image"}/>
             <div className="card-footer">
             <div className = "SRow">
                     <label className = "SCell">{item.message}</label>
