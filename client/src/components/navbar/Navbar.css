@@ -226,6 +226,8 @@
     align-self: center;
     flex-direction: row;
     justify-content: center;
+    flex-flow: baseline;
+    align-items: center;
     width: 20%;
     color: white;
     font-size: 275%;
@@ -233,14 +235,8 @@
 }
 
 .about-button{
-  margin-left: 2%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   cursor: pointer;
-  transition: width 1s;
-  transition-delay: 0.6s;
   background: #090929;
 }
 
@@ -255,6 +251,7 @@
 .Octopus-Label{
   background: #090929;
   color: white;
+  font-size: 60px;
 }
 
 .nav-menu{
@@ -435,6 +432,7 @@ li{
   
   .contentDiv{
     padding-top: 100px;
+    width: 100%;
   }
   
 

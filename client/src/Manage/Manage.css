@@ -20,9 +20,7 @@
 
 .Right-Page{
   display: flex;
-  justify-content: center;
   width: 48%;
-  height: 770px;
   flex-direction: column;
 }
 
@@ -45,8 +43,8 @@
 
 .Notification-Table{
 text-align: center;
-height: 375px;
 width: 100%;
+height: 369px;
 text-decoration: none;
 margin-top: 20px;
 padding: 0.5rem 1rem;
@@ -60,7 +58,7 @@ box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 
 .Edit-Component{
   text-align: center;
-height: 375px;
+height: 361px;
 width: 100%;
 text-decoration: none;
 margin-top: 20px;
@@ -154,7 +152,6 @@ background: #161640;
   display: inline-block;
   color: white;
   text-align: center;
-  line-height: 76px;
   margin: 0 0.85em;
   overflow: hidden;
   padding-top: 2px;
@@ -163,6 +160,9 @@ background: #161640;
   border-bottom: solid #0a1931;
   width: 100%;
   cursor: pointer;
+  font-size: 25px;
+  line-height: 76px;
+
 }
 .smallTableCards:hover{
   transition: all 0.2 ease-out;
@@ -187,6 +187,8 @@ background: #161640;
     cursor: pointer;
     width: 100%;
     text-align: center;
+    font-size: 25px;
+
 }
 
 .smallRow{

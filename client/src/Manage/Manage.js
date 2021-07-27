@@ -64,7 +64,9 @@ const Manage = props =>{
     <div className = "Page-Manage">
         <div className = "Top-Page">
             <div className = "Flights-Component">
+                <div className="contentDiv">
                 <FlightTable getAllTable = {getAllFlight()}/>
+                </div>
             </div>
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <NotificationTable notifications = {props.notifications} getAllOpen = {getNotificationsFromTo(0,21)} getAllTable = {getAllNotification()}/> </div> 
