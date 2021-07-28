@@ -5,6 +5,7 @@ import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
 import About from '../../icons/info.png';
 import Octopus from '../../icons/octopus.png';
+import AirForce from '../../icons/AirForce.png';
 import {getAllOpenNotification} from '../../api/notification-api.js';
 
 import './Navbar.css';
@@ -59,6 +60,7 @@ const NavBar = (props)=>
             <div>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
+                        <div className = "AirForce"><img className = "AirForce-img" src = {AirForce}/></div>
                         <div className="Navbar-logo">
                         <div className ="Octopus-Label img" ><img className ="img" alt = "" src = {Octopus}/></div>
                             <Link className ="Octopus-Label" to = "/404">תמנון</Link>
