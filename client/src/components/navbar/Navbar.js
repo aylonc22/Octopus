@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
 import About from '../../icons/info.png';
+import Octopus from '../../icons/octopus2.png';
 import {getAllOpenNotification} from '../../api/notification-api.js';
-
 
 import './Navbar.css';
 const NavBar = (props)=>
@@ -52,8 +52,7 @@ const NavBar = (props)=>
 
      useEffect(()=>{
         if(props.NewNotifications!==undefined)
-            {setNotifications([...notifications,props.NewNotifications]);
-            console.log("IM HERE");}
+            setNotifications([...notifications,props.NewNotifications]);
             // eslint-disable-next-line
     },[props.NewNotifications]);
         return(
@@ -61,6 +60,7 @@ const NavBar = (props)=>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
                         <div className="Navbar-logo">
+                        <Link className ="Octopus-Label img" to = "/404"><img className ="img" alt = "" src = {Octopus}/></Link>
                             <Link className ="Octopus-Label" to = "/404">תמנון</Link>
                             <div className ="about-button" onClick={()=>props.shouldBlur(true)} > <img   alt ="" src = {About} className = "info"></img></div>
                             </div>
