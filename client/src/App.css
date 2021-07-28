@@ -29,11 +29,12 @@
 
 .about{
   display: flex;
+  flex-direction: column;
+  border: solid;
   align-self:center;
-  width: 400px;
-  height: 700px;
   position: fixed;
-  margin-bottom: 850px;
+  top: 0;
+  margin-top: 100px;;
   text-decoration: none;
   padding: 0.5rem 1rem;
   background: #090929;
@@ -44,11 +45,28 @@
   -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
 }
 
+.about-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #090929;
+  z-index: 1;
+}
+
+.tihkur{
+  align-self: center;
+  width: 350px;
+  height: 300px;
+  z-index: 0;
+  background-color: #090929;
+}
+
 .exit{
+  border: solid;
   justify-self: center;
-  align-self: flex-end;
+  align-self:center;
   cursor: pointer;
-  background:#040411;
-    border-radius: 3px;
-    padding: 10px 20px;
+  background: #090929;
+    border-radius: 12px;
+    padding: 10px 40px;
 }

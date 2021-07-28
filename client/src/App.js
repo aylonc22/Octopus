@@ -13,6 +13,8 @@ import Navbar from './components/navbar/Navbar';
 import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
+//image
+import Tihkur from './icons/tihkur.png';
 //Client
 const socket = io.connect('http://192.168.43.251:4000',{reconnectionDelay: 1000,
 reconnection:true,
@@ -89,7 +91,10 @@ useEffect(()=>{
           </Switch>
             </div>
             {shouldBlur?<div className = "about-page">
-               <div className="about">something something
+               <div className="about">
+                 <div className = "about-row">פותח על ידי אילון כהן </div>
+                 <div className = "about-row"> ©מחלקת תחקור, אוויוניקה כטמ"ם, חייל האוויר 2021</div>
+                 <img className ="tihkur" alt = "" src = {Tihkur}/>
                <div className = "exit" onClick={()=>setShouldBlur(false)}>סגור</div>
                </div>
                </div>:null}

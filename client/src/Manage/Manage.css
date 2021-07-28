@@ -117,6 +117,7 @@ width: 50%;
   width: 100%;
   background: #090929;
   font-size: 20px ;
+  cursor: default;
 }
 
 .Cell{ 
