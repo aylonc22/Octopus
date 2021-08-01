@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import h from '../icons/haziza.png';
+import Octopus from '../icons/octopus.png';
 import './onlineStation.css'
 
 const noOnlineStation =( 
@@ -37,9 +38,10 @@ const OnlineStation = (props) => {
             setG(newG);
 // eslint-disable-next-line
     },[props.items]);
-    if(props.items.length===0)
+    if(props.items.length===0) //if there are no online stations return this
         return(<div className ="noOnlineStation">
               <div className = "animation">{noOnlineStation} </div>
+              <img className = "test" src ={Octopus}/>
               </div>);
     let array = props.items.map(item => {
         return (

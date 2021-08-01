@@ -24,6 +24,31 @@ svg {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+} 
+
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+.test{
+  width: 35%;
+  animation: slide 16s infinite, fadeIn ease 8s infinite, fadeOut ease 8s infinite;
+  background-color: #28285A;
+  border-radius: 100%;
+}
+
 .noOnlineStation{
   display: flex;
   flex-direction: column;
