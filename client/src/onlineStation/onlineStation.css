@@ -1,13 +1,3 @@
-
-svg {
-  margin: 50px auto;
-  width: 45%;
-}
-
-.logo {
-  fill: #FE4365;
-}
-
 .clip {
   animation: slide 8s infinite;
 }
@@ -24,44 +14,21 @@ svg {
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
-} 
-
-@keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-.test{
-  width: 35%;
-  animation: slide 16s infinite, fadeIn ease 8s infinite, fadeOut ease 8s infinite;
-  background-color: #28285A;
-  border-radius: 100%;
-}
-
 .noOnlineStation{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 90vh;
+  align-items: center;
+ height: 100vh;
+ 
+ border: solid;
 }
 
 .animation{
   display: flex;
-  width: 70%;
   justify-content: center;
   align-items: center;
+  width: 20%;
+ border: solid;
 }
 
 .containerOnline{

@@ -96,14 +96,15 @@ useEffect(()=>{
                <div className="about">
                <div className = "logos">
                <img className ="logo" alt = "" src = {AirForce}/>
-               <img className ="logo" alt = "" src = {Tahzuka}/>
+               <img className ="tihkur" alt = "" src = {Tihkur}/>
+               <img className ="logo" alt = "" src = {Tahzuka}/>              
                </div>
                 <div className = "rows">
                 <div className = "about-row">פותח על ידי אילון כהן </div>
                  <div className = "about-row"> מחלקת תחקור, אוויוניקה כטמ"ם</div>
                  <div className = "about-row"> ©חייל האוויר 2021</div>
                 </div>
-                 <img className ="tihkur" alt = "" src = {Tihkur}/>
+                
                <div className = "exit" onClick={()=>setShouldBlur(false)}>סגור</div>
                
                </div>
