@@ -12,7 +12,7 @@
 
 .Top-Card{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     background:#090929;
 }
 

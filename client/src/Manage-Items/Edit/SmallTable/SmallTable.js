@@ -53,20 +53,16 @@ const SmallTable = props =>{
     const success = (
             <div className = "DataCard">
                <div className = "Top-Card">
-                   <label className = "Table-Name"> {props.name} </label>
-                   <div className = "Manage-Icon-Data">
-                   <div className = "icon"> add</div>
-                   <div onClick = {()=>removeClick?setRemoveClick(false):setRemoveClick(true)} className = "icon" id = "delete"> del</div>
-                   <div className = "icon"> ed</div>
-               </div>
-               </div>
-               {/* 
-                    {handleAdd}
-                */}
+                   <div className = "Table-Name"> {props.name} </div>
+               </div>   
                     <div className ="Row">
-                    <label className = "Header-Cell">מס"ז</label>
-                    <label className = "Header-Cell">{props.secondaryH}</label>
-                    <label className = "Header-Delete-Cell"></label>
+                    <div className = "Header-Cell">מס"ז</div>
+                    <div className = "Header-Cell">{props.secondaryH}</div>
+                    </div>
+                    <div className ="Row">
+                    <input type ="text" minLength="3" maxLength="3" className = "Header-Cell"/>
+                    <input type ="text" className = "Header-Cell"/>
+                    <div className = "Header-Cell">מס"ז</div>
                     </div>
                     <div className = "DataTable">
                         {Data.map((e,index)=><div  key = {e._id} className = "Row">
