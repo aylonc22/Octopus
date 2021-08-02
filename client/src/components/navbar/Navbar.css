@@ -266,18 +266,6 @@
   background: #090929;
 }
 
-.AirForce-img{
-  background: #090929;
-  width: 70px;
-  height: 70px;
-  margin-left: 20px;
-}
-.AirForce{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #090929;
-}
 
 .nav-menu{
     display: flex;

@@ -60,10 +60,9 @@ const NavBar = (props)=>
             <div>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
-                        <div className = "AirForce"><img className = "AirForce-img" src = {AirForce}/></div>
                         <div className="Navbar-logo">
                         <div className ="Octopus-Label img" ><img className ="img" alt = "" src = {Octopus}/></div>
-                            <Link className ="Octopus-Label" to = "/404">תמנון</Link>
+                            <a className ="Octopus-Label" href = "/404">תמנון</a>
                             <div className ="about-button" onClick={()=>props.shouldBlur(true)} > <img   alt ="" src = {About} className = "info"></img></div>
                             </div>
                         <div className = "notifications-icon">

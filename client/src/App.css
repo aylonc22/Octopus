@@ -43,30 +43,60 @@
   box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
   -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
   -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+   z-index: 0;
+   width: 400px;
+   height: 415px;
+}
+
+.rows{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  height: 100%;
+  z-index: 1;
+  background: none;
 }
 
 .about-row{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #090929;
+  background: none;
+  z-index: 1;
+ 
+}
+
+.logos{
+  display: flex;
+  justify-content: space-between;
+  background-color: #090929;
+ 
+}
+
+.logo{
+  width: 70px;
+  height: 70px;
+  background-color: #090929;
   z-index: 1;
 }
 
 .tihkur{
-  align-self: center;
+  margin-top: 15px;
   width: 350px;
-  height: 300px;
-  z-index: 0;
+  height: 350px;
+  align-self: center;
   background-color: #090929;
+  position: fixed;
+  z-index: 0;
 }
 
 .exit{
   border: solid;
-  justify-self: center;
   align-self:center;
   cursor: pointer;
   background: #090929;
     border-radius: 12px;
     padding: 10px 40px;
+    z-index: 1;
+    
 }

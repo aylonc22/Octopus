@@ -15,6 +15,8 @@ import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
 //image
 import Tihkur from './icons/tihkur.png';
+import AirForce from './icons/AirForce.png';
+import Tahzuka from './icons/tahzuka.png';
 //Client
 const socket = io.connect('http://192.168.43.251:4000',{reconnectionDelay: 1000,
 reconnection:true,
@@ -92,10 +94,18 @@ useEffect(()=>{
             </div>
             {shouldBlur?<div className = "about-page">
                <div className="about">
-                 <div className = "about-row">פותח על ידי אילון כהן </div>
-                 <div className = "about-row"> ©מחלקת תחקור, אוויוניקה כטמ"ם, חייל האוויר 2021</div>
+               <div className = "logos">
+               <img className ="logo" alt = "" src = {AirForce}/>
+               <img className ="logo" alt = "" src = {Tahzuka}/>
+               </div>
+                <div className = "rows">
+                <div className = "about-row">פותח על ידי אילון כהן </div>
+                 <div className = "about-row"> מחלקת תחקור, אוויוניקה כטמ"ם</div>
+                 <div className = "about-row"> ©חייל האוויר 2021</div>
+                </div>
                  <img className ="tihkur" alt = "" src = {Tihkur}/>
                <div className = "exit" onClick={()=>setShouldBlur(false)}>סגור</div>
+               
                </div>
                </div>:null}
               </Router>
