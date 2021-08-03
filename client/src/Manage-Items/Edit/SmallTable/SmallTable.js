@@ -11,20 +11,12 @@ import './SmallTable.css'
 const SmallTable = props =>{
 
     const [newID,setNewID] = useState("");
+    const [newType,setNewType] = useState("");
     const [Data,setData] = useState([]);
-    const [submitData,setSubmitData] = useState("");
+    const [submitData,setSubmitData] = useState({id:"",type:""});
     const [_success,Set_Success] = useState(true);
     const [removeClick,setRemoveClick] = useState(false);
     
-    //Handlers
-    const handleAdd =( <div>
-    <textarea className = "InsertData" 
-    maxLength= "3" //Tail can be only 3 chars
-    value = {newID}
-    onChange = {(e)=>setNewID(e.target.value)}>
-    </textarea>
-    <Button  func = {()=>{setSubmitData(newID);setNewID("")}} name = "הוסף מספר זנב"/>
-    </div>);
 
     useEffect(()=>{
         props.getAllTable.then(res=>//props.getAllTable
@@ -36,16 +28,17 @@ const SmallTable = props =>{
         //eslint-disable-next-line
         },[]);
     useEffect(()=>{
+       console.log("hello");
         let flag = false;
-        const insert = props.secondary==="Type"?{ID:submitData,Type:"type"}:{ID:submitData,Location:"Location"};//eslint-disable-next-line
-        Data.map(d=>d.ID==submitData?flag=true:console.log());
-        !flag && submitData.length && 
-        Number.isInteger(submitData*1) &&
-        submitData.length===props.ID_Limit*1//* to convert string to int
+        const insert ={ID:submitData.id,Type:submitData.type};//eslint-disable-next-line
+        Data.map(d=>d.ID==submitData.id?flag=true:console.log());
+        !flag && submitData.id.length && 
+        Number.isInteger(submitData.id*1) &&
+        submitData.id.length===props.ID_Limit*1//* to convert string to int
         ?props.insertToTable(insert):console.log();//props.insertToTable
-        !flag && submitData.length &&
-         Number.isInteger(submitData*1) &&
-         submitData.length===props.ID_Limit*1//* to convert string to int
+        !flag && submitData.id.length &&
+         Number.isInteger(submitData.id*1) &&
+         submitData.id.length===props.ID_Limit*1//* to convert string to int
          ?setData([...Data,insert]):console.log();
          //eslint-disable-next-line
     },[submitData,Data])
@@ -59,9 +52,9 @@ const SmallTable = props =>{
                     <div className = "Header-Cell">{props.secondaryH}</div>
                     </div>
                     <div className ="Row">
-                    <input type ="text" minLength="3" maxLength="3" className = "input"/>
-                    <input type ="text" className = "input"/>
-                    <img className = "icon" id = "add" src = {Add_icon} alt =""/>
+                    <input type ="text" value = {newID} onChange ={(e)=>setNewID(e.target.value)} minLength="3" maxLength="3" className = "input"/>
+                    <input type ="text" value = {newType} onChange ={(e)=>setNewType(e.target.value)} className = "input"/>
+                    <img onClick ={()=>{setSubmitData({id:newID,type:newType});setNewID("");setNewType("");}} className = "icon" id = "add" src = {Add_icon} alt =""/>
                     </div>
                     <div className = "DataTable">
                         {Data.map((e,index)=><div  key = {e._id} className = "Row">
