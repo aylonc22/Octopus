@@ -3,8 +3,7 @@ import {React,useEffect,useState} from 'react';
 import Button from '../../../components/button/Button.js';
 //Icons
 import Add_icon from '../../../icons/add.png';
-import Edit_icon from '../../../icons/edit.png';
-import Trash_icon from '../../../icons/trash.png'; // Delete Icon
+import Delete_icon from '../../../icons/delete.png'; // Delete Icon
 //Styling
 import './SmallTable.css'
 
@@ -60,34 +59,25 @@ const SmallTable = props =>{
                     <div className = "Header-Cell">{props.secondaryH}</div>
                     </div>
                     <div className ="Row">
-                    <input type ="text" minLength="3" maxLength="3" className = "Header-Cell"/>
-                    <input type ="text" className = "Header-Cell"/>
-                    <div className = "Header-Cell">מס"ז</div>
+                    <input type ="text" minLength="3" maxLength="3" className = "input"/>
+                    <input type ="text" className = "input"/>
+                    <img className = "icon" id = "add" src = {Add_icon} alt =""/>
                     </div>
                     <div className = "DataTable">
                         {Data.map((e,index)=><div  key = {e._id} className = "Row">
                         <div className = "Cell">{e.ID}</div>
                         <div className = "Cell">{e.Type?e.Type:e.Location}</div>
-                        <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
-                        <input type="checkbox" id={index} name={index}/>
-                        <label htmlFor={index}></label>
-                        </div>
+                        <img className ="icon" src={Delete_icon} alt=""/>
                         </div>)}
                         <div className = "Row">
                         <div className = "Cell">dsadsa</div>
                         <div className = "Cell">dsadsa</div>
-                        <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
-                        <input type="checkbox" id={0} name={0}/>
-                        <label htmlFor={0}></label>
-                        </div>
+                        <img className ="icon" src={Delete_icon} alt=""/>
                         </div>
                         <div className = "Row">
                         <div className = "Cell">dsadsa</div>
                         <div className = "Cell">dsadsa</div>
-                        <div className = {removeClick?"Delete-Cell-Active":"Delete-Cell"}>
-                        <input type="checkbox" id={1} name={1}/>
-                        <label htmlFor={1}></label>
-                        </div>
+                        <img className ="icon" src={Delete_icon} alt=""/>
                         </div>
                     </div>
          </div>

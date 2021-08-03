@@ -22,7 +22,24 @@
   overflow: auto;
 }
 
-.Manage-Icon-Data{
+.icon{
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-color:#161640;
+}
+
+.icon#add{
+  height: 10px;
+  width: 10px;
+}
+
+.input{
+  width: 35%;
+  border-radius: 6px;
+}
+
+/* .Manage-Icon-Data{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -79,4 +96,4 @@
     border-color: MediumSeaGreen;
     color: #fff;
     opacity: 1;
-  }
+  } */
