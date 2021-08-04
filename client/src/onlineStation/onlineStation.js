@@ -25,7 +25,7 @@ const noOnlineStation =(
     />
     
   </g> */}
-   <image className ="logo"  href={Octopus} clip-path="url(#circle-clip)" />
+   <image className ="logo"  href={Octopus} clipPath="url(#circle-clip)" />
 </svg>);
 
 
