@@ -28,7 +28,6 @@ const SmallTable = props =>{
         //eslint-disable-next-line
         },[]);
     useEffect(()=>{
-       console.log("hello");
         let flag = false;
         const insert ={ID:submitData.id,Type:submitData.type};//eslint-disable-next-line
         Data.map(d=>d.ID==submitData.id?flag=true:console.log());
