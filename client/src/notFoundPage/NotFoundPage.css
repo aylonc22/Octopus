@@ -16,12 +16,11 @@
 
 #h1{
   font-family: 'Nunito', sans-serif;
-  color: #fff;
+  color: black;
   text-align: center;
   padding: 2em 0 0;
   opacity: 0;
   position: fixed;
   height: 100%;
   width: 100%;
-  
 }

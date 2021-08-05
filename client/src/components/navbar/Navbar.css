@@ -3,7 +3,7 @@
 }
 
 .NavbarItems{
-    background: #090929;
+    background: #283747;
     display: flex;
     position: fixed;
     justify-content:flex-start;
@@ -16,14 +16,14 @@
 
 .notifications-icon{
   margin-left: 2%;
-  background: #090929;
+  background: #283747;
   display: flex;
  justify-content: center;
  align-items: center;
 }
 
 .wrapper{
-  background: #090929;
+  background: #283747;
     float:right;
     border-radius: 25px 25px 0 0;
     position: relative;
@@ -45,7 +45,7 @@
   cursor: pointer;
   transition: width 1s;
   transition-delay: 0.6s;
-  background-color: #28285A;
+  background-color: #932432;
 }
 
 .btnClicked{
@@ -60,7 +60,7 @@
   border-radius: 40px;
   cursor: pointer;
   transition: width 1s;
-  background-color: #28285A;
+  background-color: #932432;
 }
 
 .btnClicked:hover .bell {
@@ -71,7 +71,7 @@
 }
 
 .bell{
-  background-color: #28285A;
+  background-color: #932432;
   margin-top: 8px;
   margin-left: 20px;
   width: 30px;
@@ -128,9 +128,9 @@
 
 .notifications {
    position: fixed;
-   border: 1px solid #3D3D6F;
+   border: 1px solid #bd2e41;
    border-radius: 3px 3px 30px 30px;
-   background-color: #3D3D6F;
+   background-color: #bd2e41;
    margin-top: -27.5px;
    padding-top: 35px;
    padding-bottom: 30px;
@@ -163,9 +163,9 @@
 }
 .notificationsOpen{
   position: fixed;
-  border: 1px solid #3D3D6F;
+  border: 1px solid #bd2e41;
   border-radius: 3px 3px 30px 30px;
-  background-color: #3D3D6F;
+  background-color: #bd2e41;
   margin-top: -27.5px;
   padding-top: 35px;
   padding-bottom: 30px;
@@ -206,7 +206,7 @@
    background-repeat: no-repeat;
    margin-left: 20px;
    margin-right: 20px;
-   background: #3D3D6F;
+   background: #bd2e41;
    cursor:pointer;
  }
 
@@ -233,17 +233,17 @@
     width: 20%;
     color: white;
     font-size: 275%;
-    background: #090929;
+    background: #283747;
 }
 
 .about-button{
   display: flex;
   cursor: pointer;
-  background: #090929;
+  background: #283747;
 }
 
 .info{
-  background: #090929;
+  background: #283747;
   margin-top: 8px;
   margin-left: 20px;
   width: 35px;
@@ -251,8 +251,8 @@
 }
 
 .Octopus-Label{
-  background: #090929;
-  color: white;
+  background: #283747;
+  color: whitesmoke;
   font-size: 60px;
 }
 
@@ -265,7 +265,7 @@
 }
 
 .img{
-  background: #090929;
+  background: #283747;
 }
 
 
@@ -274,7 +274,7 @@
     align-items: center;
     width: 66%;
     list-style:none;
-    background: #090929;
+    background: #283747;
     height: inherit;
     flex-flow: row-reverse;
 
@@ -282,7 +282,7 @@
 
 .nav-links{
     display: inline-block;
-    color: white;
+    color: whitesmoke;
     text-align: center;
     line-height: 76px;
     margin: 0 0.85em;
@@ -290,15 +290,14 @@
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 2px;
-    background: #090929;
-    border-bottom: solid #0a1931;
+    background: #283747;
+    border-bottom: solid 4px #0a1931;
     width: 100%;
 }
 
 .nav-links:hover{
     transition: all 0.2 ease-out;
     transition: 0.5s;
-    background: #0f2447;
     border-color: #00b2cf !important;
     }
 
@@ -308,15 +307,15 @@
 
 .clicked-page{
     display: inline-block;
-    color: white;
+    color: whitesmoke;
     line-height: 76px;
     margin: 0 0.85em;
     overflow: hidden;
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 2px;
-    background-color:#090929;
-    border-bottom: solid #00b2cf;
+    background-color:#283747;
+    border-bottom: solid 4px #00b2cf;
     cursor: pointer;
     width: 100%;
     text-align: center;
@@ -326,8 +325,9 @@
     display: inline-block;
     position: relative;
     border-radius: 4px;
-    background: #090929;
-    width: none;
+    background: #283747;
+    align-items: center;
+
 }
 
 
@@ -335,13 +335,14 @@
     display: none;
     align-items: center;
     position: absolute;
-    background-color: #090929;
+    background-color: #212d3a;
     box-shadow: 2px 8px 16px 2px rgba(0,0,0,0.2);
     z-index:  2;
     overflow: auto;
-    width: 150px;
+    width: 130px;
     border-radius: 6px;
 }
+
 
 /* Links inside the dropdown 
 .ManNav-links label{
@@ -349,25 +350,17 @@
 }*/
 
 /* Change color of dropdown links on hover */
-.MItem:hover {background-color: #3d4a5f;} 
-.MItem:hover .MItem-label{background-color: #3d4a5f;} 
-.MItem:hover .MItem-icon {background-color: #3d4a5f;} 
+.MItem-label:hover {background-color: #3d4a5f;} 
+.MItem-label:hover .MItem-label{background-color: #3d4a5f;} 
+.MItem-label:hover .MItem-icon {background-color: #3d4a5f;} 
 
 /* Show the dropdown menu on hover */
 .dropdown-menu:hover .ManNav-links {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-menu:hover /*.clicked-page*/ {background-color: #090929;}
+.dropdown-menu:hover /*.clicked-page*/ {background-color: #283747;}
 
 /* Links inside the dropdown */
-.MItem{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    border-radius: 4px;
-    width: 150px;
-    background-color: #090929;
-}
 
 .MItem-label{
     padding: 12px 16px;
@@ -376,14 +369,13 @@
     height: 20%;
     border-radius: 6px;
     order: 1;
-    width: 80%;
-    background-color: #090929;
-    color: white;
+    width: 100%;
+    background-color: #212d3a;
+    color: whitesmoke;
+    margin: 0px;
+    text-align: center;
 }
-li{
-    background: #090929;
-    color: #0a1931;
-}
+
 
 
 

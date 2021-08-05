@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
-import Bell from '../../icons/notification.svg';
+import Bell from '../../icons/aletedNoti.svg';
 import BellDef from '../../icons/bell.svg';
 import About from '../../icons/info.png';
 import Octopus from '../../icons/octopus.png';
@@ -17,10 +17,7 @@ const NavBar = (props)=>
        const [freshPage,setFreshPage] = useState(true); // if fresh page doesnt show notifications 
        let uniqid = require('uniqid');
        const DropDown =  ManageItems.map((MItem,index)=>(
-            <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
-            <div className = "MItem">
-                <label className = "MItem-label" > {MItem.hebrew} </label>
-            </div></Link>
+            <Link className="MItem-label"  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >{MItem.hebrew}</Link>
         ));    
        // Conditionlly make the right button [red/clicked] depends on the url (after page refreshed)
        function handleInitClicked(url) {

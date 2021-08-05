@@ -1,9 +1,9 @@
 *{
-  background-color: #030316;
   padding: 0;
   margin: 0;
   font-family: 'Rubik','Futura','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 18px;
+  color: black;
 }
 
 .StationPage{
@@ -37,7 +37,7 @@
   margin-top: 100px;;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  background: #090929;
+  background: #283747;
   border-radius: 6px;
   transition: 0.5s;
   box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
@@ -62,27 +62,28 @@
 .logos{
   display: flex;
   justify-content: space-between;
-  background-color: #090929;
+  background-color: #283747;
  
 }
 
 .logo{
   width: 70px;
   height: 70px;
-  background-color: #090929;
+  background-color: #283747;
 }
 
 .tihkur{
   width: 160px;
   height: 160px;
-  background-color: #090929;
+  background-color: #283747;
 }
 
 .exit{
   border: solid;
   align-self:center;
   cursor: pointer;
-  background: #090929;
+  background: #283747;
     border-radius: 12px;
     padding: 10px 40px;
 }
+

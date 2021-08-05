@@ -17,7 +17,7 @@ const FlightTable = (props)=>{
     return(
             <div className = "Flight-Table">
                 <label className = "Table-Name"> גיחות </label>
-                <div className  = "Row"> <div className = "Header-Cell">תאריך</div><div className = "Header-Cell">תדר</div> <div className = "Header-Cell">גרור</div> <div className = "Header-Cell">תחנה</div> <div className = "Header-Cell">זנב</div> </div>
+                <div className  = "HeaderRow"> <div className = "Header-Cell">תאריך</div><div className = "Header-Cell">שעה</div><div className = "Header-Cell">תדר</div> <div className = "Header-Cell">גרור</div> <div className = "Header-Cell">תחנה</div> <div className = "Header-Cell">זנב</div> </div>
                 {
                     Data.splice(0,35).map((e)=><div key = {e._id} className  = "Row"> 
                         <div className = "Cell"></div>
@@ -28,21 +28,24 @@ const FlightTable = (props)=>{
                         </div>)
                 }
                 <div className  = "Row"> 
-                        <div className = "Cell">06-07-2021 | 20:13:12</div>
+                        <div className = "Cell">06-07-2021</div>
+                        <div className = "Cell">20:13:12</div>
                         <div className = "Cell">fds</div>
                         <div className = "Cell">fds</div>
                         <div className = "Cell">fds</div> 
                         <div className = "Cell">fds</div>
                         </div>
                         <div className  = "Row"> 
-                        <div className = "Cell">06-07-2021 | 20:13:12</div>
+                        <div className = "Cell">06-07-2021</div>
+                        <div className = "Cell">20:13:12</div>
                         <div className = "Cell">fds</div>
                         <div className = "Cell">fds</div>
                         <div className = "Cell">fds</div> 
                         <div className = "Cell">fds</div>
                         </div>
                         <div className  = "Row"> 
-                        <div className = "Cell">06-07-2021 | 20:13:12</div>
+                        <div className = "Cell">06-07-2021</div>
+                        <div className = "Cell">20:13:12</div>
                         <div className = "Cell">fds</div>
                         <div className = "Cell">fds</div>
                         <div className = "Cell">fds</div> 
