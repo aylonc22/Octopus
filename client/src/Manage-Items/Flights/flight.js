@@ -36,21 +36,21 @@ const Flight = props =>{
              <div className = "Cell">{e.Tail}</div>
              </div>)}
              <div className = "Row">
-             <div className = "Cell">06-07-2021:// 20:13:12</div>
+             <div className = "Cell">06-07-2021 | 20:13:12</div>
              <div className = "Cell">dsadsa</div>
              <div className = "Cell">dsadsa</div>
              <div className = "Cell">fff</div>
              <div className = "Cell">ccaa</div>
              </div>
              <div className = "Row">
-             <div className = "Cell">06-07-2021:// 20:13:12</div>
+             <div className = "Cell">06-07-2021 | 20:13:12</div>
              <div className = "Cell">dsadsa</div>
              <div className = "Cell">dsadsa</div>
              <div className = "Cell">fff</div>
              <div className = "Cell">ccaa</div>
              </div>
              <div className = "Row">
-             <div className = "Cell">06-07-2021:// 20:13:12</div>
+             <div className = "Cell">06-07-2021 | 20:13:12</div>
              <div className = "Cell">dsadsa</div>
              <div className = "Cell">dsadsa</div>
              <div className = "Cell">fff</div>

@@ -5,7 +5,6 @@ import Bell from '../../icons/notification.svg';
 import BellDef from '../../icons/bell.svg';
 import About from '../../icons/info.png';
 import Octopus from '../../icons/octopus.png';
-import AirForce from '../../icons/AirForce.png';
 import {getAllOpenNotification} from '../../api/notification-api.js';
 
 import './Navbar.css';

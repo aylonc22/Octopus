@@ -221,6 +221,8 @@
  }
 
 .Navbar-logo{
+    margin-left: 2%;
+    margin-right: 2%;
     order: 1;
     display: flex;
     align-self: center;

@@ -1,6 +1,4 @@
 import {React,useEffect,useState} from 'react';
-//components 
-import Button from '../../../components/button/Button.js';
 //Icons
 import Add_icon from '../../../icons/add.png';
 import Delete_icon from '../../../icons/delete.png'; // Delete Icon
