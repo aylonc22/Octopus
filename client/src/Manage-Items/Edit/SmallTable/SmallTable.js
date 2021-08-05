@@ -49,10 +49,9 @@ const SmallTable = props =>{
                     <div className = "Header-Cell">{props.secondaryH}</div>
                     </div>
                     <div className ="Row">
-                    <input type ="text" value = {newID} onChange ={(e)=>setNewID(e.target.value)} minLength="3" maxLength="3" className = "input"/>
-                    <input type ="text" value = {newType} onChange ={(e)=>setNewType(e.target.value)} className = "input"/>
-                    <img onClick ={()=>{setSubmitData({id:newID,type:newType});setNewID("");setNewType("");}} className = "icon" id = "add" src = {Add_icon} alt =""/>
-                    </div>
+                    <div className = "Cell"><input type ="text" value = {newID} onChange ={(e)=>setNewID(e.target.value)} minLength="3" maxLength="3" className = "input"/></div>
+                    <div className = "Cell"><input type ="text" value = {newType} onChange ={(e)=>setNewType(e.target.value)} className = "input"/></div>
+                    <img onClick ={()=>{setSubmitData({id:newID,type:newType});setNewID("");setNewType("");}} className = "icon" id = "add" src = {Add_icon} alt =""/></div>
                     <div className = "DataTable">
                         {Data.map((e,index)=><div  key = {e._id} className = "Row">
                         <div className = "Cell">{e.ID}</div>

@@ -1,5 +1,5 @@
 .background{
-  background: #00E7DC;
+  background-color: #00E7DC;
   margin:0; 
   padding:0; 
   height: 100%;
@@ -12,6 +12,7 @@
   height: 100%;
   width:100%;
   z-index: 0;
+  color: black;
 }
 
 #h1{

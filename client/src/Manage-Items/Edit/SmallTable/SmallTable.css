@@ -2,7 +2,7 @@
     text-align: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background: #090929;
+    background: #283747;
     border-radius: 4px;
     transition: 0.5s;
     box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
@@ -13,12 +13,12 @@
 .Top-Card{
     display: flex;
     justify-content: center;
-    background:#090929;
+    background:#283747;
 }
 
 .DataTable{
   height: 400px;
-  background: #090929;
+  background: #283747;
   overflow: auto;
 }
 
@@ -30,12 +30,12 @@
 }
 
 .icon#add{
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
 }
 
 .input{
-  width: 35%;
+  width: 80%;
   border-radius: 6px;
 }
 

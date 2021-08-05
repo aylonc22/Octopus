@@ -30,7 +30,6 @@
 .about{
   display: flex;
   flex-direction: column;
-  border: solid;
   align-self:center;
   position: fixed;
   top: 0;
@@ -57,6 +56,8 @@
   justify-content: center;
   align-items: center;
   background: none; 
+  color: white;
+
 }
 
 .logos{
@@ -79,11 +80,12 @@
 }
 
 .exit{
-  border: solid;
+  color: white;
+  border: solid white;
   align-self:center;
   cursor: pointer;
   background: #283747;
     border-radius: 12px;
-    padding: 10px 40px;
+    padding: 5px 20px;
 }
 

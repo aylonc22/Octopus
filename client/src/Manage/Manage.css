@@ -149,7 +149,7 @@ width: 100%;
 justify-content: space-evenly;
 font-size: auto;
 border-radius: 6px;
-background: #F3F3F3;
+background: inherit;
 }
 
 /*shit*/
