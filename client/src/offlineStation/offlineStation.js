@@ -43,46 +43,8 @@ const OfflineStation = (props) => {
                         <label className = "SCell">1</label>
                         <label className = "SCell">מ</label>
                     </div> 
-            </div>
-            </div>
-            {/* <label className = "stationName">{item.id}</label>
-            <div className = "top">
-            <img src={h} alt="haziza"></img>
-            </div>
-            <div className = "bottom">
-                    <div className = "Row">
-                    <label className = "Cell">{item.message}</label>
-                        <label className = "Cell">ג</label>                        
-                    </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">ע</label>                       
-                    </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">I</label>                        
-                    </div>
-                    <div className = "Row">                        
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">מ</label>
-                    </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">ת</label>                        
-                    </div>
-                    <div className = "Row">                        
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">מ</label>
-                    </div>
-                    <div className = "Row">
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">1</label>
-                    </div>
-                    <div className = "Row">                       
-                        <label className = "Cell">1</label>
-                        <label className = "Cell">מ</label>
-                    </div>  
-            </div> */}
+                </div>
+                </div>
             </div>
         )
     });

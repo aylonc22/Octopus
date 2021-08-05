@@ -75,26 +75,18 @@
     border-bottom: none;
     
    }
-   .right{
+
+   .DuplicateCell{
     display: flex;
-    width: 29%;
-    background-color: #A8DADC;
-    order: 1;
-    justify-content: center;
-    
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border: solid #1687a7 0.5px;
+      height: 20px;
+      background: red;
+      cursor: default;
+      color: white;
    }
-
-   .left{
-    display: flex;
-    width: 69%;
-    background-color: green;
-    justify-content: center;
-    border-radius: 4px;
-    margin-left: 3%;
-  }
-  .left:hover{
-    background-color: rgb(2, 99, 2);
-  }
-
+  
   
 
