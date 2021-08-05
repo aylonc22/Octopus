@@ -1,7 +1,7 @@
 import {React,useEffect,useState} from 'react';
 //Icons
-import Add_icon from '../../../icons/add.png';
-import Delete_icon from '../../../icons/delete.png'; // Delete Icon
+import Add_icon from '../../../icons/add.svg';
+import Delete_icon from '../../../icons/delete.svg'; // Delete Icon
 //Styling
 import './SmallTable.css'
 
