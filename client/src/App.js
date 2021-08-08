@@ -37,7 +37,7 @@ function App() {
   const [newNotifications,setNewNotifications] = useState(undefined);
   const [serverOn,setServerOn] = useState(true);
   const [reconnectAttemp,setReconnectAttemp] = useState(false);
-  const [shouldBlur,setShouldBlur] = useState(false);
+  const [shouldBlur,setShouldBlur] = useState(false);// if need to blur the screen
 useEffect(()=>{
   if(reconnectAttemp)
   setServerOn(false);
@@ -71,13 +71,15 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[]);
 
+const shouldShowAbout = ["/","/online","/offline","/flight","/notification","/edit"].indexOf(window.location.href.substring(window.location.href.lastIndexOf('/')))!=-1;
+
 // if(!serverOn) // if socket can't connect to server
 //     return (<NotFoundPage isOffline = "true"/>)
 //   else // if socket is connected
   return (
           <div>
             <Router>
-              <div className = {shouldBlur?"blur":""} onClick = {()=>{if(shouldBlur)setShouldBlur(false);/*if aboutus is open any click on the page will close it */}}>
+              <div className = {shouldBlur&&shouldShowAbout?"blur":""} onClick = {()=>{if(shouldBlur)setShouldBlur(false);/*if aboutus is open any click on the page will close it */}}>
               <Navbar
               url = {window.location.href.substring(window.location.href.lastIndexOf('/'))}
               NewNotifications = {newNotifications}
@@ -89,10 +91,11 @@ useEffect(()=>{
             <Route exact path="/flight"><Flights/></Route>
             <Route exact path="/notification"><Notification notifications = {notifications}/></Route>
             <Route exact path="/edit"><Edit/></Route>
+            <Route path="/octopus"><NotFoundPage numbers="true"/></Route>
             <Route path="*"><NotFoundPage/></Route>
           </Switch>
             </div>
-            {shouldBlur?<div className = "about-page">
+            {shouldBlur&&shouldShowAbout?<div className = "about-page">
                <div className="about">
                <div className = "logos">
                <img className ="logo" alt = "" src = {AirForce}/>

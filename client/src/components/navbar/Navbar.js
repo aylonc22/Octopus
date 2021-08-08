@@ -58,7 +58,7 @@ const NavBar = (props)=>
                     <div className = "NavbarItems"> 
                         <div className="Navbar-logo">
                         <div className ="Octopus-Label img" ><img className ="img" alt = "" src = {Octopus}/></div>
-                            <a className ="Octopus-Label" href = "/404">תמנון</a>
+                        <a className ="Octopus-Label" onClick ={()=>props.numbers(true)} href = "/octopus">תמנון</a>
                             <div className ="about-button" onClick={()=>props.shouldBlur(true)} > <img   alt ="" src = {About} className = "info"></img></div>
                             </div>
                         <div className = "notifications-icon">
