@@ -30,7 +30,7 @@ rejectUnauthorized: false});
 
 //APP
 function App() {
-  const [onlineStations,setOnlineStations] = useState([{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test0"},{id:"demo4",message:"tes2"}]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
+  const [onlineStations,setOnlineStations] = useState([]);//{id:"demo1",message:"test"},{id:"demo2",message:"test"},{id:"demo3",message:"test"},{id:"demo4",message:"tes2"}
   const [offlineStations,setOfflineStations] = useState([{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}]);//{id:"demo1"},{id:"demo2"},{id:"demo3"},{id:"demo12"},{id:"demo22"},{id:"demo34"},{id:"demo14"},{id:"demo23"},{id:"demo30"}
   const [notifications_card,setNotifications_card] =useState([]);
   const [notifications,setNotifications] = useState([]);
@@ -71,6 +71,7 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[]);
 
+//bool to check if page is not on 404 page and client can open about
 const shouldShowAbout = ["/","/online","/offline","/flight","/notification","/edit"].indexOf(window.location.href.substring(window.location.href.lastIndexOf('/')))!=-1;
 
 // if(!serverOn) // if socket can't connect to server

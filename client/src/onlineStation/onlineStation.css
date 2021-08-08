@@ -25,27 +25,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 40%;
 }
-
-.containerOnline{
-    display: flex;
-    background-color: #A8DADC;
-    width: 25vh;
-    height: 35vh;
-     margin: 2%;
-     border-radius: 10px;
-     flex-direction: column;
-     align-items: center;
-     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-     transition: 1s;
-
-   }
-   .containerOnline:hover{
-    background-color: #93bfc0;
-    transition: 1s;
-
-   }
 
    .stationNameOnline{ 
     margin-top: 2%; 
@@ -62,19 +43,6 @@
     background-color: #A8DADC;
     justify-content: space-around;
   }
-
-  .row{
-    display: flex;
-    background-color: #A8DADC;
-    border-bottom: solid;
-    height: 13%;
-    width: 100%;
-    align-items: center;
-   }
-   .row:last-child{
-    border-bottom: none;
-    
-   }
 
    .DuplicateCell{
     display: flex;

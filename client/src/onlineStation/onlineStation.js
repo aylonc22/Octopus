@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import h from '../icons/haziza.png';
-import Octopus from '../icons/octopus.png';
+import Octopus from '../icons/octopusLoading.png';
 import './onlineStation.css'
 
 const noOnlineStation =( 
