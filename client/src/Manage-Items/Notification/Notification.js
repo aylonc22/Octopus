@@ -22,7 +22,7 @@ const Notification = props =>{
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
     </div>
-         <div className ="Row">
+         <div className ="Row Header">
          <label className = "Header-Cell">תאריך סיום</label>
          <label className = "Header-Cell">תאריך התחלה</label>
          <label className = "Header-Cell">מופע חופף</label>

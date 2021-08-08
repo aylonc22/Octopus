@@ -20,7 +20,7 @@ const Flight = props =>{
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
     </div>
-         <div className ="Row">
+         <div className ="Row Header">
          <label className = "Header-Cell">תאריך</label>
          <label className = "Header-Cell">תדר</label>
          <label className = "Header-Cell">גרור</label>
