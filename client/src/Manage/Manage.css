@@ -114,10 +114,6 @@ width: 50%;
   padding: 10px;
 }
 
-.Row.Header{
-  background: #DCE1E3;
-}
-
 .Row:nth-child(even){
   background: #DCE1E3;
 }
