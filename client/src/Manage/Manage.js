@@ -46,7 +46,9 @@ const Manage = props =>{
        
        setSlider( setTimeout(() => {
             if(!isClicked)setSmallTable(names.indexOf(smallTable)+2>names.length?names[0]:names[names.indexOf(smallTable)+1]);
-        }, 5000)) // eslint-disable-next-line
+        }, 5000))
+        return ()=>{clearTimeout(slider);setSlider(null)};
+         // eslint-disable-next-line
     },[smallTable,isClicked]);
 
     useEffect(()=>{
@@ -71,8 +73,8 @@ const Manage = props =>{
             <div className = "Right-Page">
                 <div className = "Notification-Component">  <NotificationTable notifications = {props.notifications} getAllOpen = {getNotificationsFromTo(0,21)} getAllTable = {getAllNotification()}/> </div> 
                  <div className = "Edit-Component" >
-                    <div className  = "smallRow"><div className = {smallTable==="gdt"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("gdt");setIsClicked(true);}}>גרור</div> <div className ={smallTable==="frequency"?"smallTableCardsClicked":"smallTableCards"}   onClick={()=>{setSmallTable("frequency");setIsClicked(true);}}>תדר</div> <div className ={smallTable==="station"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("station");setIsClicked(true);}}>תחנה</div> <div className = {smallTable==="tail"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("tail");setIsClicked(true);}}>זנבות</div></div>
-                    <SmallTable getAllTable = {smallTableAttributes(smallTable).getAllTable} secondary = {smallTableAttributes(smallTable).secondary} secondaryH = {smallTableAttributes(smallTable).secondaryH} name ={smallTableAttributes(smallTable).name}/>
+                    <div className  = "smallRow"><div className = {smallTable==="gdt"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("gdt");setIsClicked(true);}}>גרורים</div> <div className ={smallTable==="frequency"?"smallTableCardsClicked":"smallTableCards"}   onClick={()=>{setSmallTable("frequency");setIsClicked(true);}}>תדרים</div> <div className ={smallTable==="station"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("station");setIsClicked(true);}}>תחנות</div> <div className = {smallTable==="tail"?"smallTableCardsClicked":"smallTableCards"} onClick={()=>{setSmallTable("tail");setIsClicked(true);}}>זנבות</div></div>
+                    <SmallTable arrt = {smallTableAttributes(smallTable)}/>
                 </div> 
             </div>           
         </div>

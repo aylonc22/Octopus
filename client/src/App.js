@@ -72,7 +72,7 @@ useEffect(()=>{
 },[]);
 
 //bool to check if page is not on 404 page and client can open about
-const shouldShowAbout = ["/","/online","/offline","/flight","/notification","/edit"].indexOf(window.location.href.substring(window.location.href.lastIndexOf('/')))!=-1;
+const shouldShowAbout = ["/","/online","/offline","/flight","/notification","/edit"].indexOf(window.location.href.substring(window.location.href.lastIndexOf('/')))!==-1;
 
 if(!serverOn) // if socket can't connect to server
         return (<NotFoundPage isOffline = "true"/>)

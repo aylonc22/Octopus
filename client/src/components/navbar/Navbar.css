@@ -197,7 +197,7 @@
  
  .notification {
    position: static;
-   color: #fff;
+   color: #F5F5F5;
    display: inline-block;
    margin: auto;
    width: auto;
@@ -216,7 +216,7 @@
  }
  
  .wrapper li:hover{
-   color: #00a9c3;
+   color: #d1d1d1;
    transition: width 0s;
    
  }

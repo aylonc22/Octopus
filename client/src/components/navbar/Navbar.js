@@ -57,7 +57,6 @@ const NavBar = (props)=>
         if(props.clientIpAddress!==undefined)
         getAllOpenNotification().then(res=>{
             //getting only the notifications which are still open in the eact client individualy
-            console.log(res.data.data);
             setNotifications(res.data.data.filter(e=>e.Clients.indexOf(props.clientIpAddress)===-1));
         }); // eslint-disable-next-line
     },[props.clientIpAddress]);
