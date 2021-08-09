@@ -12,16 +12,6 @@ const [Data,setData] = useState([]);
             setData(props.notifications);
         },[props.notifications]);
 
-
-    // get date return true if the date is the date of current day
-    function isSameDay(date) {
-        let today = new Date();
-        if(today.getMonth()===date.getMonth() && today.getFullYear()===date.getFullYear() 
-        && today.getDay()=== date.getDay())
-            return true;
-
-        return false;
-    }
     return(
         <div className="contentDiv">
     <div className = "notificationCard">
