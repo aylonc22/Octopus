@@ -58,16 +58,6 @@ const SmallTable = props =>{
                         <div className = "Cell">{e.Type?e.Type:e.Location}</div>
                         <img className ="icon" src={Delete_icon} alt=""/>
                         </div>)}
-                        <div className = "Row">
-                        <div className = "Cell">dsadsa</div>
-                        <div className = "Cell">dsadsa</div>
-                        <img className ="icon" src={Delete_icon} alt=""/>
-                        </div>
-                        <div className = "Row">
-                        <div className = "Cell">dsadsa</div>
-                        <div className = "Cell">dsadsa</div>
-                        <img className ="icon" src={Delete_icon} alt=""/>
-                        </div>
                     </div>
          </div>
     );

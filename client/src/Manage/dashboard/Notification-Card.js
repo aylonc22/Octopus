@@ -40,46 +40,6 @@ const [Data,setData] = useState([]);
                     </div>
                    </div>
                     </div>)}
-                    <div className  = "Row"> 
-                    <div className = "Cell">פתוח</div>
-                    <div className = "Cell">06-07-2021</div>
-                    <div className = "Cell">20:13:12</div>
-                    <div className = "Cell">dsadsa</div>
-                    <div className = "Cell">dsadsa</div> 
-                   <div className = "Cell">
-                   <div className = "Stations">
-                    <div className = "Cell">dsdsa</div>
-                    <div className = "Cell">dsadsadsa</div>
-                    </div>
-                   </div>
-                    </div>
-                    <div className  = "Row"> 
-                    <div className = "Cell">פתוח</div>
-                    <div className = "Cell">06-07-2021</div>
-                    <div className = "Cell">20:13:12</div>
-                    <div className = "Cell">dsadsa</div>
-                    <div className = "Cell">dsadsa</div> 
-                   <div className = "Cell">
-                   <div className = "Stations">
-                    <div className = "Cell">dsdsa</div>
-                    <div className = "Cell">dsadsadsa</div>
-                    </div>
-                   </div>
-                    </div>
-                    <div className  = "Row"> 
-                    <div className = "Cell">פתוח</div>
-                    <div className = "Cell">06-07-2021</div>
-                    <div className = "Cell">20:13:12</div>
-                    <div className = "Cell">dsadsa</div>
-                    <div className = "Cell">dsadsa</div> 
-                   <div className = "Cell">
-                   <div className = "Stations">
-                    <div className = "Cell">dsdsa</div>
-                    <div className = "Cell">dsadsadsa</div>
-                    </div>
-                   </div>
-                    </div>
-               
             </div>
             </div>
             </div>

@@ -15,9 +15,6 @@ const SmallTable = props=>{
    <div ></div>
    <div className  = "HeaderRow"> <div className = "Header-Cell">{props.secondaryH}</div> <div className = "Header-Cell">מס"ז</div> </div>                
    {Data.slice(0,9).map((e)=><div key = {e._id} className  = "Row"> <div className = "Cell">{e.Type?e.Type:e.Location}</div> <div  className = "Cell">{e.ID}</div> </div>)}
-   <div className  = "Row"> <div className = "Cell">dsasd</div> <div  className = "Cell">dsadsa</div> </div>
-   <div className  = "Row"> <div className = "Cell">dsasd</div> <div  className = "Cell">dsadsa</div> </div>
-   <div className  = "Row"> <div className = "Cell">dsasd</div> <div  className = "Cell">dsadsa</div> </div>
 </div>);
 };
 

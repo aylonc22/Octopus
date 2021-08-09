@@ -64,7 +64,7 @@ const NavBar = (props)=>
                         <div className = "notifications-icon">
                             <div tabIndex = "3" onBlur={()=>setNotificationOpen(false)} className = "wrapper" >
                                 <div  onClick = {()=>{notificationOpen?setNotificationOpen(false):setNotificationOpen(true);if(freshPage)setFreshPage(false);}} className = {!notificationOpen?"button":"btnClicked"}>
-                                    <img  alt ="" src = {!notifications.length?Bell:BellDef} className = "bell"></img>
+                                    <img  alt ="" src = {notifications.length?Bell:BellDef} className = "bell"></img>
                                     <div className={notificationOpen?"text":"textClose"}> <span className = "number"> {notifications.length}</span>התראות</div>
                                  </div>
                                     {/*only visible when user clicked on notification button*/}
@@ -74,15 +74,6 @@ const NavBar = (props)=>
                                                    key ={uniqid()}  className={notificationOpen?"notification":"notification close"}>
                                                        {`${e.Stations[0]} ${e.Stations[1]} ${e.Duplicate} ${e.Type}`}
                                                     </li>)} 
-                                                    <li className={notificationOpen?"notification":"notification close"}>
-                                                       {`brrrrr`}
-                                                    </li>
-                                                    <li className={notificationOpen?"notification":"notification close"}>
-                                                       {`brrrrr`}
-                                                    </li>
-                                                    <li className={notificationOpen?"notification":"notification close"}>
-                                                       {`brrrrr`}
-                                                    </li>
                                              </div>:null}
                             </div>
                         </div>
