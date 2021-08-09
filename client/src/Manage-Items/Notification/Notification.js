@@ -18,10 +18,11 @@ const Notification = props =>{
    return(
        <div className="contentDiv">
     <div className = "FlightCard">
+    <label className = "Table-Name"> התראות </label>
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
     </div>
-         <div className ="Row">
+         <div className ="HeaderRow">
          <label className = "Header-Cell">תאריך סיום</label>
          <label className = "Header-Cell">תאריך התחלה</label>
          <label className = "Header-Cell">מופע חופף</label>
@@ -30,8 +31,8 @@ const Notification = props =>{
          </div>
          <div className = "NotificationTable" >
              {Data.map((e)=><div key ={e._id} className = "Row">
-             <div className = "Cell">{new Date(e.Close).getFullYear()===1970?"פתוח":dateFormat(new Date(e.Close),"dd-mm-yyyy:// HH:MM:ss")}</div>
-             <div className = "Cell">{ dateFormat(new Date(e.Open),"dd-mm-yyyy:// HH:MM:ss")}</div>
+             <div className = "Cell">{new Date(e.Close).getFullYear()===1970?"פתוח":dateFormat(new Date(e.Close),"dd-mm-yyyy | HH:MM:ss")}</div>
+             <div className = "Cell">{ dateFormat(new Date(e.Open),"dd-mm-yyyy | HH:MM:ss")}</div>
              <div className = "Cell">{e.Duplicate}</div>
              <div className = "Cell">{e.Type}</div>
              <div className = "Cell">

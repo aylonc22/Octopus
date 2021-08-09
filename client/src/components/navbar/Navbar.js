@@ -1,9 +1,11 @@
 import {useEffect, useState} from 'react';
 import {MenuItems,ManageItems}  from '../Items';
 import {Link} from "react-router-dom";
-import Bell from '../../icons/notification.svg';
+import Bell from '../../icons/aletedNoti.svg';
 import BellDef from '../../icons/bell.svg';
 import urlSound from '../../sounds/Another One DJ Khaled.mp3'
+import About from '../../icons/info.png';
+import Octopus from '../../icons/octopus.png';
 import {getAllOpenNotification} from '../../api/notification-api.js';
 import './Navbar.css';
 const NavBar = (props)=>
@@ -15,10 +17,7 @@ const NavBar = (props)=>
        const [freshPage,setFreshPage] = useState(true); // if fresh page doesnt show notifications 
        let uniqid = require('uniqid');
        const DropDown =  ManageItems.map((MItem,index)=>(
-            <Link  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >
-            <div className = "MItem">
-                <label className = "MItem-label" > {MItem.hebrew} </label>
-            </div></Link>
+            <Link className="MItem-label"  key = {index} onClick ={()=>setClicked("/")} to = {MItem.url} >{MItem.hebrew}</Link>
         ));    
        // Conditionlly make the right button [red/clicked] depends on the url (after page refreshed)
        function handleInitClicked(url) {
@@ -74,13 +73,18 @@ const NavBar = (props)=>
             audio.play();
         });
     }
+            setNotifications([...notifications,props.NewNotifications]);
             // eslint-disable-next-line
     },[props.NewNotifications]);
         return(
             <div>
                 <header  className="navDiv">
                     <div className = "NavbarItems"> 
-                        <div className="Navbar-logo"><Link className ="Octopus-Label" to = "/404">תמנון</Link></div>
+                        <div className="Navbar-logo">
+                        <div className ="Octopus-Label img" ><img className ="img" alt = "" src = {Octopus}/></div>
+                        <a className ="Octopus-Label" onClick ={()=>props.numbers(true)} href = "/octopus">תמנון</a>
+                            <div className ="about-button" onClick={()=>props.shouldBlur(true)} > <img   alt ="" src = {About} className = "info"></img></div>
+                            </div>
                         <div className = "notifications-icon">
                             <div tabIndex = "3" onBlur={()=>setNotificationOpen(false)} className = "wrapper" >
                                 <div  onClick = {()=>{notificationOpen?setNotificationOpen(false):setNotificationOpen(true);if(freshPage)setFreshPage(false);}} className = {!notificationOpen?"button":"btnClicked"}>
@@ -91,7 +95,7 @@ const NavBar = (props)=>
                                     {!freshPage?<div className={notificationOpen?"notifications":"notificationsOpen"}>
                                                     
                                                    {notifications.map((e,index)=><li onClick = {(el)=>removeNotification(el.target.innerText)}
-                                                   key ={uniqid()} className="notification">
+                                                   key ={uniqid()}  className={notificationOpen?"notification":"notification close"}>
                                                        {`${e.Stations[0]} ${e.Stations[1]} ${e.Duplicate} ${e.Type}`}
                                                     </li>)} 
                                              </div>:null}

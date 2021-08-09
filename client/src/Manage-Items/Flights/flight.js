@@ -16,10 +16,11 @@ const Flight = props =>{
    return(
        <div className="contentDiv">
     <div className = "FlightCard">
+    <label className = "Table-Name"> גיחות </label>
     <div className = "Top-Card">
         <label className = "Table-Name"> {props.name} </label>
     </div>
-         <div className ="Row">
+         <div className ="HeaderRow">
          <label className = "Header-Cell">תאריך</label>
          <label className = "Header-Cell">תדר</label>
          <label className = "Header-Cell">גרור</label>

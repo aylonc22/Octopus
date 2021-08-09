@@ -3,7 +3,7 @@
 }
 
 .NavbarItems{
-    background: #01050C;
+    background: #283747;
     display: flex;
     position: fixed;
     justify-content:flex-start;
@@ -11,18 +11,19 @@
     font-size: 1.2rem;
     height: inherit;
     width: 100%;
+    z-index: 5;
 }
 
 .notifications-icon{
   margin-left: 2%;
-  background: #01050C;
+  background: #283747;
   display: flex;
  justify-content: center;
  align-items: center;
 }
 
 .wrapper{
-  background: #01050C;
+  background: #283747;
     float:right;
     border-radius: 25px 25px 0 0;
     position: relative;
@@ -44,7 +45,7 @@
   cursor: pointer;
   transition: width 1s;
   transition-delay: 0.6s;
-  background-color: #182A48;
+  background-color: #932432;
 }
 
 .btnClicked{
@@ -59,7 +60,7 @@
   border-radius: 40px;
   cursor: pointer;
   transition: width 1s;
-  background-color: #182A48;
+  background-color: #932432;
 }
 
 .btnClicked:hover .bell {
@@ -70,7 +71,7 @@
 }
 
 .bell{
-  background-color: #182A48;
+  background-color: #932432;
   margin-top: 8px;
   margin-left: 20px;
   width: 30px;
@@ -127,14 +128,13 @@
 
 .notifications {
    position: fixed;
-   z-index: 8;
-   border: 1px solid #2A3E5E;
+   border: 1px solid #bd2e41;
    border-radius: 3px 3px 30px 30px;
-   background-color: #2A3E5E;
+   background-color: #bd2e41;
    margin-top: -27.5px;
    padding-top: 35px;
    padding-bottom: 30px;
-   z-index: 1;
+   z-index:  2;
    display: flex;
    flex-flow: column;
    width: inherit;
@@ -164,14 +164,13 @@
 }
 .notificationsOpen{
   position: fixed;
-  z-index: 8;
-  border: 1px solid #2A3E5E;
+  border: 1px solid #bd2e41;
   border-radius: 3px 3px 30px 30px;
-  background-color: #2A3E5E;
+  background-color: #bd2e41;
   margin-top: -27.5px;
   padding-top: 35px;
   padding-bottom: 30px;
-  z-index: 1;
+  z-index:  2;
   display: flex;
   flex-flow: column;
   width: inherit;
@@ -208,48 +207,83 @@
    background-repeat: no-repeat;
    margin-left: 20px;
    margin-right: 20px;
-   background: #2A3E5E;
+   background: #bd2e41;
+   cursor:pointer;
+ }
+
+ .notification.close{
+  cursor:default;
  }
  
  .wrapper li:hover{
    color: #00a9c3;
    transition: width 0s;
-   cursor:pointer;
+   
  }
 
 .Navbar-logo{
+    margin-left: 2%;
+    margin-right: 2%;
     order: 1;
     display: flex;
     align-self: center;
     flex-direction: row;
     justify-content: center;
-    width: 33%;
-    margin-left: 20%;
+    flex-flow: baseline;
+    align-items: center;
+    width: 20%;
     color: white;
     font-size: 275%;
-    background: #01050C;
+    background: #283747;
+}
+
+.about-button{
+  display: flex;
+  cursor: pointer;
+  background: #283747;
+}
+
+.info{
+  background: #283747;
+  margin-top: 8px;
+  margin-left: 20px;
+  width: 35px;
+  height: 35px;
 }
 
 .Octopus-Label{
-  background: #01050C;
-  color: white;
+  background: #283747;
+  color: whitesmoke;
+  font-size: 60px;
 }
+
+.Octopus-Label.img{
+ display: flex;
+  margin-top: 8px;
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+.img{
+  background: #283747;
+}
+
 
 .nav-menu{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     align-items: center;
     width: 66%;
     list-style:none;
-    background: #01050C;
+    background: #283747;
     height: inherit;
+    flex-flow: row-reverse;
 
 }
 
 .nav-links{
     display: inline-block;
-    color: white;
+    color: whitesmoke;
     text-align: center;
     line-height: 76px;
     margin: 0 0.85em;
@@ -257,16 +291,14 @@
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 2px;
-    background: #01050C;
-    border-bottom: solid #0a1931;
+    background: #283747;
+    border-bottom: solid 4px #0a1931;
     width: 100%;
 }
 
 .nav-links:hover{
-    border-radius: 4px;
     transition: all 0.2 ease-out;
     transition: 0.5s;
-    background: #0f2447;
     border-color: #00b2cf !important;
     }
 
@@ -276,15 +308,15 @@
 
 .clicked-page{
     display: inline-block;
-    color: white;
+    color: whitesmoke;
     line-height: 76px;
     margin: 0 0.85em;
     overflow: hidden;
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 2px;
-    background-color:#01050C;
-    border-bottom: solid #00b2cf;
+    background-color:#283747;
+    border-bottom: solid 4px #00b2cf;
     cursor: pointer;
     width: 100%;
     text-align: center;
@@ -294,8 +326,9 @@
     display: inline-block;
     position: relative;
     border-radius: 4px;
-    background: #01050C;
-    width: none;
+    background: #283747;
+    align-items: center;
+
 }
 
 
@@ -303,13 +336,14 @@
     display: none;
     align-items: center;
     position: absolute;
-    background-color: #01050C;
+    background-color: #212d3a;
     box-shadow: 2px 8px 16px 2px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index:  2;
     overflow: auto;
-    width: 150px;
+    width: 130px;
     border-radius: 6px;
 }
+
 
 /* Links inside the dropdown 
 .ManNav-links label{
@@ -317,25 +351,17 @@
 }*/
 
 /* Change color of dropdown links on hover */
-.MItem:hover {background-color: #3d4a5f;} 
-.MItem:hover .MItem-label{background-color: #3d4a5f;} 
-.MItem:hover .MItem-icon {background-color: #3d4a5f;} 
+.MItem-label:hover {background-color: #3d4a5f;} 
+.MItem-label:hover .MItem-label{background-color: #3d4a5f;} 
+.MItem-label:hover .MItem-icon {background-color: #3d4a5f;} 
 
 /* Show the dropdown menu on hover */
 .dropdown-menu:hover .ManNav-links {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown-menu:hover /*.clicked-page*/ {background-color: #01050C;}
+.dropdown-menu:hover /*.clicked-page*/ {background-color: #283747;}
 
 /* Links inside the dropdown */
-.MItem{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    border-radius: 4px;
-    width: 150px;
-    background-color: #01050C;
-}
 
 .MItem-label{
     padding: 12px 16px;
@@ -344,14 +370,13 @@
     height: 20%;
     border-radius: 6px;
     order: 1;
-    width: 80%;
-    background-color: #01050C;
-    color: white;
+    width: 100%;
+    background-color: #212d3a;
+    color: whitesmoke;
+    margin: 0px;
+    text-align: center;
 }
-li{
-    background: #01050C;
-    color: #0a1931;
-}
+
 
 
 
@@ -378,16 +403,13 @@ li{
      cursor: pointer; cursor: hand;
   }
   .close{
-  
       float:right;
-      color: #b94b45;
       cursor: pointer; cursor: hand;
   }
   
   .alert-message{
     background-color: #f2dede;
     border: 1px solid rgba(#34495e, 0.25);
-    color: #b94b45;
     border-radius: 3px;
     line-height:30px;
     top: 0; left: 70%;
@@ -418,6 +440,7 @@ li{
   
   .contentDiv{
     padding-top: 100px;
+    width: 100%;
   }
   
 

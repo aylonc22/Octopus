@@ -2,7 +2,7 @@
     text-align: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background: #182A48;
+    background: #283747;
     border-radius: 4px;
     transition: 0.5s;
     box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
@@ -12,38 +12,55 @@
 
 .Top-Card{
     display: flex;
-    justify-content: flex-end;
-    background:#182A48;
+    justify-content: center;
+    background:#283747;
 }
 
 .DataTable{
   height: 400px;
-  background: #182A48;
+  background: #283747;
   overflow: auto;
 }
 
-.Manage-Icon-Data{
+.icon{
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-color:inherit;
+}
+
+.icon#add{
+  height: 20px;
+  width: 20px;
+}
+
+.input{
+  width: 80%;
+  border-radius: 6px;
+}
+
+/* .Manage-Icon-Data{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-left:25%;
-    background:#182A48;
+    background:#090929;
 }
 
 .icon{
     padding-left: 5%;
-    background:#182A48;
+    background:#090929;
     cursor: pointer;
 }
 
 .Delete-Cell{
-    background:#182A48;
+    background:#090929;
     display: none;
     border: solid;
 }
 
 .Delete-Cell-Active{
-    background:#182A48;
+    background:#090929;
     display: block;
 }
 
@@ -79,4 +96,4 @@
     border-color: MediumSeaGreen;
     color: #fff;
     opacity: 1;
-  }
+  } */

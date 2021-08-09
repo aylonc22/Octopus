@@ -1,22 +1,21 @@
 .FlightCard{
+    display: flex;
+    flex-flow: column;
     margin: 1.5%;
     text-align: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background: #182A48;
+    background: #283747;
     border-radius: 4px;
     transition: 0.5s;
     box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
     -webkit-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
     -moz-box-shadow: 6px 5px 17px -8px rgba(0,0,0,0.69);
+    min-height: 740px;
+
 }
 
 .FlightTable{
-    height: 740px;
-    background: #182A48;
+    background: #283747;
     overflow: auto;
 }
-
-.contentDiv{
-    padding-top: 100px ;
-  }

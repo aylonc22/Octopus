@@ -1,8 +1,9 @@
 *{
-  background-color: #0a1931;
   padding: 0;
   margin: 0;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Rubik','Futura','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+  color: black;
 }
 
 .StationPage{
@@ -12,6 +13,80 @@
 }
 
 .textCenter{
+  font-size: 30px;
   display: flex;
   justify-content:center;
 }
+
+.blur{
+  filter: blur(3px);
+}
+
+.about-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about{
+  display: flex;
+  flex-direction: column;
+  align-self:center;
+  position: fixed;
+  top: 0;
+  margin-top: 100px;;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #283747;
+  border-radius: 6px;
+  transition: 0.5s;
+  box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -webkit-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+  -moz-box-shadow: -1px 1px 11px 1px rgba(0,0,0,0.51);
+}
+
+.rows{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: none;
+}
+
+.about-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none; 
+  color: white;
+
+}
+
+.logos{
+  display: flex;
+  justify-content: space-between;
+  background-color: #283747;
+ 
+}
+
+.logo{
+  width: 70px;
+  height: 70px;
+  background-color: #283747;
+}
+
+.tihkur{
+  width: 160px;
+  height: 160px;
+  background-color: #283747;
+}
+
+.exit{
+  color: white;
+  border: solid white;
+  align-self:center;
+  cursor: pointer;
+  background: #283747;
+    border-radius: 12px;
+    padding: 5px 20px;
+}
+

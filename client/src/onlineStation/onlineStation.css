@@ -1,13 +1,3 @@
-
-svg {
-  margin: 50px auto;
-  width: 45%;
-}
-
-.logo {
-  fill: #FE4365;
-}
-
 .clip {
   animation: slide 8s infinite;
 }
@@ -26,39 +16,17 @@ svg {
 
 .noOnlineStation{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 90vh;
+  align-items: center;
+ height: 100vh;
 }
 
 .animation{
   display: flex;
-  width: 70%;
   justify-content: center;
   align-items: center;
+  width: 40%;
 }
-.contentDiv{
-  padding-top: 100px ;
-}
-.containerOnline{
-    display: flex;
-    background-color: #A8DADC;
-    width: 25vh;
-    height: 35vh;
-     margin: 2%;
-     border-radius: 10px;
-     flex-direction: column;
-     align-items: center;
-     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-     transition: 1s;
-
-   }
-   .containerOnline:hover{
-    background-color: #93bfc0;
-    transition: 1s;
-
-   }
 
    .stationNameOnline{ 
     margin-top: 2%; 
@@ -76,38 +44,16 @@ svg {
     justify-content: space-around;
   }
 
-  .row{
+   .DuplicateCell{
     display: flex;
-    background-color: #A8DADC;
-    border-bottom: solid;
-    height: 13%;
-    width: 100%;
-    align-items: center;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 20px;
+      background: red;
+      cursor: default;
+      color: black;
    }
-   .row:last-child{
-    border-bottom: none;
-    
-   }
-   .right{
-    display: flex;
-    width: 29%;
-    background-color: #A8DADC;
-    order: 1;
-    justify-content: center;
-    
-   }
-
-   .left{
-    display: flex;
-    width: 69%;
-    background-color: green;
-    justify-content: center;
-    border-radius: 4px;
-    margin-left: 3%;
-  }
-  .left:hover{
-    background-color: rgb(2, 99, 2);
-  }
-
+  
   
 
