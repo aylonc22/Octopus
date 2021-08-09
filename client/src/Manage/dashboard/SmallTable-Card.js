@@ -15,8 +15,9 @@ const SmallTable = props=>{
         // get  count and pick count element in the array "DATA"
         const random = (number)=>{
             let result = [];
+           // if array is not long enough return the length of the array
             let loop = Data.length<number?Data.length:number;
-            if(Data.length===0)
+            if(Data.length===0) // if the array is empty return empty array
              return result;
             for(let i=0;i<loop;i++)
             {
