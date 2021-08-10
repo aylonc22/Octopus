@@ -13,6 +13,7 @@ import Navbar from './components/navbar/Navbar';
 import Flights from './Manage-Items/Flights/flight';
 import Notification from './Manage-Items/Notification/Notification.js';
 import Edit from './Manage-Items/Edit/Edit.js';
+import AboutMe from './components/modal/Modal.js'
 //image
 import Tihkur from './icons/tihkur.png';
 import AirForce from './icons/AirForce.png';
@@ -98,23 +99,7 @@ if(!serverOn) // if socket can't connect to server
             <Route path="*"><NotFoundPage/></Route>
           </Switch>
             </div>
-            {shouldBlur&&shouldShowAbout?<div className = "about-page">
-               <div className="about">
-               <div className = "logos">
-               <img className ="logo" alt = "" src = {AirForce}/>
-               <img className ="tihkur" alt = "" src = {Tihkur}/>
-               <img className ="logo" alt = "" src = {Tahzuka}/>              
-               </div>
-                <div className = "rows">
-                <div className = "about-row">פותח על ידי אילון כהן </div>
-                 <div className = "about-row"> מחלקת תחקור, אוויוניקה כטמ"ם</div>
-                 <div className = "about-row"> ©חייל האוויר 2021</div>
-                </div>
-                
-               <div className = "exit" onClick={()=>setShouldBlur(false)}>סגור</div>
-               
-               </div>
-               </div>:null}
+            {shouldBlur&&shouldShowAbout?<AboutMe setShouldBlur={flag=>setShouldBlur(flag)}></AboutMe>:null}
               </Router>
           </div>   
       
